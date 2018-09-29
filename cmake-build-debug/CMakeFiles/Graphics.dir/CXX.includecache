@@ -7,7 +7,7 @@
 #IncludeRegexTransform: 
 
 /Users/Bill/ClionProjects/Graphics/src/main.cpp
-stdio.h
+iostream
 -
 GL/glew.h
 -
