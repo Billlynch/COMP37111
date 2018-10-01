@@ -123,33 +123,6 @@ Graphics/fast:
 	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/build
 .PHONY : Graphics/fast
 
-src/Particle.o: src/Particle.cpp.o
-
-.PHONY : src/Particle.o
-
-# target to build an object file
-src/Particle.cpp.o:
-	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/src/Particle.cpp.o
-.PHONY : src/Particle.cpp.o
-
-src/Particle.i: src/Particle.cpp.i
-
-.PHONY : src/Particle.i
-
-# target to preprocess a source file
-src/Particle.cpp.i:
-	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/src/Particle.cpp.i
-.PHONY : src/Particle.cpp.i
-
-src/Particle.s: src/Particle.cpp.s
-
-.PHONY : src/Particle.s
-
-# target to generate assembly for a file
-src/Particle.cpp.s:
-	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/src/Particle.cpp.s
-.PHONY : src/Particle.cpp.s
-
 src/common/controls.o: src/common/controls.cpp.o
 
 .PHONY : src/common/controls.o
@@ -176,6 +149,60 @@ src/common/controls.s: src/common/controls.cpp.s
 src/common/controls.cpp.s:
 	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/src/common/controls.cpp.s
 .PHONY : src/common/controls.cpp.s
+
+src/common/shader.o: src/common/shader.cpp.o
+
+.PHONY : src/common/shader.o
+
+# target to build an object file
+src/common/shader.cpp.o:
+	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/src/common/shader.cpp.o
+.PHONY : src/common/shader.cpp.o
+
+src/common/shader.i: src/common/shader.cpp.i
+
+.PHONY : src/common/shader.i
+
+# target to preprocess a source file
+src/common/shader.cpp.i:
+	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/src/common/shader.cpp.i
+.PHONY : src/common/shader.cpp.i
+
+src/common/shader.s: src/common/shader.cpp.s
+
+.PHONY : src/common/shader.s
+
+# target to generate assembly for a file
+src/common/shader.cpp.s:
+	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/src/common/shader.cpp.s
+.PHONY : src/common/shader.cpp.s
+
+src/common/texture.o: src/common/texture.cpp.o
+
+.PHONY : src/common/texture.o
+
+# target to build an object file
+src/common/texture.cpp.o:
+	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/src/common/texture.cpp.o
+.PHONY : src/common/texture.cpp.o
+
+src/common/texture.i: src/common/texture.cpp.i
+
+.PHONY : src/common/texture.i
+
+# target to preprocess a source file
+src/common/texture.cpp.i:
+	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/src/common/texture.cpp.i
+.PHONY : src/common/texture.cpp.i
+
+src/common/texture.s: src/common/texture.cpp.s
+
+.PHONY : src/common/texture.s
+
+# target to generate assembly for a file
+src/common/texture.cpp.s:
+	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/src/common/texture.cpp.s
+.PHONY : src/common/texture.cpp.s
 
 src/main.o: src/main.cpp.o
 
@@ -213,12 +240,15 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Graphics"
-	@echo "... src/Particle.o"
-	@echo "... src/Particle.i"
-	@echo "... src/Particle.s"
 	@echo "... src/common/controls.o"
 	@echo "... src/common/controls.i"
 	@echo "... src/common/controls.s"
+	@echo "... src/common/shader.o"
+	@echo "... src/common/shader.i"
+	@echo "... src/common/shader.s"
+	@echo "... src/common/texture.o"
+	@echo "... src/common/texture.i"
+	@echo "... src/common/texture.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

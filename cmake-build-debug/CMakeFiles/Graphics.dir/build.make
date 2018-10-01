@@ -70,22 +70,9 @@ CMakeFiles/Graphics.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Graphics.dir/src/main.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Bill/ClionProjects/Graphics/src/main.cpp -o CMakeFiles/Graphics.dir/src/main.cpp.s
 
-CMakeFiles/Graphics.dir/src/Particle.cpp.o: CMakeFiles/Graphics.dir/flags.make
-CMakeFiles/Graphics.dir/src/Particle.cpp.o: ../src/Particle.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Bill/ClionProjects/Graphics/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Graphics.dir/src/Particle.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Graphics.dir/src/Particle.cpp.o -c /Users/Bill/ClionProjects/Graphics/src/Particle.cpp
-
-CMakeFiles/Graphics.dir/src/Particle.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Graphics.dir/src/Particle.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Bill/ClionProjects/Graphics/src/Particle.cpp > CMakeFiles/Graphics.dir/src/Particle.cpp.i
-
-CMakeFiles/Graphics.dir/src/Particle.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Graphics.dir/src/Particle.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Bill/ClionProjects/Graphics/src/Particle.cpp -o CMakeFiles/Graphics.dir/src/Particle.cpp.s
-
 CMakeFiles/Graphics.dir/src/common/controls.cpp.o: CMakeFiles/Graphics.dir/flags.make
 CMakeFiles/Graphics.dir/src/common/controls.cpp.o: ../src/common/controls.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Bill/ClionProjects/Graphics/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Graphics.dir/src/common/controls.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Bill/ClionProjects/Graphics/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Graphics.dir/src/common/controls.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Graphics.dir/src/common/controls.cpp.o -c /Users/Bill/ClionProjects/Graphics/src/common/controls.cpp
 
 CMakeFiles/Graphics.dir/src/common/controls.cpp.i: cmake_force
@@ -96,21 +83,49 @@ CMakeFiles/Graphics.dir/src/common/controls.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Graphics.dir/src/common/controls.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Bill/ClionProjects/Graphics/src/common/controls.cpp -o CMakeFiles/Graphics.dir/src/common/controls.cpp.s
 
+CMakeFiles/Graphics.dir/src/common/shader.cpp.o: CMakeFiles/Graphics.dir/flags.make
+CMakeFiles/Graphics.dir/src/common/shader.cpp.o: ../src/common/shader.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Bill/ClionProjects/Graphics/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Graphics.dir/src/common/shader.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Graphics.dir/src/common/shader.cpp.o -c /Users/Bill/ClionProjects/Graphics/src/common/shader.cpp
+
+CMakeFiles/Graphics.dir/src/common/shader.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Graphics.dir/src/common/shader.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Bill/ClionProjects/Graphics/src/common/shader.cpp > CMakeFiles/Graphics.dir/src/common/shader.cpp.i
+
+CMakeFiles/Graphics.dir/src/common/shader.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Graphics.dir/src/common/shader.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Bill/ClionProjects/Graphics/src/common/shader.cpp -o CMakeFiles/Graphics.dir/src/common/shader.cpp.s
+
+CMakeFiles/Graphics.dir/src/common/texture.cpp.o: CMakeFiles/Graphics.dir/flags.make
+CMakeFiles/Graphics.dir/src/common/texture.cpp.o: ../src/common/texture.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Bill/ClionProjects/Graphics/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Graphics.dir/src/common/texture.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Graphics.dir/src/common/texture.cpp.o -c /Users/Bill/ClionProjects/Graphics/src/common/texture.cpp
+
+CMakeFiles/Graphics.dir/src/common/texture.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Graphics.dir/src/common/texture.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Bill/ClionProjects/Graphics/src/common/texture.cpp > CMakeFiles/Graphics.dir/src/common/texture.cpp.i
+
+CMakeFiles/Graphics.dir/src/common/texture.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Graphics.dir/src/common/texture.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Bill/ClionProjects/Graphics/src/common/texture.cpp -o CMakeFiles/Graphics.dir/src/common/texture.cpp.s
+
 # Object files for target Graphics
 Graphics_OBJECTS = \
 "CMakeFiles/Graphics.dir/src/main.cpp.o" \
-"CMakeFiles/Graphics.dir/src/Particle.cpp.o" \
-"CMakeFiles/Graphics.dir/src/common/controls.cpp.o"
+"CMakeFiles/Graphics.dir/src/common/controls.cpp.o" \
+"CMakeFiles/Graphics.dir/src/common/shader.cpp.o" \
+"CMakeFiles/Graphics.dir/src/common/texture.cpp.o"
 
 # External object files for target Graphics
 Graphics_EXTERNAL_OBJECTS =
 
 Graphics: CMakeFiles/Graphics.dir/src/main.cpp.o
-Graphics: CMakeFiles/Graphics.dir/src/Particle.cpp.o
 Graphics: CMakeFiles/Graphics.dir/src/common/controls.cpp.o
+Graphics: CMakeFiles/Graphics.dir/src/common/shader.cpp.o
+Graphics: CMakeFiles/Graphics.dir/src/common/texture.cpp.o
 Graphics: CMakeFiles/Graphics.dir/build.make
 Graphics: CMakeFiles/Graphics.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/Bill/ClionProjects/Graphics/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable Graphics"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/Bill/ClionProjects/Graphics/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable Graphics"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Graphics.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

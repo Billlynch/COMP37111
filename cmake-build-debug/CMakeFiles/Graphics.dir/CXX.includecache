@@ -8,8 +8,18 @@
 
 /Users/Bill/ClionProjects/Graphics/src/common/controls.hpp
 
+/Users/Bill/ClionProjects/Graphics/src/common/shader.hpp
+
+/Users/Bill/ClionProjects/Graphics/src/common/texture.hpp
+
 /Users/Bill/ClionProjects/Graphics/src/main.cpp
-iostream
+stdio.h
+-
+stdlib.h
+-
+vector
+-
+algorithm
 -
 GL/glew.h
 -
@@ -18,9 +28,13 @@ GLFW/glfw3.h
 glm/glm.hpp
 -
 glm/gtc/matrix_transform.hpp
-/Users/Bill/ClionProjects/Graphics/src/glm/gtc/matrix_transform.hpp
+-
 glm/gtx/norm.hpp
 -
+common/shader.hpp
+/Users/Bill/ClionProjects/Graphics/src/common/shader.hpp
+common/texture.hpp
+/Users/Bill/ClionProjects/Graphics/src/common/texture.hpp
 common/controls.hpp
 /Users/Bill/ClionProjects/Graphics/src/common/controls.hpp
 

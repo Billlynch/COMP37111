@@ -1,7 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Graphics.dir/src/main.cpp.o"
-  "CMakeFiles/Graphics.dir/src/Particle.cpp.o"
   "CMakeFiles/Graphics.dir/src/common/controls.cpp.o"
+  "CMakeFiles/Graphics.dir/src/common/shader.cpp.o"
+  "CMakeFiles/Graphics.dir/src/common/texture.cpp.o"
   "Graphics.pdb"
   "Graphics"
 )
