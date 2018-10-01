@@ -1,9 +1,11 @@
 #version 330 core
 
-layout(location = 0) out vec4 fragColor;
+// Interpolated values from the vertex shaders
+in vec4 particlecolor;
 
-uniform vec4 uColor = vec4(1.0f);
+// Ouput data
+out vec4 color;
 
-void main() {
-  fragColor = uColor;
+void main(){
+	color = particlecolor;
 }

@@ -96,13 +96,13 @@
 		<Unit filename="/Users/Bill/ClionProjects/Graphics/src/common/shader.hpp">
 			<Option target="Graphics"/>
 		</Unit>
-		<Unit filename="/Users/Bill/ClionProjects/Graphics/src/common/texture.cpp">
-			<Option target="Graphics"/>
-		</Unit>
-		<Unit filename="/Users/Bill/ClionProjects/Graphics/src/common/texture.hpp">
-			<Option target="Graphics"/>
-		</Unit>
 		<Unit filename="/Users/Bill/ClionProjects/Graphics/src/main.cpp">
+			<Option target="Graphics"/>
+		</Unit>
+		<Unit filename="/Users/Bill/ClionProjects/Graphics/src/openGLAbstractions.cpp">
+			<Option target="Graphics"/>
+		</Unit>
+		<Unit filename="/Users/Bill/ClionProjects/Graphics/src/openGLAbstractions.h">
 			<Option target="Graphics"/>
 		</Unit>
 		<Unit filename="/Users/Bill/ClionProjects/Graphics/CMakeLists.txt">

@@ -177,33 +177,6 @@ src/common/shader.cpp.s:
 	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/src/common/shader.cpp.s
 .PHONY : src/common/shader.cpp.s
 
-src/common/texture.o: src/common/texture.cpp.o
-
-.PHONY : src/common/texture.o
-
-# target to build an object file
-src/common/texture.cpp.o:
-	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/src/common/texture.cpp.o
-.PHONY : src/common/texture.cpp.o
-
-src/common/texture.i: src/common/texture.cpp.i
-
-.PHONY : src/common/texture.i
-
-# target to preprocess a source file
-src/common/texture.cpp.i:
-	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/src/common/texture.cpp.i
-.PHONY : src/common/texture.cpp.i
-
-src/common/texture.s: src/common/texture.cpp.s
-
-.PHONY : src/common/texture.s
-
-# target to generate assembly for a file
-src/common/texture.cpp.s:
-	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/src/common/texture.cpp.s
-.PHONY : src/common/texture.cpp.s
-
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -231,6 +204,33 @@ src/main.cpp.s:
 	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/openGLAbstractions.o: src/openGLAbstractions.cpp.o
+
+.PHONY : src/openGLAbstractions.o
+
+# target to build an object file
+src/openGLAbstractions.cpp.o:
+	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/src/openGLAbstractions.cpp.o
+.PHONY : src/openGLAbstractions.cpp.o
+
+src/openGLAbstractions.i: src/openGLAbstractions.cpp.i
+
+.PHONY : src/openGLAbstractions.i
+
+# target to preprocess a source file
+src/openGLAbstractions.cpp.i:
+	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/src/openGLAbstractions.cpp.i
+.PHONY : src/openGLAbstractions.cpp.i
+
+src/openGLAbstractions.s: src/openGLAbstractions.cpp.s
+
+.PHONY : src/openGLAbstractions.s
+
+# target to generate assembly for a file
+src/openGLAbstractions.cpp.s:
+	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/src/openGLAbstractions.cpp.s
+.PHONY : src/openGLAbstractions.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -246,12 +246,12 @@ help:
 	@echo "... src/common/shader.o"
 	@echo "... src/common/shader.i"
 	@echo "... src/common/shader.s"
-	@echo "... src/common/texture.o"
-	@echo "... src/common/texture.i"
-	@echo "... src/common/texture.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/openGLAbstractions.o"
+	@echo "... src/openGLAbstractions.i"
+	@echo "... src/openGLAbstractions.s"
 .PHONY : help
 
 

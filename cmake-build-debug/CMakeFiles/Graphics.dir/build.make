@@ -96,25 +96,25 @@ CMakeFiles/Graphics.dir/src/common/shader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Graphics.dir/src/common/shader.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Bill/ClionProjects/Graphics/src/common/shader.cpp -o CMakeFiles/Graphics.dir/src/common/shader.cpp.s
 
-CMakeFiles/Graphics.dir/src/common/texture.cpp.o: CMakeFiles/Graphics.dir/flags.make
-CMakeFiles/Graphics.dir/src/common/texture.cpp.o: ../src/common/texture.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Bill/ClionProjects/Graphics/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Graphics.dir/src/common/texture.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Graphics.dir/src/common/texture.cpp.o -c /Users/Bill/ClionProjects/Graphics/src/common/texture.cpp
+CMakeFiles/Graphics.dir/src/openGLAbstractions.cpp.o: CMakeFiles/Graphics.dir/flags.make
+CMakeFiles/Graphics.dir/src/openGLAbstractions.cpp.o: ../src/openGLAbstractions.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Bill/ClionProjects/Graphics/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Graphics.dir/src/openGLAbstractions.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Graphics.dir/src/openGLAbstractions.cpp.o -c /Users/Bill/ClionProjects/Graphics/src/openGLAbstractions.cpp
 
-CMakeFiles/Graphics.dir/src/common/texture.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Graphics.dir/src/common/texture.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Bill/ClionProjects/Graphics/src/common/texture.cpp > CMakeFiles/Graphics.dir/src/common/texture.cpp.i
+CMakeFiles/Graphics.dir/src/openGLAbstractions.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Graphics.dir/src/openGLAbstractions.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Bill/ClionProjects/Graphics/src/openGLAbstractions.cpp > CMakeFiles/Graphics.dir/src/openGLAbstractions.cpp.i
 
-CMakeFiles/Graphics.dir/src/common/texture.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Graphics.dir/src/common/texture.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Bill/ClionProjects/Graphics/src/common/texture.cpp -o CMakeFiles/Graphics.dir/src/common/texture.cpp.s
+CMakeFiles/Graphics.dir/src/openGLAbstractions.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Graphics.dir/src/openGLAbstractions.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Bill/ClionProjects/Graphics/src/openGLAbstractions.cpp -o CMakeFiles/Graphics.dir/src/openGLAbstractions.cpp.s
 
 # Object files for target Graphics
 Graphics_OBJECTS = \
 "CMakeFiles/Graphics.dir/src/main.cpp.o" \
 "CMakeFiles/Graphics.dir/src/common/controls.cpp.o" \
 "CMakeFiles/Graphics.dir/src/common/shader.cpp.o" \
-"CMakeFiles/Graphics.dir/src/common/texture.cpp.o"
+"CMakeFiles/Graphics.dir/src/openGLAbstractions.cpp.o"
 
 # External object files for target Graphics
 Graphics_EXTERNAL_OBJECTS =
@@ -122,7 +122,7 @@ Graphics_EXTERNAL_OBJECTS =
 Graphics: CMakeFiles/Graphics.dir/src/main.cpp.o
 Graphics: CMakeFiles/Graphics.dir/src/common/controls.cpp.o
 Graphics: CMakeFiles/Graphics.dir/src/common/shader.cpp.o
-Graphics: CMakeFiles/Graphics.dir/src/common/texture.cpp.o
+Graphics: CMakeFiles/Graphics.dir/src/openGLAbstractions.cpp.o
 Graphics: CMakeFiles/Graphics.dir/build.make
 Graphics: CMakeFiles/Graphics.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/Bill/ClionProjects/Graphics/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable Graphics"

@@ -174,13 +174,8 @@ CMakeFiles/Graphics.dir/src/common/shader.cpp.o: ../src/common/shader.cpp
 CMakeFiles/Graphics.dir/src/common/shader.cpp.o: ../src/common/shader.hpp
 CMakeFiles/Graphics.dir/src/common/shader.cpp.o: /usr/local/include/GL/glew.h
 
-CMakeFiles/Graphics.dir/src/common/texture.cpp.o: ../src/common/texture.cpp
-CMakeFiles/Graphics.dir/src/common/texture.cpp.o: /usr/local/include/GL/glew.h
-CMakeFiles/Graphics.dir/src/common/texture.cpp.o: /usr/local/include/GLFW/glfw3.h
-
 CMakeFiles/Graphics.dir/src/main.cpp.o: ../src/common/controls.hpp
 CMakeFiles/Graphics.dir/src/main.cpp.o: ../src/common/shader.hpp
-CMakeFiles/Graphics.dir/src/main.cpp.o: ../src/common/texture.hpp
 CMakeFiles/Graphics.dir/src/main.cpp.o: ../src/main.cpp
 CMakeFiles/Graphics.dir/src/main.cpp.o: /usr/local/include/GL/glew.h
 CMakeFiles/Graphics.dir/src/main.cpp.o: /usr/local/include/GLFW/glfw3.h

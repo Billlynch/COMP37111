@@ -174,14 +174,9 @@ CMakeFiles/Graphics.dir/src/common/shader.cpp.o
  /Users/Bill/ClionProjects/Graphics/src/common/shader.cpp
  /Users/Bill/ClionProjects/Graphics/src/common/shader.hpp
  /usr/local/include/GL/glew.h
-CMakeFiles/Graphics.dir/src/common/texture.cpp.o
- /Users/Bill/ClionProjects/Graphics/src/common/texture.cpp
- /usr/local/include/GL/glew.h
- /usr/local/include/GLFW/glfw3.h
 CMakeFiles/Graphics.dir/src/main.cpp.o
  /Users/Bill/ClionProjects/Graphics/src/common/controls.hpp
  /Users/Bill/ClionProjects/Graphics/src/common/shader.hpp
- /Users/Bill/ClionProjects/Graphics/src/common/texture.hpp
  /Users/Bill/ClionProjects/Graphics/src/main.cpp
  /usr/local/include/GL/glew.h
  /usr/local/include/GLFW/glfw3.h
