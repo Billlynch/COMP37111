@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Graphics.dir/src/main.cpp.o"
+  "CMakeFiles/Graphics.dir/src/Particle.cpp.o"
+  "CMakeFiles/Graphics.dir/src/common/controls.cpp.o"
   "Graphics.pdb"
   "Graphics"
 )

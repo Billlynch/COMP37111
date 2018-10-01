@@ -12,7 +12,7 @@ include_directories(/usr/local/include)
 # add extra lib directories
 link_directories(/usr/local/lib)
 
-add_executable(Graphics src/main.cpp)
+add_executable(Graphics src/main.cpp src/Particle.cpp src/Particle.h src/common/controls.cpp src/common/controls.hpp)
 target_link_libraries(Graphics glfw)
 target_link_libraries(Graphics glew)
 find_package (GLM REQUIRED)

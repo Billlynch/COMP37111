@@ -123,6 +123,60 @@ Graphics/fast:
 	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/build
 .PHONY : Graphics/fast
 
+src/Particle.o: src/Particle.cpp.o
+
+.PHONY : src/Particle.o
+
+# target to build an object file
+src/Particle.cpp.o:
+	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/src/Particle.cpp.o
+.PHONY : src/Particle.cpp.o
+
+src/Particle.i: src/Particle.cpp.i
+
+.PHONY : src/Particle.i
+
+# target to preprocess a source file
+src/Particle.cpp.i:
+	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/src/Particle.cpp.i
+.PHONY : src/Particle.cpp.i
+
+src/Particle.s: src/Particle.cpp.s
+
+.PHONY : src/Particle.s
+
+# target to generate assembly for a file
+src/Particle.cpp.s:
+	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/src/Particle.cpp.s
+.PHONY : src/Particle.cpp.s
+
+src/common/controls.o: src/common/controls.cpp.o
+
+.PHONY : src/common/controls.o
+
+# target to build an object file
+src/common/controls.cpp.o:
+	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/src/common/controls.cpp.o
+.PHONY : src/common/controls.cpp.o
+
+src/common/controls.i: src/common/controls.cpp.i
+
+.PHONY : src/common/controls.i
+
+# target to preprocess a source file
+src/common/controls.cpp.i:
+	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/src/common/controls.cpp.i
+.PHONY : src/common/controls.cpp.i
+
+src/common/controls.s: src/common/controls.cpp.s
+
+.PHONY : src/common/controls.s
+
+# target to generate assembly for a file
+src/common/controls.cpp.s:
+	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/src/common/controls.cpp.s
+.PHONY : src/common/controls.cpp.s
+
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -159,6 +213,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Graphics"
+	@echo "... src/Particle.o"
+	@echo "... src/Particle.i"
+	@echo "... src/Particle.s"
+	@echo "... src/common/controls.o"
+	@echo "... src/common/controls.i"
+	@echo "... src/common/controls.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

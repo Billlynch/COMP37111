@@ -4,6 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/Users/Bill/ClionProjects/Graphics/src/Particle.cpp" "/Users/Bill/ClionProjects/Graphics/cmake-build-debug/CMakeFiles/Graphics.dir/src/Particle.cpp.o"
+  "/Users/Bill/ClionProjects/Graphics/src/common/controls.cpp" "/Users/Bill/ClionProjects/Graphics/cmake-build-debug/CMakeFiles/Graphics.dir/src/common/controls.cpp.o"
   "/Users/Bill/ClionProjects/Graphics/src/main.cpp" "/Users/Bill/ClionProjects/Graphics/cmake-build-debug/CMakeFiles/Graphics.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
