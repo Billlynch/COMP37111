@@ -34,6 +34,8 @@ struct Particle{
 	}
 };
 
+bool spaceHeld = false;
+
 void generateNewParticles(double delta);
 
 int
@@ -82,7 +84,7 @@ int main()
 {
     width = 768;
     height = 1024;
-    gravity = vec3(0.0f,-9.81f, 0.0f);
+    gravity = vec3(0.0f,0.0f, -9.81f);
 
 
     // Initialise GLFW
@@ -223,6 +225,8 @@ int main()
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 
+        spaceHeld = glfwGetKey(window, GLFW_KEY_SPACE ) == GLFW_PRESS;
+
 	} // Check if the ESC key was pressed or the window was closed
 	while( glfwGetKey(window, GLFW_KEY_ESCAPE ) != GLFW_PRESS &&
 		   glfwWindowShouldClose(window) == 0 );
@@ -308,7 +312,12 @@ simulateParticles(GLfloat *g_particule_position_size_data, GLubyte *g_particule_
 				if (p.life > 0.0f){
 					// Simulate simple physics : gravity only, no collisions
 					//p.speed +=  glm::normalize(p.pos - positionToLookAt) * (float)delta * 0.5f;
-					glm::vec3 dir = (positionToLookAt - p.pos);
+                    glm::vec3 dir = gravity;
+					if (spaceHeld)
+                    {
+                        dir = (positionToLookAt - p.pos);
+                    }
+
 //					glm::vec3 dir = vec3(0, -1, 0);
 //					std::cout << "X: " << dir.x << " Y: "<< dir.y << " Z: "<< dir.x << std::endl;
 					p.speed =  dir * (float)delta * 15.5f;
