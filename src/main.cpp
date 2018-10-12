@@ -2,10 +2,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
 #include <vector>
 #include <algorithm>
-
+#include <iostream>
 #include <GL/glew.h>
 
 #include <GLFW/glfw3.h>
@@ -181,7 +180,6 @@ int main()
 		glm::mat4 ProjectionMatrix = getProjectionMatrix();
 		glm::mat4 ViewMatrix = getViewMatrix();
 		glm::vec3 CameraPosition(glm::inverse(ViewMatrix)[3]);
-//		glm::vec3 CameraPosition(vec3(20.0f, 10.0f, 30.0f));
 		glm::mat4 ViewProjectionMatrix = ProjectionMatrix * ViewMatrix;
 
 
@@ -295,6 +293,10 @@ int
 simulateParticles(GLfloat *g_particule_position_size_data, GLubyte *g_particule_color_data, double delta,
                   const vec3 &CameraPosition) {// Simulate all particles
     int ParticlesCount = 0;
+
+    glm::vec3 positionToLookAt = vec3(2,0,1);
+
+
     for(int i=0; i<MaxParticles; i++){
 
 			Particle& p = ParticlesContainer[i]; // shortcut
@@ -304,9 +306,12 @@ simulateParticles(GLfloat *g_particule_position_size_data, GLubyte *g_particule_
 				// Decrease life
 				p.life -= delta;
 				if (p.life > 0.0f){
-
 					// Simulate simple physics : gravity only, no collisions
-					p.speed +=  gravity * (float)delta * 0.5f;
+					//p.speed +=  glm::normalize(p.pos - positionToLookAt) * (float)delta * 0.5f;
+					glm::vec3 dir = (positionToLookAt - p.pos);
+//					glm::vec3 dir = vec3(0, -1, 0);
+//					std::cout << "X: " << dir.x << " Y: "<< dir.y << " Z: "<< dir.x << std::endl;
+					p.speed =  dir * (float)delta * 15.5f;
 					p.pos += p.speed * (float)delta;
 					p.cameradistance = length2( p.pos - CameraPosition );
 //					ParticlesContainer[i].pos += glm::vec3(0.0f,(rand() % 12) * 1.0f, 0.0f) * (float)delta;
@@ -335,7 +340,7 @@ simulateParticles(GLfloat *g_particule_position_size_data, GLubyte *g_particule_
     return ParticlesCount;
 }
 
-void generateNewParticles(double delta) {// Generate 100 new particule each millisecond,
+void generateNewParticles(double delta) {
     int newparticles = (int)(delta*100.0);
     if (newparticles > (int)(0.016f*100.0))
 			newparticles = (int)(0.016f*100.0);
@@ -343,9 +348,10 @@ void generateNewParticles(double delta) {// Generate 100 new particule each mill
     for(int i=0; i<newparticles; i++){
 			int particleIndex = FindUnusedParticle();
 			ParticlesContainer[particleIndex].life = 10.0f;
-			ParticlesContainer[particleIndex].pos = vec3(rand() % 15, 0.0f, rand() % 15  -20.0f);
+			ParticlesContainer[particleIndex].pos = vec3(0,0, rand() % 4);
+//			ParticlesContainer[particleIndex].pos = vec3(2,0,1);
 
-			vec3 initialVecocity = vec3(0.0f, 0.0f, 0.0f);
+			vec3 initialVecocity = vec3(0.0f, -1.0f, 0.0f);
 			ParticlesContainer[particleIndex].speed = initialVecocity;
 
 
@@ -355,7 +361,7 @@ void generateNewParticles(double delta) {// Generate 100 new particule each mill
 			ParticlesContainer[particleIndex].b = 255;
 			ParticlesContainer[particleIndex].a = 255;
 
-			ParticlesContainer[particleIndex].size = (rand()%1000)/2000.0f + 0.1f;
+			ParticlesContainer[particleIndex].size = (rand()%100)/2000.0f + 0.1f;
 //			ParticlesContainer[particleIndex].size = 1.1f;
 
 		}
