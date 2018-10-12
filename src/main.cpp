@@ -44,6 +44,9 @@ simulateParticles(GLfloat *g_particule_position_size_data, GLubyte *g_particule_
 void setupVertexShaderInputs(GLuint billboard_vertex_buffer, GLuint particles_position_buffer,
                              GLuint particles_color_buffer);
 
+void
+generateBuffers(GLuint &base_mesh_vertex_buffer, GLuint &particles_position_buffer, GLuint &particles_color_buffer);
+
 const int MaxParticles = 100000;
 Particle ParticlesContainer[MaxParticles];
 int LastUsedParticle = 0;
@@ -73,9 +76,17 @@ void SortParticles(){
 	std::sort(&ParticlesContainer[0], &ParticlesContainer[MaxParticles]);
 }
 
-int main( void )
+int height, width;
+vec3 gravity;
+
+int main()
 {
-	// Initialise GLFW
+    width = 768;
+    height = 1024;
+    gravity = vec3(0.0f,-9.81f, 0.0f);
+
+
+    // Initialise GLFW
 	if( !glfwInit() )
 	{
 		fprintf( stderr, "Failed to initialize GLFW\n" );
@@ -91,8 +102,8 @@ int main( void )
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 	// Open a window and create its OpenGL context
-	window = glfwCreateWindow( 1024, 768, "Graphics", NULL, NULL);
-	if( window == NULL ){
+	window = glfwCreateWindow( height, width, "Graphics", NULL, NULL);
+	if( window == nullptr ){
 		fprintf( stderr, "Failed to open GLFW window. If you have an Intel GPU, they are not 3.3 compatible. Try the 2.1 version of the tutorials.\n" );
 		getchar();
 		glfwTerminate();
@@ -101,7 +112,7 @@ int main( void )
 	glfwMakeContextCurrent(window);
 
 	// Initialize GLEW
-	glewExperimental = true; // Needed for core profile
+	glewExperimental = static_cast<GLboolean>(true); // Needed for core profile
 	if (glewInit() != GLEW_OK) {
 		fprintf(stderr, "Failed to initialize GLEW\n");
 		getchar();
@@ -111,21 +122,17 @@ int main( void )
 
 	printf("openGL version: %s \n", glGetString(GL_VERSION));
 
-	// Ensure we can capture the escape key being pressed below
 	glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
     // Hide the mouse and enable unlimited mouvement
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-    
     // Set the mouse at the center of the screen
     glfwPollEvents();
-    glfwSetCursorPos(window, 1024/2, 768/2);
+    glfwSetCursorPos(window, height/2, width/2);
 
-	// Dark blue background
 	glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
 
 	// Enable depth test
 	glEnable(GL_DEPTH_TEST);
-	// Accept fragment if it closer to the camera than the former one
 	glDepthFunc(GL_LESS);
 
 	GLuint VertexArrayID;
@@ -141,48 +148,25 @@ int main( void )
 	GLint CameraUp_worldspace_ID  = glGetUniformLocation(programID, "CameraUp_worldspace");
 	GLint ViewProjMatrixID = glGetUniformLocation(programID, "VP");
 
-	// fragment shader
 
 	
-	static GLfloat* g_particule_position_size_data = new GLfloat[MaxParticles * 4];
-	static GLubyte* g_particule_color_data         = new GLubyte[MaxParticles * 4];
+	static GLfloat* particle_position_size_data = new GLfloat[MaxParticles * 4];
+	static GLubyte* particle_colour_data = new GLubyte[MaxParticles * 4];
 
+	// make all particles dead and behind the camera
 	for(int i=0; i<MaxParticles; i++){
 		ParticlesContainer[i].life = -1.0f;
 		ParticlesContainer[i].cameradistance = -1.0f;
 	}
 
-
-	// The VBO containing the 4 vertices of the particles.
-	// Thanks to instancing, they will be shared by all particles.
-	static const GLfloat g_vertex_buffer_data[] = { 
-		 -0.5f, -0.5f, 0.0f,
-		  0.5f, -0.5f, 0.0f,
-		 -0.5f,  0.5f, 0.0f,
-		  0.5f,  0.5f, 0.0f,
-	};
-	GLuint billboard_vertex_buffer;
-	glGenBuffers(1, &billboard_vertex_buffer);
-	glBindBuffer(GL_ARRAY_BUFFER, billboard_vertex_buffer);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
-
-	// The VBO containing the positions and sizes of the particles
-	GLuint particles_position_buffer;
-	glGenBuffers(1, &particles_position_buffer);
-	glBindBuffer(GL_ARRAY_BUFFER, particles_position_buffer);
-	// Initialize with empty (NULL) buffer : it will be updated later, each frame.
-	glBufferData(GL_ARRAY_BUFFER, MaxParticles * 4 * sizeof(GLfloat), NULL, GL_STREAM_DRAW);
-
-	// The VBO containing the colors of the particles
-	GLuint particles_color_buffer;
-	glGenBuffers(1, &particles_color_buffer);
-	glBindBuffer(GL_ARRAY_BUFFER, particles_color_buffer);
-	// Initialize with empty (NULL) buffer : it will be updated later, each frame.
-	glBufferData(GL_ARRAY_BUFFER, MaxParticles * 4 * sizeof(GLubyte), NULL, GL_STREAM_DRAW);
+	// set up the buffers
+    GLuint base_mesh_vertex_buffer;
+    GLuint particles_position_buffer;
+    GLuint particles_color_buffer;
+    generateBuffers(base_mesh_vertex_buffer, particles_position_buffer, particles_color_buffer);
 
 
-
-	double lastTime = glfwGetTime();
+    double lastTime = glfwGetTime();
 	do
 	{
 		// Clear the screen
@@ -197,23 +181,24 @@ int main( void )
 		glm::mat4 ProjectionMatrix = getProjectionMatrix();
 		glm::mat4 ViewMatrix = getViewMatrix();
 		glm::vec3 CameraPosition(glm::inverse(ViewMatrix)[3]);
+//		glm::vec3 CameraPosition(vec3(20.0f, 10.0f, 30.0f));
 		glm::mat4 ViewProjectionMatrix = ProjectionMatrix * ViewMatrix;
 
 
         generateNewParticles(delta);
 
-        int ParticlesCount = simulateParticles(g_particule_position_size_data, g_particule_color_data, delta, CameraPosition);
+        int ParticlesCount = simulateParticles(particle_position_size_data, particle_colour_data, delta, CameraPosition);
 
         SortParticles();
 
 
 		glBindBuffer(GL_ARRAY_BUFFER, particles_position_buffer);
-		glBufferData(GL_ARRAY_BUFFER, MaxParticles * 4 * sizeof(GLfloat), NULL, GL_STREAM_DRAW); // Buffer orphaning, a common way to improve streaming perf. See above link for details.
-		glBufferSubData(GL_ARRAY_BUFFER, 0, ParticlesCount * sizeof(GLfloat) * 4, g_particule_position_size_data);
+		glBufferData(GL_ARRAY_BUFFER, MaxParticles * 4 * sizeof(GLfloat), nullptr, GL_STREAM_DRAW); // Buffer orphaning, a common way to improve streaming perf. See above link for details.
+		glBufferSubData(GL_ARRAY_BUFFER, 0, ParticlesCount * sizeof(GLfloat) * 4, particle_position_size_data);
 
 		glBindBuffer(GL_ARRAY_BUFFER, particles_color_buffer);
-		glBufferData(GL_ARRAY_BUFFER, MaxParticles * 4 * sizeof(GLubyte), NULL, GL_STREAM_DRAW); // Buffer orphaning, a common way to improve streaming perf. See above link for details.
-		glBufferSubData(GL_ARRAY_BUFFER, 0, ParticlesCount * sizeof(GLubyte) * 4, g_particule_color_data);
+		glBufferData(GL_ARRAY_BUFFER, MaxParticles * 4 * sizeof(GLubyte), nullptr, GL_STREAM_DRAW); // Buffer orphaning, a common way to improve streaming perf. See above link for details.
+		glBufferSubData(GL_ARRAY_BUFFER, 0, ParticlesCount * sizeof(GLubyte) * 4, particle_colour_data);
 
 
 		glEnable(GL_BLEND);
@@ -227,7 +212,7 @@ int main( void )
 		glUniformMatrix4fv(ViewProjMatrixID, 1, GL_FALSE, &ViewProjectionMatrix[0][0]);
 
 
-        setupVertexShaderInputs(billboard_vertex_buffer, particles_position_buffer, particles_color_buffer);
+        setupVertexShaderInputs(base_mesh_vertex_buffer, particles_position_buffer, particles_color_buffer);
 
 
 		glDrawArraysInstanced(GL_TRIANGLE_STRIP, 0, 4, ParticlesCount);
@@ -245,12 +230,12 @@ int main( void )
 		   glfwWindowShouldClose(window) == 0 );
 
 
-	delete[] g_particule_position_size_data;
+	delete[] particle_position_size_data;
 
 	// Cleanup VBO and shader
 	glDeleteBuffers(1, &particles_color_buffer);
 	glDeleteBuffers(1, &particles_position_buffer);
-	glDeleteBuffers(1, &billboard_vertex_buffer);
+	glDeleteBuffers(1, &base_mesh_vertex_buffer);
 	glDeleteProgram(programID);
 	glDeleteVertexArrays(1, &VertexArrayID);
 	
@@ -259,6 +244,29 @@ int main( void )
 	glfwTerminate();
 
 	return 0;
+}
+
+void
+generateBuffers(GLuint &base_mesh_vertex_buffer, GLuint &particles_position_buffer, GLuint &particles_color_buffer) {// The VBO containing the base mesh for all the particles at the moment this is a square
+    static const GLfloat g_vertex_buffer_data[] = {
+		 -0.5f, -0.5f, 0.0f,
+		  0.5f, -0.5f, 0.0f,
+		 -0.5f,  0.5f, 0.0f,
+		  0.5f,  0.5f, 0.0f,
+	};
+    glGenBuffers(1, &base_mesh_vertex_buffer);
+    glBindBuffer(GL_ARRAY_BUFFER, base_mesh_vertex_buffer);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
+
+    // The VBO containing the positions and sizes of the particles
+    glGenBuffers(1, &particles_position_buffer);
+    glBindBuffer(GL_ARRAY_BUFFER, particles_position_buffer);
+    glBufferData(GL_ARRAY_BUFFER, MaxParticles * 4 * sizeof(GLfloat), nullptr, GL_STREAM_DRAW);
+
+    // The VBO containing the colors of the particles
+    glGenBuffers(1, &particles_color_buffer);
+    glBindBuffer(GL_ARRAY_BUFFER, particles_color_buffer);
+    glBufferData(GL_ARRAY_BUFFER, MaxParticles * 4 * sizeof(GLubyte), nullptr, GL_STREAM_DRAW);
 }
 
 void setupVertexShaderInputs(GLuint billboard_vertex_buffer, GLuint particles_position_buffer,
@@ -298,10 +306,10 @@ simulateParticles(GLfloat *g_particule_position_size_data, GLubyte *g_particule_
 				if (p.life > 0.0f){
 
 					// Simulate simple physics : gravity only, no collisions
-					p.speed += vec3(0.0f,-9.81f, 0.0f) * (float)delta * 0.5f;
+					p.speed +=  gravity * (float)delta * 0.5f;
 					p.pos += p.speed * (float)delta;
 					p.cameradistance = length2( p.pos - CameraPosition );
-					//ParticlesContainer[i].pos += glm::vec3(0.0f,10.0f, 0.0f) * (float)delta;
+//					ParticlesContainer[i].pos += glm::vec3(0.0f,(rand() % 12) * 1.0f, 0.0f) * (float)delta;
 
 					// Fill the GPU buffer
 					g_particule_position_size_data[4*ParticlesCount+0] = p.pos.x;
@@ -334,30 +342,21 @@ void generateNewParticles(double delta) {// Generate 100 new particule each mill
 
     for(int i=0; i<newparticles; i++){
 			int particleIndex = FindUnusedParticle();
-			ParticlesContainer[particleIndex].life = 5.0f; // This particle will live 5 seconds.
-			ParticlesContainer[particleIndex].pos = vec3(0,0,-20.0f);
+			ParticlesContainer[particleIndex].life = 10.0f;
+			ParticlesContainer[particleIndex].pos = vec3(rand() % 15, 0.0f, rand() % 15  -20.0f);
 
-			float spread = 1.5f;
-			vec3 maindir = vec3(0.0f, 10.0f, 0.0f);
-			// Very bad way to generate a random direction;
-			// See for instance http://stackoverflow.com/questions/5408276/python-uniform-spherical-distribution instead,
-			// combined with some user-controlled parameters (main direction, spread, etc)
-			vec3 randomdir = vec3(
-				(rand()%2000 - 1000.0f)/1000.0f,
-				(rand()%2000 - 1000.0f)/1000.0f,
-				(rand()%2000 - 1000.0f)/1000.0f
-			);
-
-			ParticlesContainer[particleIndex].speed = maindir + randomdir*spread;
+			vec3 initialVecocity = vec3(0.0f, 0.0f, 0.0f);
+			ParticlesContainer[particleIndex].speed = initialVecocity;
 
 
-			// Very bad way to generate a random color
-			ParticlesContainer[particleIndex].r = 0;
+			// give each particle a random purple colour
+			ParticlesContainer[particleIndex].r = rand() % 255;
 			ParticlesContainer[particleIndex].g = 0;
 			ParticlesContainer[particleIndex].b = 255;
 			ParticlesContainer[particleIndex].a = 255;
 
 			ParticlesContainer[particleIndex].size = (rand()%1000)/2000.0f + 0.1f;
+//			ParticlesContainer[particleIndex].size = 1.1f;
 
 		}
 }

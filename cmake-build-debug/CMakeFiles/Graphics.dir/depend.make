@@ -372,3 +372,6 @@ CMakeFiles/Graphics.dir/src/main.cpp.o: /usr/local/include/glm/vec3.hpp
 CMakeFiles/Graphics.dir/src/main.cpp.o: /usr/local/include/glm/vec4.hpp
 CMakeFiles/Graphics.dir/src/main.cpp.o: /usr/local/include/glm/vector_relational.hpp
 
+CMakeFiles/Graphics.dir/src/openGLAbstractions.cpp.o: ../src/openGLAbstractions.cpp
+CMakeFiles/Graphics.dir/src/openGLAbstractions.cpp.o: ../src/openGLAbstractions.h
+
