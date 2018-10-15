@@ -21,12 +21,25 @@ glm::mat4 getProjectionMatrix(){
 
 
 // Initial position
-glm::vec3 position = glm::vec3( 0, -10, 0);
+glm::vec3 position = glm::vec3( 0, -20, 0);
 float initialFoV = 45.0f;
 
+glm::vec3 centerOfParticleSystem = glm::vec3(0.0f, 0.0f, 0.0f);
 
 void computeMatricesFromInputs(){
-	glm::vec3 direction(0.0f,1.0f,0.0f);
+//	glm::vec3 direction = glm::vec3(0.0f,1.0f,0.0f);
+
+	if (glfwGetKey(window, GLFW_KEY_RIGHT ) == GLFW_PRESS)
+	{
+		position.x++;
+	}
+
+	if (glfwGetKey(window, GLFW_KEY_LEFT ) == GLFW_PRESS)
+	{
+		position.x--;
+	}
+
+	glm::vec3 direction = centerOfParticleSystem - position;
 
 	glm::vec3 up = glm::vec3(0.0f, 0.0f, 1.0f);
 

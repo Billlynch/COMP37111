@@ -31,6 +31,12 @@ glm/gtc/matrix_transform.hpp
 -
 glm/gtx/norm.hpp
 -
+fstream
+-
+string
+-
+sstream
+-
 common/shader.hpp
 /Users/Bill/ClionProjects/Graphics/src/common/shader.hpp
 common/controls.hpp
