@@ -18,6 +18,13 @@ glm::mat4 getProjectionMatrix(){
 	return ProjectionMatrix;
 }
 
+void getMatrices(mat4 &projectionMatrix,mat4 &viewMatrix,vec3 &cameraPosition, mat4 &viewProjectionMatrix)
+{
+	projectionMatrix = ProjectionMatrix;
+	viewMatrix = ViewMatrix;
+	viewProjectionMatrix = ProjectionMatrix * ViewMatrix;
+	cameraPosition = inverse(ViewMatrix)[3];
+}
 
 // Initial position
 glm::vec3 position = glm::vec3( 0, -20, 0);

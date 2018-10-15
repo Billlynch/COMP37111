@@ -5,20 +5,28 @@
 #include "ParticleSystem.h"
 
 void ParticleSystem::runParticleSystem(std::string &fileName) {
-    auto FileLoader = new file_loader;
-    FileLoader->readObjFile(fileName, objVectors);
-    delete FileLoader;
+
+    loadObj(fileName);
 
     ParticleSystem::setupGLEWandGLFW();
 
     lastTime = glfwGetTime();
+
     do {
         ParticleSystem::mainLoop();
-    } while(glfwGetKey(window, GLFW_KEY_ESCAPE ) != GLFW_PRESS && glfwWindowShouldClose(window) == 0);
+    } while(!isWindowClosed());
 
+    cleanUpBuffers();
+}
+
+bool ParticleSystem::isWindowClosed() {
+    return (glfwGetKey(window, GLFW_KEY_ESCAPE ) == GLFW_PRESS && glfwWindowShouldClose(window) == 0) ||
+            glfwWindowShouldClose(window) == 1;
+}
+
+void ParticleSystem::cleanUpBuffers() const {// Cleanup VBO and shader
     delete[] particle_position_size_data;
 
-    // Cleanup VBO and shader
     glDeleteBuffers(1, &particles_color_buffer);
     glDeleteBuffers(1, &particles_position_buffer);
     glDeleteBuffers(1, &base_mesh_vertex_buffer);
@@ -27,6 +35,12 @@ void ParticleSystem::runParticleSystem(std::string &fileName) {
 
     // Close OpenGL window and terminate GLFW
     glfwTerminate();
+}
+
+void ParticleSystem::loadObj(std::string &fileName) {
+    auto FileLoader = new file_loader;
+    FileLoader->readObjFile(fileName, objVectors);
+    delete FileLoader;
 }
 
 int ParticleSystem::setupGLEWandGLFW() {
@@ -46,7 +60,7 @@ int ParticleSystem::setupGLEWandGLFW() {
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     // Open a window and create its OpenGL context
-    window = glfwCreateWindow( height, width, "Graphics", NULL, NULL);
+    window = glfwCreateWindow( width, height, "Graphics", nullptr, nullptr);
     if( window == nullptr ){
         fprintf( stderr, "Failed to open GLFW window. If you have an Intel GPU, they are not 3.3 compatible. Try the 2.1 version of the tutorials.\n" );
         getchar();
@@ -64,14 +78,12 @@ int ParticleSystem::setupGLEWandGLFW() {
         return -1;
     }
 
-    printf("openGL version: %s \n", glGetString(GL_VERSION));
+    std::cout << "openGL version: " << glGetString(GL_VERSION) << std::endl;
 
     glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
-    // Hide the mouse and enable unlimited mouvement
-    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-    // Set the mouse at the center of the screen
+    glfwSetInputMode(window, GLFW_CURSOR, NULL);
     glfwPollEvents();
-    glfwSetCursorPos(window, height/2, width/2);
+    glfwSetCursorPos(window, height/2.0f, width/2.0f);
 
     glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
 
@@ -79,82 +91,61 @@ int ParticleSystem::setupGLEWandGLFW() {
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
 
-    // Create and compile our GLSL program from the shaders
-    programID = LoadShaders( "/Users/Bill/ClionProjects/Graphics/src/shaders/vertex_shader.glsl", "/Users/Bill/ClionProjects/Graphics/src/shaders/fragment_shader.glsl" );
-
-
-    // buffer setup -- refactor
-    glGenVertexArrays(1, &VertexArrayID);
-    glBindVertexArray(VertexArrayID);
-
-    // Vertex shader
-    CameraRight_worldspace_ID  = glGetUniformLocation(programID, "CameraRight_worldspace");
-    CameraUp_worldspace_ID  = glGetUniformLocation(programID, "CameraUp_worldspace");
-    ViewProjMatrixID = glGetUniformLocation(programID, "VP");
-
-    particle_position_size_data = new GLfloat[MaxParticles * 4];
-    particle_colour_data = new GLubyte[MaxParticles * 4];
-
-
-
-    // set up the buffers
-    generateBuffers(base_mesh_vertex_buffer, particles_position_buffer, particles_color_buffer);
-
+    setupShaders();
+    setupBuffers();
 
     return 0;
 }
 
+void ParticleSystem::setupShaders() {
+    programID = LoadShaders("/Users/Bill/ClionProjects/Graphics/src/shaders/vertex_shader.glsl", "/Users/Bill/ClionProjects/Graphics/src/shaders/fragment_shader.glsl" );
+    CameraRight_worldspace_ID = glGetUniformLocation(programID, "CameraRight_worldspace");
+    CameraUp_worldspace_ID = glGetUniformLocation(programID, "CameraUp_worldspace");
+    ViewProjMatrixID = glGetUniformLocation(programID, "VP");
+
+}
+
+void ParticleSystem::setupBuffers() {
+    glGenVertexArrays(1, &VertexArrayID);
+    glBindVertexArray(VertexArrayID);
+    generateBuffers(base_mesh_vertex_buffer, particles_position_buffer, particles_color_buffer);
+}
+
 void ParticleSystem::mainLoop() {
-// Clear the screen
+
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    double currentTime = glfwGetTime();
-    delta = static_cast<float>(currentTime - lastTime);
-    lastTime = currentTime;
-
+    calculateDelta();
 
     computeMatricesFromInputs(window);
-    glm::mat4 ProjectionMatrix = getProjectionMatrix();
-    glm::mat4 ViewMatrix = getViewMatrix();
-    glm::vec3 CameraPosition(glm::inverse(ViewMatrix)[3]);
-    glm::mat4 ViewProjectionMatrix = ProjectionMatrix * ViewMatrix;
-
+    getMatrices(ProjectionMatrix, ViewMatrix, CameraPosition, ViewProjectionMatrix);
 
     if (!spaceHeld)
     {
         generateNewParticles();
     }
 
-    int ParticlesCount = simulateParticles(particle_position_size_data, particle_colour_data, delta, CameraPosition);
+    int particlesCount = simulateParticles(particle_position_size_data, particle_colour_data, delta, CameraPosition);
 
     SortParticles();
 
 
-    glBindBuffer(GL_ARRAY_BUFFER, particles_position_buffer);
-    glBufferData(GL_ARRAY_BUFFER, MaxParticles * 4 * sizeof(GLfloat), nullptr, GL_STREAM_DRAW); // Buffer orphaning, a common way to improve streaming perf. See above link for details.
-    glBufferSubData(GL_ARRAY_BUFFER, 0, ParticlesCount * sizeof(GLfloat) * 4, particle_position_size_data);
-
-    glBindBuffer(GL_ARRAY_BUFFER, particles_color_buffer);
-    glBufferData(GL_ARRAY_BUFFER, MaxParticles * 4 * sizeof(GLubyte), nullptr, GL_STREAM_DRAW); // Buffer orphaning, a common way to improve streaming perf. See above link for details.
-    glBufferSubData(GL_ARRAY_BUFFER, 0, ParticlesCount * sizeof(GLubyte) * 4, particle_colour_data);
+    loadDataIntoBuffers(particlesCount);
 
 
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    // Use our shader
+    // Use the shader that was loaded
     glUseProgram(programID);
 
     glUniform3f(CameraRight_worldspace_ID, ViewMatrix[0][0], ViewMatrix[1][0], ViewMatrix[2][0]);
     glUniform3f(CameraUp_worldspace_ID   , ViewMatrix[0][1], ViewMatrix[1][1], ViewMatrix[2][1]);
     glUniformMatrix4fv(ViewProjMatrixID, 1, GL_FALSE, &ViewProjectionMatrix[0][0]);
 
-
     setupVertexShaderInputs(base_mesh_vertex_buffer, particles_position_buffer, particles_color_buffer);
 
-
-    glDrawArraysInstanced(GL_TRIANGLE_STRIP, 0, 4, ParticlesCount);
-
+    glDrawArraysInstanced(GL_TRIANGLE_STRIP, 0, 4, particlesCount);
     glDisableVertexAttribArray(0);
     glDisableVertexAttribArray(1);
     glDisableVertexAttribArray(2);
@@ -164,6 +155,22 @@ void ParticleSystem::mainLoop() {
     glfwPollEvents();
 
     spaceHeld = glfwGetKey(window, GLFW_KEY_SPACE ) == GLFW_PRESS;
+}
+
+void ParticleSystem::loadDataIntoBuffers(int particlesCount) const {
+    glBindBuffer(GL_ARRAY_BUFFER, particles_position_buffer);
+    glBufferData(GL_ARRAY_BUFFER, MaxParticles * 4 * sizeof(GLfloat), nullptr, GL_STREAM_DRAW); // Buffer orphaning, a common way to improve streaming perf. See above link for details.
+    glBufferSubData(GL_ARRAY_BUFFER, 0, particlesCount * sizeof(GLfloat) * 4, particle_position_size_data);
+
+    glBindBuffer(GL_ARRAY_BUFFER, particles_color_buffer);
+    glBufferData(GL_ARRAY_BUFFER, MaxParticles * 4 * sizeof(GLubyte), nullptr, GL_STREAM_DRAW); // Buffer orphaning, a common way to improve streaming perf. See above link for details.
+    glBufferSubData(GL_ARRAY_BUFFER, 0, particlesCount * sizeof(GLubyte) * 4, particle_colour_data);
+}
+
+void ParticleSystem::calculateDelta() {
+    double currentTime = glfwGetTime();
+    delta = static_cast<float>(currentTime - lastTime);
+    lastTime = currentTime;
 }
 
 void ParticleSystem::generateBuffers(GLuint &base_mesh_vertex_buffer, GLuint &particles_position_buffer,

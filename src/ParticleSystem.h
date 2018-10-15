@@ -26,8 +26,8 @@ const int MaxParticles = 50000;
 class ParticleSystem {
 private:
     GLFWwindow* window;
-    int height = 1024;
-    int width = 768;
+    int height = 768;
+    int width = 1024;
     float floorZVal = -7.0f;
     vec3 gravity = vec3(0.0f,0.0f, -9.81f);
     std::vector<vec3> objVectors;
@@ -36,6 +36,8 @@ private:
     float delta;
     double lastTime;
     int lastUsedParticle = 0;
+    mat4 ProjectionMatrix, ViewMatrix, ViewProjectionMatrix;
+    vec3 CameraPosition;
 
     void mainLoop();
 
@@ -57,14 +59,28 @@ public:
     GLuint programID;
     GLint CameraRight_worldspace_ID, CameraUp_worldspace_ID, ViewProjMatrixID;
 
-    GLfloat* particle_position_size_data;
-    GLubyte* particle_colour_data;
+    GLfloat* particle_position_size_data = new GLfloat[MaxParticles * 4];
+    GLubyte* particle_colour_data = new GLubyte[MaxParticles * 4];
     GLuint particles_color_buffer, VertexArrayID, particles_position_buffer, base_mesh_vertex_buffer;
 
     void runParticleSystem(std::string &fileName);
 
     int simulateParticles(GLfloat *g_particule_position_size_data, GLubyte *g_particule_color_data, double delta,
                       const vec3 &CameraPosition);
+
+    void loadObj(std::string &fileName);
+
+    void cleanUpBuffers() const;
+
+    bool isWindowClosed();
+
+    void setupBuffers();
+
+    void setupShaders();
+
+    void calculateDelta();
+
+    void loadDataIntoBuffers(int particlesCount) const;
 };
 
 
