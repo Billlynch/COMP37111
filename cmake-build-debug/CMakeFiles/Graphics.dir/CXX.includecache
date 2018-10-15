@@ -58,10 +58,6 @@ fstream
 
 /Users/Bill/ClionProjects/Graphics/src/common/shader.hpp
 
-/Users/Bill/ClionProjects/Graphics/src/main.cpp
-ParticleSystem.h
-/Users/Bill/ClionProjects/Graphics/src/ParticleSystem.h
-
 /usr/local/include/GL/glew.h
 stddef.h
 -

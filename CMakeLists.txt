@@ -12,7 +12,18 @@ include_directories(/usr/local/include)
 # add extra lib directories
 link_directories(/usr/local/lib)
 
-add_executable(Graphics src/main.cpp src/common/controls.cpp src/common/controls.hpp src/common/shader.cpp src/common/shader.hpp src/common/file_loader.cpp src/common/file_loader.h src/ParticleSystem.cpp src/ParticleSystem.h src/common/Particle.cpp src/common/Particle.h)
+add_executable(Graphics
+        src/main.cpp
+        src/common/controls.cpp
+        src/common/controls.hpp
+        src/common/shader.cpp
+        src/common/shader.hpp
+        src/common/file_loader.cpp
+        src/common/file_loader.h
+        src/ParticleSystem.cpp
+        src/ParticleSystem.h
+        src/common/Particle.cpp
+        src/common/Particle.h)
 target_link_libraries(Graphics glfw)
 target_link_libraries(Graphics glew)
 find_package (GLM REQUIRED)

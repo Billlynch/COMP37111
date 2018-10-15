@@ -81,7 +81,7 @@ int ParticleSystem::setupGLEWandGLFW() {
     std::cout << "openGL version: " << glGetString(GL_VERSION) << std::endl;
 
     glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
-    glfwSetInputMode(window, GLFW_CURSOR, NULL);
+    glfwSetInputMode(window, GLFW_CURSOR, 0);
     glfwPollEvents();
     glfwSetCursorPos(window, height/2.0f, width/2.0f);
 
@@ -206,7 +206,7 @@ int ParticleSystem::simulateParticles(GLfloat *g_particule_position_size_data, G
 
         p.simulate(delta, CameraPosition, spaceHeld, floorZVal, gravity);
 
-        if(p.getLife() > 0.0f) // if we need to render the particle then push to the GPU buffer
+        if(p.isAlive()) // if we need to render the particle then push to the GPU buffer
         {
             g_particule_position_size_data[4*ParticlesCount+0] = p.getPos().x;
             g_particule_position_size_data[4*ParticlesCount+1] = p.getPos().y;
@@ -218,9 +218,9 @@ int ParticleSystem::simulateParticles(GLfloat *g_particule_position_size_data, G
             g_particule_color_data[4*ParticlesCount+1] = p.getG();
             g_particule_color_data[4*ParticlesCount+2] = p.getB();
             g_particule_color_data[4*ParticlesCount+3] = p.getA();
+            ParticlesCount++;
         }
 
-        ParticlesCount++;
 
     }
     return ParticlesCount;
