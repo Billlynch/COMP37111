@@ -21,6 +21,7 @@ using namespace glm;
 #include <sstream>
 #include "common/shader.hpp"
 #include "common/controls.hpp"
+#include "common/file_loader.h"
 
 // CPU representation of a particle
 struct Particle{
@@ -84,65 +85,15 @@ int height, width;
 float floorYVal;
 vec3 gravity;
 
-glm::vec3 B0 = vec3(-6,0,1);
-glm::vec3 B1 = vec3(-6,0,2);
-glm::vec3 B2 = vec3(-6,0,3);
-glm::vec3 B3 = vec3(-6,0,4);
-glm::vec3 B4 = vec3(-6,0,5);
-glm::vec3 B5 = vec3(-6,0,6);
-glm::vec3 B6 = vec3(-6,0,7);
 
-glm::vec3 B7 = vec3(-5,0,7);
-glm::vec3 B8 = vec3(-4,0,6);
-glm::vec3 B9 = vec3(-4,0,5);
-glm::vec3 B10 = vec3(-5,0,4);
-glm::vec3 B11 = vec3(-4,0,3);
-glm::vec3 B12 = vec3(-4,0,2);
-glm::vec3 B13 = vec3(-5,0,1);
-
-glm::vec3 I0 = vec3(-1,0,1);
-glm::vec3 I1 = vec3(-1,0,2);
-glm::vec3 I2 = vec3(-1,0,3);
-glm::vec3 I3 = vec3(-1,0,4);
-glm::vec3 I4 = vec3(-1,0,6);
-
-glm::vec3 l10 = vec3(1,0,1);
-glm::vec3 l11 = vec3(1,0,2);
-glm::vec3 l12 = vec3(1,0,3);
-glm::vec3 l13 = vec3(1,0,4);
-glm::vec3 l14 = vec3(1,0,5);
-glm::vec3 l15 = vec3(1,0,6);
-
-glm::vec3 l20 = vec3(3,0,1);
-glm::vec3 l21 = vec3(3,0,2);
-glm::vec3 l22 = vec3(3,0,3);
-glm::vec3 l23 = vec3(3,0,4);
-glm::vec3 l24 = vec3(3,0,5);
-glm::vec3 l25 = vec3(3,0,6);
-
-
-std::vector<glm::vec3> positionsToAimFor = std::vector<glm::vec3>();
-//= {I0, I1, I2, I3, I4, B0, B1, B2, B3, B4, B5, B6, B7, B8, B9, B10, B11, B12, B13, l10, l11, l12, l13, l14, l15, l20, l21, l22, l23, l24, l25};
-
+std::vector<glm::vec3> objVectors = std::vector<glm::vec3>();
 int main()
 {
-    std::ifstream infile("/Users/Bill/ClionProjects/Graphics/src/Models/teapot.obj");
-    float xVal, yVal, zVal;
-    std::string line, id;
+    std::string fileName = "/Users/Bill/ClionProjects/Graphics/src/Models/teapot.obj";
 
-    while (std::getline(infile, line))
-    {
-        std::istringstream iss(line);
-
-        iss >> id >> xVal >> yVal >> zVal;
-
-        if (id == "v")
-        {
-            vec3 newVector = vec3(xVal, zVal, yVal);
-            positionsToAimFor.push_back(newVector);
-        }
-    }
-
+    file_loader* FileLoader = new file_loader;
+    FileLoader->readObjFile(fileName, objVectors);
+    delete FileLoader;
 
     width = 768;
     height = 1024;
@@ -435,7 +386,7 @@ void generateNewParticles(double delta) {
 
 			vec3 initialVecocity = vec3(0.0f, 0.0f, 0.0f);
 			ParticlesContainer[particleIndex].speed = initialVecocity;
-            ParticlesContainer[particleIndex].target = positionsToAimFor[rand() % positionsToAimFor.size()];
+            ParticlesContainer[particleIndex].target = objVectors[rand() % objVectors.size()];
 
             ParticlesContainer[particleIndex].n_bounces = 1;
 

@@ -8,6 +8,26 @@
 
 /Users/Bill/ClionProjects/Graphics/src/common/controls.hpp
 
+/Users/Bill/ClionProjects/Graphics/src/common/file_loader.cpp
+file_loader.h
+/Users/Bill/ClionProjects/Graphics/src/common/file_loader.h
+
+/Users/Bill/ClionProjects/Graphics/src/common/file_loader.h
+sstream
+-
+stdio.h
+-
+iostream
+-
+string
+-
+vector
+-
+glm/glm.hpp
+-
+fstream
+-
+
 /Users/Bill/ClionProjects/Graphics/src/common/shader.hpp
 
 /Users/Bill/ClionProjects/Graphics/src/main.cpp
@@ -41,6 +61,8 @@ common/shader.hpp
 /Users/Bill/ClionProjects/Graphics/src/common/shader.hpp
 common/controls.hpp
 /Users/Bill/ClionProjects/Graphics/src/common/controls.hpp
+common/file_loader.h
+/Users/Bill/ClionProjects/Graphics/src/common/file_loader.h
 
 /usr/local/include/GL/glew.h
 stddef.h
@@ -541,6 +563,38 @@ type_vec4.inl
 /usr/local/include/glm/./ext/vector_uint4_precision.hpp
 ../detail/type_vec4.hpp
 /usr/local/include/glm/./detail/type_vec4.hpp
+
+/usr/local/include/glm/./matrix.hpp
+detail/qualifier.hpp
+/usr/local/include/glm/./detail/qualifier.hpp
+detail/setup.hpp
+/usr/local/include/glm/./detail/setup.hpp
+vec2.hpp
+/usr/local/include/glm/./vec2.hpp
+vec3.hpp
+/usr/local/include/glm/./vec3.hpp
+vec4.hpp
+/usr/local/include/glm/./vec4.hpp
+mat2x2.hpp
+/usr/local/include/glm/./mat2x2.hpp
+mat2x3.hpp
+/usr/local/include/glm/./mat2x3.hpp
+mat2x4.hpp
+/usr/local/include/glm/./mat2x4.hpp
+mat3x2.hpp
+/usr/local/include/glm/./mat3x2.hpp
+mat3x3.hpp
+/usr/local/include/glm/./mat3x3.hpp
+mat3x4.hpp
+/usr/local/include/glm/./mat3x4.hpp
+mat4x2.hpp
+/usr/local/include/glm/./mat4x2.hpp
+mat4x3.hpp
+/usr/local/include/glm/./mat4x3.hpp
+mat4x4.hpp
+/usr/local/include/glm/./mat4x4.hpp
+detail/func_matrix.inl
+/usr/local/include/glm/./detail/func_matrix.inl
 
 /usr/local/include/glm/common.hpp
 detail/qualifier.hpp

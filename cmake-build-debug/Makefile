@@ -150,6 +150,33 @@ src/common/controls.cpp.s:
 	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/src/common/controls.cpp.s
 .PHONY : src/common/controls.cpp.s
 
+src/common/file_loader.o: src/common/file_loader.cpp.o
+
+.PHONY : src/common/file_loader.o
+
+# target to build an object file
+src/common/file_loader.cpp.o:
+	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/src/common/file_loader.cpp.o
+.PHONY : src/common/file_loader.cpp.o
+
+src/common/file_loader.i: src/common/file_loader.cpp.i
+
+.PHONY : src/common/file_loader.i
+
+# target to preprocess a source file
+src/common/file_loader.cpp.i:
+	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/src/common/file_loader.cpp.i
+.PHONY : src/common/file_loader.cpp.i
+
+src/common/file_loader.s: src/common/file_loader.cpp.s
+
+.PHONY : src/common/file_loader.s
+
+# target to generate assembly for a file
+src/common/file_loader.cpp.s:
+	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/src/common/file_loader.cpp.s
+.PHONY : src/common/file_loader.cpp.s
+
 src/common/shader.o: src/common/shader.cpp.o
 
 .PHONY : src/common/shader.o
@@ -204,33 +231,6 @@ src/main.cpp.s:
 	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
-src/openGLAbstractions.o: src/openGLAbstractions.cpp.o
-
-.PHONY : src/openGLAbstractions.o
-
-# target to build an object file
-src/openGLAbstractions.cpp.o:
-	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/src/openGLAbstractions.cpp.o
-.PHONY : src/openGLAbstractions.cpp.o
-
-src/openGLAbstractions.i: src/openGLAbstractions.cpp.i
-
-.PHONY : src/openGLAbstractions.i
-
-# target to preprocess a source file
-src/openGLAbstractions.cpp.i:
-	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/src/openGLAbstractions.cpp.i
-.PHONY : src/openGLAbstractions.cpp.i
-
-src/openGLAbstractions.s: src/openGLAbstractions.cpp.s
-
-.PHONY : src/openGLAbstractions.s
-
-# target to generate assembly for a file
-src/openGLAbstractions.cpp.s:
-	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/src/openGLAbstractions.cpp.s
-.PHONY : src/openGLAbstractions.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -243,15 +243,15 @@ help:
 	@echo "... src/common/controls.o"
 	@echo "... src/common/controls.i"
 	@echo "... src/common/controls.s"
+	@echo "... src/common/file_loader.o"
+	@echo "... src/common/file_loader.i"
+	@echo "... src/common/file_loader.s"
 	@echo "... src/common/shader.o"
 	@echo "... src/common/shader.i"
 	@echo "... src/common/shader.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/openGLAbstractions.o"
-	@echo "... src/openGLAbstractions.i"
-	@echo "... src/openGLAbstractions.s"
 .PHONY : help
 
 

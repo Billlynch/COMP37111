@@ -5,9 +5,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/Bill/ClionProjects/Graphics/src/common/controls.cpp" "/Users/Bill/ClionProjects/Graphics/cmake-build-debug/CMakeFiles/Graphics.dir/src/common/controls.cpp.o"
+  "/Users/Bill/ClionProjects/Graphics/src/common/file_loader.cpp" "/Users/Bill/ClionProjects/Graphics/cmake-build-debug/CMakeFiles/Graphics.dir/src/common/file_loader.cpp.o"
   "/Users/Bill/ClionProjects/Graphics/src/common/shader.cpp" "/Users/Bill/ClionProjects/Graphics/cmake-build-debug/CMakeFiles/Graphics.dir/src/common/shader.cpp.o"
   "/Users/Bill/ClionProjects/Graphics/src/main.cpp" "/Users/Bill/ClionProjects/Graphics/cmake-build-debug/CMakeFiles/Graphics.dir/src/main.cpp.o"
-  "/Users/Bill/ClionProjects/Graphics/src/openGLAbstractions.cpp" "/Users/Bill/ClionProjects/Graphics/cmake-build-debug/CMakeFiles/Graphics.dir/src/openGLAbstractions.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 

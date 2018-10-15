@@ -12,7 +12,7 @@ include_directories(/usr/local/include)
 # add extra lib directories
 link_directories(/usr/local/lib)
 
-add_executable(Graphics src/main.cpp src/common/controls.cpp src/common/controls.hpp src/common/shader.cpp src/common/shader.hpp src/openGLAbstractions.cpp src/openGLAbstractions.h)
+add_executable(Graphics src/main.cpp src/common/controls.cpp src/common/controls.hpp src/common/shader.cpp src/common/shader.hpp src/common/file_loader.cpp src/common/file_loader.h)
 target_link_libraries(Graphics glfw)
 target_link_libraries(Graphics glew)
 find_package (GLM REQUIRED)

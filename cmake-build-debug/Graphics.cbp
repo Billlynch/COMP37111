@@ -90,6 +90,12 @@
 		<Unit filename="/Users/Bill/ClionProjects/Graphics/src/common/controls.hpp">
 			<Option target="Graphics"/>
 		</Unit>
+		<Unit filename="/Users/Bill/ClionProjects/Graphics/src/common/file_loader.cpp">
+			<Option target="Graphics"/>
+		</Unit>
+		<Unit filename="/Users/Bill/ClionProjects/Graphics/src/common/file_loader.h">
+			<Option target="Graphics"/>
+		</Unit>
 		<Unit filename="/Users/Bill/ClionProjects/Graphics/src/common/shader.cpp">
 			<Option target="Graphics"/>
 		</Unit>
@@ -97,12 +103,6 @@
 			<Option target="Graphics"/>
 		</Unit>
 		<Unit filename="/Users/Bill/ClionProjects/Graphics/src/main.cpp">
-			<Option target="Graphics"/>
-		</Unit>
-		<Unit filename="/Users/Bill/ClionProjects/Graphics/src/openGLAbstractions.cpp">
-			<Option target="Graphics"/>
-		</Unit>
-		<Unit filename="/Users/Bill/ClionProjects/Graphics/src/openGLAbstractions.h">
 			<Option target="Graphics"/>
 		</Unit>
 		<Unit filename="/Users/Bill/ClionProjects/Graphics/CMakeLists.txt">
