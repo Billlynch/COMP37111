@@ -1,6 +1,5 @@
 // Include GLFW
 #include <GLFW/glfw3.h>
-extern GLFWwindow* window; // The "extern" keyword here is to access the variable "window" declared in tutorialXXX.cpp. This is a hack to keep the tutorials simple. Please avoid this.
 
 // Include GLM
 #include <glm/glm.hpp>
@@ -26,7 +25,7 @@ float initialFoV = 45.0f;
 
 glm::vec3 centerOfParticleSystem = glm::vec3(0.0f, 0.0f, 0.0f);
 
-void computeMatricesFromInputs(){
+void computeMatricesFromInputs(GLFWwindow *window){
 //	glm::vec3 direction = glm::vec3(0.0f,1.0f,0.0f);
 
 	if (glfwGetKey(window, GLFW_KEY_RIGHT ) == GLFW_PRESS)

@@ -123,6 +123,60 @@ Graphics/fast:
 	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/build
 .PHONY : Graphics/fast
 
+src/ParticleSystem.o: src/ParticleSystem.cpp.o
+
+.PHONY : src/ParticleSystem.o
+
+# target to build an object file
+src/ParticleSystem.cpp.o:
+	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/src/ParticleSystem.cpp.o
+.PHONY : src/ParticleSystem.cpp.o
+
+src/ParticleSystem.i: src/ParticleSystem.cpp.i
+
+.PHONY : src/ParticleSystem.i
+
+# target to preprocess a source file
+src/ParticleSystem.cpp.i:
+	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/src/ParticleSystem.cpp.i
+.PHONY : src/ParticleSystem.cpp.i
+
+src/ParticleSystem.s: src/ParticleSystem.cpp.s
+
+.PHONY : src/ParticleSystem.s
+
+# target to generate assembly for a file
+src/ParticleSystem.cpp.s:
+	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/src/ParticleSystem.cpp.s
+.PHONY : src/ParticleSystem.cpp.s
+
+src/common/Particle.o: src/common/Particle.cpp.o
+
+.PHONY : src/common/Particle.o
+
+# target to build an object file
+src/common/Particle.cpp.o:
+	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/src/common/Particle.cpp.o
+.PHONY : src/common/Particle.cpp.o
+
+src/common/Particle.i: src/common/Particle.cpp.i
+
+.PHONY : src/common/Particle.i
+
+# target to preprocess a source file
+src/common/Particle.cpp.i:
+	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/src/common/Particle.cpp.i
+.PHONY : src/common/Particle.cpp.i
+
+src/common/Particle.s: src/common/Particle.cpp.s
+
+.PHONY : src/common/Particle.s
+
+# target to generate assembly for a file
+src/common/Particle.cpp.s:
+	$(MAKE) -f CMakeFiles/Graphics.dir/build.make CMakeFiles/Graphics.dir/src/common/Particle.cpp.s
+.PHONY : src/common/Particle.cpp.s
+
 src/common/controls.o: src/common/controls.cpp.o
 
 .PHONY : src/common/controls.o
@@ -240,6 +294,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Graphics"
+	@echo "... src/ParticleSystem.o"
+	@echo "... src/ParticleSystem.i"
+	@echo "... src/ParticleSystem.s"
+	@echo "... src/common/Particle.o"
+	@echo "... src/common/Particle.i"
+	@echo "... src/common/Particle.s"
 	@echo "... src/common/controls.o"
 	@echo "... src/common/controls.i"
 	@echo "... src/common/controls.s"

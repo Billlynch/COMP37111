@@ -109,12 +109,40 @@ CMakeFiles/Graphics.dir/src/common/file_loader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Graphics.dir/src/common/file_loader.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Bill/ClionProjects/Graphics/src/common/file_loader.cpp -o CMakeFiles/Graphics.dir/src/common/file_loader.cpp.s
 
+CMakeFiles/Graphics.dir/src/ParticleSystem.cpp.o: CMakeFiles/Graphics.dir/flags.make
+CMakeFiles/Graphics.dir/src/ParticleSystem.cpp.o: ../src/ParticleSystem.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Bill/ClionProjects/Graphics/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Graphics.dir/src/ParticleSystem.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Graphics.dir/src/ParticleSystem.cpp.o -c /Users/Bill/ClionProjects/Graphics/src/ParticleSystem.cpp
+
+CMakeFiles/Graphics.dir/src/ParticleSystem.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Graphics.dir/src/ParticleSystem.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Bill/ClionProjects/Graphics/src/ParticleSystem.cpp > CMakeFiles/Graphics.dir/src/ParticleSystem.cpp.i
+
+CMakeFiles/Graphics.dir/src/ParticleSystem.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Graphics.dir/src/ParticleSystem.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Bill/ClionProjects/Graphics/src/ParticleSystem.cpp -o CMakeFiles/Graphics.dir/src/ParticleSystem.cpp.s
+
+CMakeFiles/Graphics.dir/src/common/Particle.cpp.o: CMakeFiles/Graphics.dir/flags.make
+CMakeFiles/Graphics.dir/src/common/Particle.cpp.o: ../src/common/Particle.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Bill/ClionProjects/Graphics/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Graphics.dir/src/common/Particle.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Graphics.dir/src/common/Particle.cpp.o -c /Users/Bill/ClionProjects/Graphics/src/common/Particle.cpp
+
+CMakeFiles/Graphics.dir/src/common/Particle.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Graphics.dir/src/common/Particle.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Bill/ClionProjects/Graphics/src/common/Particle.cpp > CMakeFiles/Graphics.dir/src/common/Particle.cpp.i
+
+CMakeFiles/Graphics.dir/src/common/Particle.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Graphics.dir/src/common/Particle.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Bill/ClionProjects/Graphics/src/common/Particle.cpp -o CMakeFiles/Graphics.dir/src/common/Particle.cpp.s
+
 # Object files for target Graphics
 Graphics_OBJECTS = \
 "CMakeFiles/Graphics.dir/src/main.cpp.o" \
 "CMakeFiles/Graphics.dir/src/common/controls.cpp.o" \
 "CMakeFiles/Graphics.dir/src/common/shader.cpp.o" \
-"CMakeFiles/Graphics.dir/src/common/file_loader.cpp.o"
+"CMakeFiles/Graphics.dir/src/common/file_loader.cpp.o" \
+"CMakeFiles/Graphics.dir/src/ParticleSystem.cpp.o" \
+"CMakeFiles/Graphics.dir/src/common/Particle.cpp.o"
 
 # External object files for target Graphics
 Graphics_EXTERNAL_OBJECTS =
@@ -123,9 +151,11 @@ Graphics: CMakeFiles/Graphics.dir/src/main.cpp.o
 Graphics: CMakeFiles/Graphics.dir/src/common/controls.cpp.o
 Graphics: CMakeFiles/Graphics.dir/src/common/shader.cpp.o
 Graphics: CMakeFiles/Graphics.dir/src/common/file_loader.cpp.o
+Graphics: CMakeFiles/Graphics.dir/src/ParticleSystem.cpp.o
+Graphics: CMakeFiles/Graphics.dir/src/common/Particle.cpp.o
 Graphics: CMakeFiles/Graphics.dir/build.make
 Graphics: CMakeFiles/Graphics.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/Bill/ClionProjects/Graphics/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable Graphics"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/Bill/ClionProjects/Graphics/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable Graphics"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Graphics.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

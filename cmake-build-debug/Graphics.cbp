@@ -84,6 +84,18 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/Bill/ClionProjects/Graphics/src/ParticleSystem.cpp">
+			<Option target="Graphics"/>
+		</Unit>
+		<Unit filename="/Users/Bill/ClionProjects/Graphics/src/ParticleSystem.h">
+			<Option target="Graphics"/>
+		</Unit>
+		<Unit filename="/Users/Bill/ClionProjects/Graphics/src/common/Particle.cpp">
+			<Option target="Graphics"/>
+		</Unit>
+		<Unit filename="/Users/Bill/ClionProjects/Graphics/src/common/Particle.h">
+			<Option target="Graphics"/>
+		</Unit>
 		<Unit filename="/Users/Bill/ClionProjects/Graphics/src/common/controls.cpp">
 			<Option target="Graphics"/>
 		</Unit>
