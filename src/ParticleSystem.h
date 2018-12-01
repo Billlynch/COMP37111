@@ -32,7 +32,7 @@ private:
     float floorZVal = -7.0f;
     vec3 gravity = vec3(0.0f,0.0f, -9.81f);
     std::vector<vec3*> objVectors;
-    Particle particlesContainer[MaxParticles];
+    particle particlesContainer[MaxParticles];
     bool spaceHeld = false;
     float delta, physicsDelta;
     double lastTime;
@@ -40,7 +40,7 @@ private:
     mat4 ProjectionMatrix, ViewMatrix, ViewProjectionMatrix;
     vec3 CameraPosition;
     Analysiser *analysiser;
-    long nParticlesToRender;
+    int nParticlesToRender;
 
     void mainLoop();
 

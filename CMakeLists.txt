@@ -4,6 +4,7 @@ project(Graphics)
 set(CMAKE_MODULE_PATH ./cmake)
 
 find_package(OpenGL REQUIRED)
+find_package(OpenCL REQUIRED)
 find_package(glfw3 REQUIRED)
 find_package(GLEW REQUIRED)
 find_package(glm REQUIRED)
@@ -33,14 +34,13 @@ add_executable(Graphics
         src/common/file_loader.h
         src/ParticleSystem.cpp
         src/ParticleSystem.h
-        src/common/Particle.cpp
         src/common/Particle.h
         src/Analysiser.h
         src/Analysiser.cpp)
 
 
-set(INCLUDE_DIRS ${INCLUDE_DIRS} ${OPENGL_INCLUDE_DIRS} ${GLEW_INCLUDE_DIRS} ${GLFW_INCLUDE_DIRS} ${GLM_INCLUDE_DIR} )
-set(LIBS ${LIBS} ${OPENGL_LIBRARY} ${GLEW_LIBRARY} glfw)
+set(INCLUDE_DIRS ${INCLUDE_DIRS} ${OPENGL_INCLUDE_DIRS} ${GLEW_INCLUDE_DIRS} ${GLFW_INCLUDE_DIRS} ${GLM_INCLUDE_DIR} ${OpenCL_INCLUDE_DIR})
+set(LIBS ${LIBS} ${OPENGL_LIBRARY} ${GLEW_LIBRARY} ${OpenCL_LIBRARY} glfw)
 include_directories(${INCLUDE_DIRS})
 
 target_link_libraries(Graphics ${LIBS})

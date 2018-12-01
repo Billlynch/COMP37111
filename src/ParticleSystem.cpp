@@ -131,10 +131,12 @@ void ParticleSystem::mainLoop() {
         generateNewParticles();
     }
 
-    int particlesCount = simulateParticles(particle_position_size_data, particle_colour_data, delta, CameraPosition);
+    int particlesCount = 10;
+
+    //int particlesCount = simulateParticles(particle_position_size_data, particle_colour_data, delta, CameraPosition);
 
 
-    loadDataIntoBuffers(particlesCount);
+    //loadDataIntoBuffers(particlesCount);
 
 
     glEnable(GL_BLEND);
@@ -164,11 +166,11 @@ void ParticleSystem::mainLoop() {
 void ParticleSystem::loadDataIntoBuffers(int particlesCount) const {
     glBindBuffer(GL_ARRAY_BUFFER, particles_position_buffer);
     glBufferData(GL_ARRAY_BUFFER, MaxParticles * 4 * sizeof(GLfloat), nullptr, GL_STREAM_DRAW);
-    glBufferSubData(GL_ARRAY_BUFFER, 0, particlesCount * sizeof(GLfloat) * 4, particle_position_size_data);
+    glBufferSubData(GL_ARRAY_BUFFER, 0, MaxParticles * sizeof(GLfloat) * 4, particle_position_size_data);
 
     glBindBuffer(GL_ARRAY_BUFFER, particles_color_buffer);
     glBufferData(GL_ARRAY_BUFFER, MaxParticles * 4 * sizeof(GLubyte), nullptr, GL_STREAM_DRAW);
-    glBufferSubData(GL_ARRAY_BUFFER, 0, particlesCount * sizeof(GLubyte) * 4, particle_colour_data);
+    glBufferSubData(GL_ARRAY_BUFFER, 0, MaxParticles * sizeof(GLubyte) * 4, particle_colour_data);
 }
 
 void ParticleSystem::calculateDelta() {
@@ -200,38 +202,38 @@ void ParticleSystem::generateBuffers(GLuint &base_mesh_vertex_buffer, GLuint &pa
     glBufferData(GL_ARRAY_BUFFER, MaxParticles * 4 * sizeof(GLubyte), nullptr, GL_STREAM_DRAW);
 }
 
-int ParticleSystem::simulateParticles(GLfloat *g_particule_position_size_data, GLubyte *g_particule_color_data,
-                                      double delta, const vec3 &CameraPosition) {
-    nParticlesToRender = 0;
-    double initSimPhysicsTime = glfwGetTime();
-    for(int i=0; i<MaxParticles; i++){
-
-        Particle& p = particlesContainer[i];
-
-        p.simulate(delta, CameraPosition, spaceHeld, floorZVal, gravity);
-
-        if(p.isAlive()) // if we need to render the particle then push to the GPU buffer
-        {
-            g_particule_position_size_data[4*nParticlesToRender+0] = p.getPos().x;
-            g_particule_position_size_data[4*nParticlesToRender+1] = p.getPos().y;
-            g_particule_position_size_data[4*nParticlesToRender+2] = p.getPos().z;
-
-            g_particule_position_size_data[4*nParticlesToRender+3] = p.getSize();
-
-            g_particule_color_data[4*nParticlesToRender+0] = p.getR();
-            g_particule_color_data[4*nParticlesToRender+1] = p.getG();
-            g_particule_color_data[4*nParticlesToRender+2] = p.getB();
-            g_particule_color_data[4*nParticlesToRender+3] = p.getA();
-            nParticlesToRender++;
-        }
-    }
-    double postSimPhysicsTime = glfwGetTime();
-
-    physicsDelta = static_cast<float>(postSimPhysicsTime - initSimPhysicsTime);
-
-
-    return nParticlesToRender;
-}
+//int ParticleSystem::simulateParticles(GLfloat *g_particule_position_size_data, GLubyte *g_particule_color_data,
+//                                      double delta, const vec3 &CameraPosition) {
+//    nParticlesToRender = 0;
+//    double initSimPhysicsTime = glfwGetTime();
+//    for(int i=0; i<MaxParticles; i++){
+//
+//        Particle& p = particlesContainer[i];
+//
+//        p.simulate(delta, CameraPosition, spaceHeld, floorZVal, gravity);
+//
+//        if(p.isAlive()) // if we need to render the particle then push to the GPU buffer
+//        {
+//            g_particule_position_size_data[4*nParticlesToRender+0] = p.getPos().x;
+//            g_particule_position_size_data[4*nParticlesToRender+1] = p.getPos().y;
+//            g_particule_position_size_data[4*nParticlesToRender+2] = p.getPos().z;
+//
+//            g_particule_position_size_data[4*nParticlesToRender+3] = p.getSize();
+//
+//            g_particule_color_data[4*nParticlesToRender+0] = p.getR();
+//            g_particule_color_data[4*nParticlesToRender+1] = p.getG();
+//            g_particule_color_data[4*nParticlesToRender+2] = p.getB();
+//            g_particule_color_data[4*nParticlesToRender+3] = p.getA();
+//            nParticlesToRender++;
+//        }
+//    }
+//    double postSimPhysicsTime = glfwGetTime();
+//
+//    physicsDelta = static_cast<float>(postSimPhysicsTime - initSimPhysicsTime);
+//
+//
+//    return nParticlesToRender;
+//}
 
 void ParticleSystem::setupVertexShaderInputs(GLuint billboard_vertex_buffer, GLuint particles_position_buffer,
                                              GLuint particles_color_buffer) {
@@ -270,22 +272,23 @@ void ParticleSystem::generateNewParticles() {
         for(int i=0; i<newparticles; i++){
             int particleIndex = FindUnusedParticle();
 
-            vec3 pos = vec3(rand() % 20 - 10.0f,rand() % 10,10);
-            vec3 speed = vec3(0.0f, 0.0f, 0.0f);
+            particlesContainer[particleIndex].position.x = rand() % 20 - 10.0f;
+            particlesContainer[particleIndex].position.y = rand() % 10;
+            particlesContainer[particleIndex].position.z = 10;
+            particlesContainer[particleIndex].s = (rand()%100)/2000.0f + 0.1f;
 
-            Particle *p = new Particle(
-                    pos,                                        // position
-                    speed,                                      // speed
-                    *objVectors[rand() % objVectors.size()],     // target position
-                    rand() % 10 + 1.0f,                                // mass
-                    static_cast<unsigned char>(rand() % 255),   // R
-                    static_cast<unsigned char>(0),              // G
-                    static_cast<unsigned char>(255),            // B
-                    static_cast<unsigned char>(255),            // A
-                    (rand()%100)/2000.0f + 0.1f,                  // size
-                    10.0f);                                     // life
+            particlesContainer[particleIndex].speed.x = 0;
+            particlesContainer[particleIndex].speed.y = 0;
+            particlesContainer[particleIndex].speed.z = 0;
 
-            particlesContainer[particleIndex] = *p;
+
+            particlesContainer[particleIndex].life = 10.0f;
+            particlesContainer[particleIndex].mass = rand() % 10 + 1.0f;
+
+            particlesContainer[particleIndex].r = static_cast<unsigned char>(rand() % 255);
+            particlesContainer[particleIndex].g = static_cast<unsigned char>(0);
+            particlesContainer[particleIndex].b = static_cast<unsigned char>(255);
+            particlesContainer[particleIndex].a = static_cast<unsigned char>(255);
         }
     }
 
@@ -293,14 +296,14 @@ void ParticleSystem::generateNewParticles() {
 
 int ParticleSystem::FindUnusedParticle() {
     for(int i=lastUsedParticle; i<MaxParticles; i++){
-        if (particlesContainer[i].getLife() < 0){
+        if (particlesContainer[i].life < 0){
             lastUsedParticle = i;
             return i;
         }
     }
 
     for(int i=0; i<lastUsedParticle; i++){
-        if (particlesContainer[i].getLife() < 0){
+        if (particlesContainer[i].life < 0){
             lastUsedParticle = i;
             return i;
         }
