@@ -16,7 +16,7 @@
 #include "common/file_loader.h"
 #include "common/shader.hpp"
 #include "common/controls.hpp"
-
+#include <algorithm>
 
 
 using namespace glm;

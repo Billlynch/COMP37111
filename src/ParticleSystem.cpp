@@ -98,7 +98,7 @@ int ParticleSystem::setupGLEWandGLFW() {
 }
 
 void ParticleSystem::setupShaders() {
-    programID = LoadShaders("/Users/Bill/ClionProjects/Graphics/src/shaders/vertex_shader.glsl", "/Users/Bill/ClionProjects/Graphics/src/shaders/fragment_shader.glsl" );
+    programID = LoadShaders("/home/bill/Documents/git/COMP37111/src/shaders/vertex_shader.glsl", "/home/bill/Documents/git/COMP37111/src/shaders/fragment_shader.glsl" );
     CameraRight_worldspace_ID = glGetUniformLocation(programID, "CameraRight_worldspace");
     CameraUp_worldspace_ID = glGetUniformLocation(programID, "CameraUp_worldspace");
     ViewProjMatrixID = glGetUniformLocation(programID, "VP");
