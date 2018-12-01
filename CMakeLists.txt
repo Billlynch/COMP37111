@@ -23,7 +23,7 @@ add_executable(Graphics
         src/ParticleSystem.cpp
         src/ParticleSystem.h
         src/common/Particle.cpp
-        src/common/Particle.h)
+        src/common/Particle.h src/Analysiser.cpp src/Analysiser.h)
 target_link_libraries(Graphics glfw)
 target_link_libraries(Graphics glew)
 find_package (GLM REQUIRED)

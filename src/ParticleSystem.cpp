@@ -3,10 +3,13 @@
 //
 
 #include "ParticleSystem.h"
+#include "Analysiser.h"
 
 void ParticleSystem::runParticleSystem(std::string &fileName) {
 
     loadObj(fileName);
+
+    analysiser = new Analysiser("/Users/Bill/ClionProjects/Graphics/src/testOfAnalysiser.txt", objVectors.size());
 
     ParticleSystem::setupGLEWandGLFW();
 
@@ -17,6 +20,8 @@ void ParticleSystem::runParticleSystem(std::string &fileName) {
     } while(!isWindowClosed());
 
     cleanUpBuffers();
+
+    delete analysiser;
 }
 
 bool ParticleSystem::isWindowClosed() {
@@ -116,6 +121,7 @@ void ParticleSystem::mainLoop() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     calculateDelta();
+    analysiser->addData(delta, nParticlesToRender, spaceHeld);
 
     computeMatricesFromInputs(window);
     getMatrices(ProjectionMatrix, ViewMatrix, CameraPosition, ViewProjectionMatrix);
@@ -198,7 +204,7 @@ void ParticleSystem::generateBuffers(GLuint &base_mesh_vertex_buffer, GLuint &pa
 
 int ParticleSystem::simulateParticles(GLfloat *g_particule_position_size_data, GLubyte *g_particule_color_data,
                                       double delta, const vec3 &CameraPosition) {
-    int ParticlesCount = 0;
+    nParticlesToRender = 0;
 
     for(int i=0; i<MaxParticles; i++){
 
@@ -208,22 +214,22 @@ int ParticleSystem::simulateParticles(GLfloat *g_particule_position_size_data, G
 
         if(p.isAlive()) // if we need to render the particle then push to the GPU buffer
         {
-            g_particule_position_size_data[4*ParticlesCount+0] = p.getPos().x;
-            g_particule_position_size_data[4*ParticlesCount+1] = p.getPos().y;
-            g_particule_position_size_data[4*ParticlesCount+2] = p.getPos().z;
+            g_particule_position_size_data[4*nParticlesToRender+0] = p.getPos().x;
+            g_particule_position_size_data[4*nParticlesToRender+1] = p.getPos().y;
+            g_particule_position_size_data[4*nParticlesToRender+2] = p.getPos().z;
 
-            g_particule_position_size_data[4*ParticlesCount+3] = p.getSize();
+            g_particule_position_size_data[4*nParticlesToRender+3] = p.getSize();
 
-            g_particule_color_data[4*ParticlesCount+0] = p.getR();
-            g_particule_color_data[4*ParticlesCount+1] = p.getG();
-            g_particule_color_data[4*ParticlesCount+2] = p.getB();
-            g_particule_color_data[4*ParticlesCount+3] = p.getA();
-            ParticlesCount++;
+            g_particule_color_data[4*nParticlesToRender+0] = p.getR();
+            g_particule_color_data[4*nParticlesToRender+1] = p.getG();
+            g_particule_color_data[4*nParticlesToRender+2] = p.getB();
+            g_particule_color_data[4*nParticlesToRender+3] = p.getA();
+            nParticlesToRender++;
         }
 
 
     }
-    return ParticlesCount;
+    return nParticlesToRender;
 }
 
 void ParticleSystem::setupVertexShaderInputs(GLuint billboard_vertex_buffer, GLuint particles_position_buffer,
@@ -249,29 +255,31 @@ void ParticleSystem::setupVertexShaderInputs(GLuint billboard_vertex_buffer, GLu
 }
 
 void ParticleSystem::generateNewParticles() {
-    int newparticles = (int)(delta*100.0);
+    int newparticles = (int)(delta*1000.0);
 
     if (newparticles > (int)(0.016f*100.0)) // limit to 100 if running at a low fps
     {
-        newparticles = (int)(100.0); // number of new particles to create
+        newparticles = (int)(50.0); // number of new particles to create
     }// every ms
 
+//    int newparticles = 1000;
 
     for(int i=0; i<newparticles; i++){
         int particleIndex = FindUnusedParticle();
 
-        vec3 pos = vec3(rand() % 20 - 10.0f,rand() % 4,10);
+        vec3 pos = vec3(rand() % 20 - 10.0f,rand() % 10,10);
         vec3 speed = vec3(0.0f, 0.0f, 0.0f);
 
         Particle *p = new Particle(
                                 pos,                                        // position
                                 speed,                                      // speed
                                 objVectors[rand() % objVectors.size()],     // target position
+                                rand() % 10 + 1.0f,                                // mass
                                 static_cast<unsigned char>(rand() % 255),   // R
                                 static_cast<unsigned char>(0),              // G
                                 static_cast<unsigned char>(255),            // B
                                 static_cast<unsigned char>(255),            // A
-                                (rand()%100)/2000.0f + 0.1f,                // size
+                                (rand()%100)/2000.0f + 0.1f,                  // size
                                 10.0f);                                     // life
 
         particlesContainer[particleIndex] = *p;

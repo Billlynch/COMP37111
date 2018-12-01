@@ -21,10 +21,12 @@ private:
 
 
 public:
-    file_loader(){}
-    ~file_loader(){}
+    file_loader() {}
+
+    ~file_loader() {}
 
     int readObjFile(std::string fileName, std::vector<glm::vec3> &vectorsOfObj);
+
     int loadBILL(std::vector<glm::vec3> vectorsOfObj);
 
 };
