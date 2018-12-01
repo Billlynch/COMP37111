@@ -34,7 +34,7 @@ public:
        outputFile.close();
     }
 
-    void addData(float frameDelta, unsigned long n_particles, bool spaceHeld);
+    void addData(float frameDelta, unsigned long n_particles, bool spaceHeld, float physicsDelta);
 
 };
 

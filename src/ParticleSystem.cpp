@@ -121,7 +121,7 @@ void ParticleSystem::mainLoop() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     calculateDelta();
-//    analysiser->addData(delta, nParticlesToRender, spaceHeld);
+    analysiser->addData(delta, nParticlesToRender, spaceHeld, physicsDelta);
 
     computeMatricesFromInputs(window);
     getMatrices(ProjectionMatrix, ViewMatrix, CameraPosition, ViewProjectionMatrix);
@@ -163,11 +163,11 @@ void ParticleSystem::mainLoop() {
 
 void ParticleSystem::loadDataIntoBuffers(int particlesCount) const {
     glBindBuffer(GL_ARRAY_BUFFER, particles_position_buffer);
-    glBufferData(GL_ARRAY_BUFFER, MaxParticles * 4 * sizeof(GLfloat), nullptr, GL_STREAM_DRAW); // Buffer orphaning, a common way to improve streaming perf. See above link for details.
+    glBufferData(GL_ARRAY_BUFFER, MaxParticles * 4 * sizeof(GLfloat), nullptr, GL_STREAM_DRAW);
     glBufferSubData(GL_ARRAY_BUFFER, 0, particlesCount * sizeof(GLfloat) * 4, particle_position_size_data);
 
     glBindBuffer(GL_ARRAY_BUFFER, particles_color_buffer);
-    glBufferData(GL_ARRAY_BUFFER, MaxParticles * 4 * sizeof(GLubyte), nullptr, GL_STREAM_DRAW); // Buffer orphaning, a common way to improve streaming perf. See above link for details.
+    glBufferData(GL_ARRAY_BUFFER, MaxParticles * 4 * sizeof(GLubyte), nullptr, GL_STREAM_DRAW);
     glBufferSubData(GL_ARRAY_BUFFER, 0, particlesCount * sizeof(GLubyte) * 4, particle_colour_data);
 }
 
@@ -203,7 +203,7 @@ void ParticleSystem::generateBuffers(GLuint &base_mesh_vertex_buffer, GLuint &pa
 int ParticleSystem::simulateParticles(GLfloat *g_particule_position_size_data, GLubyte *g_particule_color_data,
                                       double delta, const vec3 &CameraPosition) {
     nParticlesToRender = 0;
-
+    double initSimPhysicsTime = glfwGetTime();
     for(int i=0; i<MaxParticles; i++){
 
         Particle& p = particlesContainer[i];
@@ -224,9 +224,12 @@ int ParticleSystem::simulateParticles(GLfloat *g_particule_position_size_data, G
             g_particule_color_data[4*nParticlesToRender+3] = p.getA();
             nParticlesToRender++;
         }
-
-
     }
+    double postSimPhysicsTime = glfwGetTime();
+
+    physicsDelta = static_cast<float>(postSimPhysicsTime - initSimPhysicsTime);
+
+
     return nParticlesToRender;
 }
 
@@ -252,36 +255,40 @@ void ParticleSystem::setupVertexShaderInputs(GLuint billboard_vertex_buffer, GLu
     glVertexAttribDivisor(2, 1); // color : one per quad                                  -> 1
 }
 
+
+#define NEW_PARTICLES 5000
+
 void ParticleSystem::generateNewParticles() {
     int newparticles = (int)(delta*1000.0);
 
     if (newparticles > (int)(0.016f*100.0)) // limit to 100 if running at a low fps
     {
-        newparticles = (int)(50.0); // number of new particles to create
+        newparticles = NEW_PARTICLES;
     }// every ms
 
-//    int newparticles = 1000;
+    if (MaxParticles > NEW_PARTICLES + nParticlesToRender) {
+        for(int i=0; i<newparticles; i++){
+            int particleIndex = FindUnusedParticle();
 
-    for(int i=0; i<newparticles; i++){
-        int particleIndex = FindUnusedParticle();
+            vec3 pos = vec3(rand() % 20 - 10.0f,rand() % 10,10);
+            vec3 speed = vec3(0.0f, 0.0f, 0.0f);
 
-        vec3 pos = vec3(rand() % 20 - 10.0f,rand() % 10,10);
-        vec3 speed = vec3(0.0f, 0.0f, 0.0f);
+            Particle *p = new Particle(
+                    pos,                                        // position
+                    speed,                                      // speed
+                    *objVectors[rand() % objVectors.size()],     // target position
+                    rand() % 10 + 1.0f,                                // mass
+                    static_cast<unsigned char>(rand() % 255),   // R
+                    static_cast<unsigned char>(0),              // G
+                    static_cast<unsigned char>(255),            // B
+                    static_cast<unsigned char>(255),            // A
+                    (rand()%100)/2000.0f + 0.1f,                  // size
+                    10.0f);                                     // life
 
-        Particle *p = new Particle(
-                                pos,                                        // position
-                                speed,                                      // speed
-                                *objVectors[rand() % objVectors.size()],     // target position
-                                rand() % 10 + 1.0f,                                // mass
-                                static_cast<unsigned char>(rand() % 255),   // R
-                                static_cast<unsigned char>(0),              // G
-                                static_cast<unsigned char>(255),            // B
-                                static_cast<unsigned char>(255),            // A
-                                (rand()%100)/2000.0f + 0.1f,                  // size
-                                10.0f);                                     // life
-
-        particlesContainer[particleIndex] = *p;
+            particlesContainer[particleIndex] = *p;
+        }
     }
+
 }
 
 int ParticleSystem::FindUnusedParticle() {
@@ -300,8 +307,4 @@ int ParticleSystem::FindUnusedParticle() {
     }
 
     return 0; // All particles are taken, override the first one
-}
-
-void ParticleSystem::SortParticles() {
-    std::sort(&particlesContainer[0], &particlesContainer[MaxParticles]);
 }

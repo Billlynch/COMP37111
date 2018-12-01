@@ -22,7 +22,7 @@
 
 using namespace glm;
 
-const long MaxParticles = 100000;
+const int MaxParticles = 500000;
 
 class ParticleSystem {
 private:
@@ -34,13 +34,13 @@ private:
     std::vector<vec3*> objVectors;
     Particle particlesContainer[MaxParticles];
     bool spaceHeld = false;
-    float delta;
+    float delta, physicsDelta;
     double lastTime;
     int lastUsedParticle = 0;
     mat4 ProjectionMatrix, ViewMatrix, ViewProjectionMatrix;
     vec3 CameraPosition;
     Analysiser *analysiser;
-    int nParticlesToRender;
+    long nParticlesToRender;
 
     void mainLoop();
 
@@ -49,7 +49,6 @@ private:
                          GLuint &particles_color_buffer);
 
     int FindUnusedParticle();
-    void SortParticles();
     void generateNewParticles();
     void setupVertexShaderInputs(GLuint billboard_vertex_buffer,
                                  GLuint particles_position_buffer,

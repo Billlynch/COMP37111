@@ -4,6 +4,6 @@
 
 #include "Analysiser.h"
 
-void Analysiser::addData(float frameDelta, unsigned long n_particles, bool spaceHeld) {
-    outputFile << "FR," << n_particles << "," << frameDelta << "," << spaceHeld << std::endl;
+void Analysiser::addData(float frameDelta, unsigned long n_particles, bool spaceHeld, float physicsDelta) {
+    outputFile << n_particles << "," << frameDelta << "," << spaceHeld << "," << physicsDelta << std::endl;
 }
