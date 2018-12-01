@@ -271,7 +271,7 @@ void ParticleSystem::generateNewParticles() {
         Particle *p = new Particle(
                                 pos,                                        // position
                                 speed,                                      // speed
-                                objVectors[rand() % objVectors.size()],     // target position
+                                *objVectors[rand() % objVectors.size()],     // target position
                                 rand() % 10 + 1.0f,                                // mass
                                 static_cast<unsigned char>(rand() % 255),   // R
                                 static_cast<unsigned char>(0),              // G

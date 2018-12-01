@@ -32,7 +32,7 @@ public:
     Particle(vec3 &pos,
              vec3 &speed,
              vec3 &target,
-             float weight,
+             float mass,
              unsigned char r,
              unsigned char g,
              unsigned char b,
@@ -42,7 +42,7 @@ public:
                            speed(speed),
                            target(target), r(r), g(g),
                            b(b), a(a),
-                           size(size), life(life), mass(weight) { n_bounces = 1; }
+                           size(size), life(life), mass(mass) { n_bounces = 1; }
 
     ~Particle() {}
 
