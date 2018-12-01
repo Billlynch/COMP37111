@@ -22,13 +22,13 @@
 
 using namespace glm;
 
-const int MaxParticles = 1500000;
+const int MaxParticles = 3000000;
 
 class ParticleSystem {
 private:
     GLFWwindow* window;
-    int height = 768;
-    int width = 1024;
+    int height = 1440; //768;
+    int width = 2560;  //1024;
     float floorZVal = -7.0f;
     vec3 gravity = vec3(0.0f,0.0f, -9.81f);
     std::vector<vec3> objVectors;

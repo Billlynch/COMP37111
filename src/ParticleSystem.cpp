@@ -121,7 +121,7 @@ void ParticleSystem::mainLoop() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     calculateDelta();
-    analysiser->addData(delta, nParticlesToRender, spaceHeld);
+//    analysiser->addData(delta, nParticlesToRender, spaceHeld);
 
     computeMatricesFromInputs(window);
     getMatrices(ProjectionMatrix, ViewMatrix, CameraPosition, ViewProjectionMatrix);
@@ -132,8 +132,6 @@ void ParticleSystem::mainLoop() {
     }
 
     int particlesCount = simulateParticles(particle_position_size_data, particle_colour_data, delta, CameraPosition);
-
-    SortParticles();
 
 
     loadDataIntoBuffers(particlesCount);
