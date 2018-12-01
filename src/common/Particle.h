@@ -14,9 +14,17 @@ using namespace glm;
 class Particle {
 private:
     vec3 pos, speed, target;
-    unsigned char r,g,b,a; // Color
+    unsigned char r, g, b, a; // Color
     int n_bounces;
-    float size, life, cameradistance;
+    float size, life, cameradistance, mass;
+
+    void makeParticleBounce(const float &floorZVal, vec3 &acceleration, float &speed_multiplier);
+
+    void makeParticleFallWithGravity(const bool &spaceHeld, const vec3 &gravity, vec3 &acceleration,
+                                     float &speed_multiplier) const;
+
+    void calculateMotion(const double &delta, const vec3 &CameraPosition, const bool &spaceHeld, const float &floorZVal,
+                         const vec3 &gravity);
 
 public:
     Particle();
@@ -24,24 +32,25 @@ public:
     Particle(vec3 &pos,
              vec3 &speed,
              vec3 &target,
+             float weight,
              unsigned char r,
              unsigned char g,
              unsigned char b,
              unsigned char a,
              float size,
              float life) : pos(pos),
-                                     speed(speed),
-                                     target(target), r(r), g(g),
-                                     b(b), a(a),
-                                     size(size), life(life) {n_bounces = 1;}
+                           speed(speed),
+                           target(target), r(r), g(g),
+                           b(b), a(a),
+                           size(size), life(life), mass(weight) { n_bounces = 1; }
 
-     ~Particle() {}
+    ~Particle() {}
 
     void simulate(double &delta, const vec3 &CameraPosition, bool &spaceHeld, float &floorZVal, vec3 &gravity);
 
     bool isAlive();
 
-    bool operator<(const Particle& that) const {
+    bool operator<(const Particle &that) const {
         // Sort in reverse order : far particles drawn first.
         return this->cameradistance > that.cameradistance;
     }
@@ -133,6 +142,8 @@ public:
     void setCameradistance(float cameradistance) {
         Particle::cameradistance = cameradistance;
     }
+
+
 };
 
 

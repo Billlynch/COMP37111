@@ -16,12 +16,13 @@
 #include "common/file_loader.h"
 #include "common/shader.hpp"
 #include "common/controls.hpp"
+#include "Analysiser.h"
 #include <algorithm>
 
 
 using namespace glm;
 
-const int MaxParticles = 50000;
+const int MaxParticles = 1500000;
 
 class ParticleSystem {
 private:
@@ -32,12 +33,14 @@ private:
     vec3 gravity = vec3(0.0f,0.0f, -9.81f);
     std::vector<vec3> objVectors;
     Particle particlesContainer[MaxParticles];
-    bool spaceHeld;
+    bool spaceHeld = false;
     float delta;
     double lastTime;
     int lastUsedParticle = 0;
     mat4 ProjectionMatrix, ViewMatrix, ViewProjectionMatrix;
     vec3 CameraPosition;
+    Analysiser *analysiser;
+    int nParticlesToRender;
 
     void mainLoop();
 
