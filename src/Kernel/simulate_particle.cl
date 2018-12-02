@@ -23,41 +23,34 @@ typedef struct tag_particle
 #define GRAVITY -9.81
 #define FLOOR_Z -7.0
 
-__kernel void simulate_particle(__global particle * particleArray, __global float * metaBuffer)
+__kernel void simulate_particle(__global particle * particleArray, __global float * particleArrayToOpenGL, __global float * metaBuffer)
 {
     size_t tid = get_global_id(0);
 
-    if (metaBuffer[1] == 0) {
-		particleArray[tid].life -= metaBuffer[0];
-	}
 
-	if (particleArray[tid].life > 0.0) {
-		vect3 acc;
-		acc.x = 0.0;
-		acc.y = 0.0;
-		acc.z = 0.0;
-		double speed_multiplier = 5.5;
+    if (particleArray[tid].life > 0.0) {
+    		vect3 acc;
+    		acc.x = 0.0;
+    		acc.y = 0.0;
+    		acc.z = 0.0;
+    		double speed_multiplier = 5.5f;
 
-		if (particleArray[tid].position.z <= FLOOR_Z) {
-			particleArray[tid].position.z = FLOOR_Z + 0.1;
-			acc.z = 5.0 / particleArray[tid].n_bounces;
-			particleArray[tid].n_bounces++;
-			speed_multiplier = 50.0;
-		} else {
-			acc.z = GRAVITY;
-		}
+    		if (particleArrayToOpenGL[(tid * 4) + 2] <= FLOOR_Z) {
+    			particleArrayToOpenGL[(tid * 4) + 2] = FLOOR_Z + 0.1;
+    			acc.z = 5.0;
+    			particleArray[tid].n_bounces++;
+    		} else {
+    			acc.z = GRAVITY;
+    		}
 
-		particleArray[tid].speed.x = acc.x * particleArray[tid].mass * metaBuffer[0] * speed_multiplier;
-		particleArray[tid].speed.y = acc.y * particleArray[tid].mass * metaBuffer[0] * speed_multiplier;
-		particleArray[tid].speed.z = acc.z * particleArray[tid].mass * metaBuffer[0] * speed_multiplier;
+    		float sx = acc.x * particleArray[tid].mass;
+    		float sy = acc.y * particleArray[tid].mass;
+    		float sz = acc.z * particleArray[tid].mass;
 
-		particleArray[tid].position.x = particleArray[tid].speed.x * metaBuffer[0];
-		particleArray[tid].position.y = particleArray[tid].speed.y * metaBuffer[0];
-		particleArray[tid].position.z = particleArray[tid].speed.z * metaBuffer[0];
+    		particleArrayToOpenGL[(tid * 4) + 0] += sx;
+    		particleArrayToOpenGL[(tid * 4) + 1] += sy;
+    		particleArrayToOpenGL[(tid * 4) + 2] += sz * 0.0016;
+    }
 
-
-	} else {
-		particleArray[tid].camDist = -1.0;
-	}
 
 }

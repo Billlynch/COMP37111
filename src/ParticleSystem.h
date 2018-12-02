@@ -19,10 +19,25 @@
 #include "Analysiser.h"
 #include <algorithm>
 
+#ifdef __APPLE__
+#include <OpenCL/opencl.h>
+#else
+#include <CL/cl.hpp>
+#endif
+
+
 
 using namespace glm;
 
-const int MaxParticles = 500000;
+const int MaxParticles = 496640;
+
+inline void checkErr(cl_int err, const char *name) {
+    if (err != CL_SUCCESS) {
+        std::cerr << "Error: " << name << ": " << err << std::endl;
+        exit(EXIT_FAILURE);
+    }
+}
+
 
 class ParticleSystem {
 private:
@@ -41,6 +56,8 @@ private:
     vec3 CameraPosition;
     Analysiser *analysiser;
     int nParticlesToRender;
+    float *particleMetaDataBuffer[2];
+
 
     void mainLoop();
 
@@ -60,8 +77,12 @@ public:
 
     GLuint programID;
     GLint CameraRight_worldspace_ID, CameraUp_worldspace_ID, ViewProjMatrixID;
+    cl::Event event;
+    cl::CommandQueue queue, writeQueue;
+    cl::Buffer kernelParticleBuffer, kernelParticleBufferToOpenGl, kernelParticleMetaBuffer;
+    cl::Kernel kernel;
 
-    GLfloat* particle_position_size_data = new GLfloat[MaxParticles * 4];
+    float* particle_position_size_data = new float[MaxParticles * 4];
     GLubyte* particle_colour_data = new GLubyte[MaxParticles * 4];
     GLuint particles_color_buffer, VertexArrayID, particles_position_buffer, base_mesh_vertex_buffer;
 
@@ -82,7 +103,9 @@ public:
 
     void calculateDelta();
 
-    void loadDataIntoBuffers(int particlesCount) const;
+    void loadDataIntoBuffers() const;
+
+    void setupOpenCl();
 };
 
 
