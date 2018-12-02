@@ -29,7 +29,7 @@
 
 using namespace glm;
 
-const int MaxParticles = 496640;
+const int MaxParticles = 8990720;
 
 inline void checkErr(cl_int err, const char *name) {
     if (err != CL_SUCCESS) {
@@ -77,7 +77,7 @@ public:
 
     GLuint programID;
     GLint CameraRight_worldspace_ID, CameraUp_worldspace_ID, ViewProjMatrixID;
-    cl::Event event;
+    cl::Event event, writeEvent;
     cl::CommandQueue queue, writeQueue;
     cl::Buffer kernelParticleBuffer, kernelParticleBufferToOpenGl, kernelParticleMetaBuffer;
     cl::Kernel kernel;

@@ -13,10 +13,8 @@
   <component name="ChangeListManager">
     <list default="true" id="cdaff1bf-a899-4137-8637-3e4738bd26e3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Kernel/simulate_particle.cl" beforeDir="false" afterPath="$PROJECT_DIR$/src/Kernel/simulate_particle.cl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ParticleSystem.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/ParticleSystem.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ParticleSystem.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/ParticleSystem.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,11 +31,20 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/ParticleSystem.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="724">
-                  <caret line="435" column="14" selection-start-line="435" selection-start-column="14" selection-end-line="435" selection-end-column="14" />
+                <state relative-caret-position="4129">
+                  <caret line="305" column="29" selection-start-line="305" selection-start-column="29" selection-end-line="305" selection-end-column="29" />
                   <folding>
                     <element signature="e#47#74#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file:///usr/include/CL/cl.h">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="311">
+                  <caret line="1021" column="107" selection-start-line="1021" selection-start-column="81" selection-end-line="1021" selection-end-column="107" />
                 </state>
               </provider>
             </entry>
@@ -65,15 +72,6 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="345">
                   <caret line="23" column="22" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="22" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/cmake/FindOpenCl.cmake">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2190">
-                  <caret line="146" column="45" selection-start-line="146" selection-start-column="24" selection-end-line="146" selection-end-column="45" />
                 </state>
               </provider>
             </entry>
@@ -108,8 +106,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/ParticleSystem.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="333">
-                  <caret line="80" column="38" selection-start-line="80" selection-start-column="28" selection-end-line="80" selection-end-column="38" />
+                <state relative-caret-position="300">
+                  <caret line="31" column="33" lean-forward="true" selection-start-line="31" selection-start-column="33" selection-end-line="31" selection-end-column="33" />
                   <folding>
                     <element signature="e#464#490#0" expanded="true" />
                   </folding>
@@ -133,7 +131,7 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/ParticleSystem.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-2775">
+                <state relative-caret-position="-2730">
                   <caret line="16" selection-start-line="16" selection-end-line="16" />
                   <folding>
                     <element signature="e#47#74#0" expanded="true" />
@@ -148,11 +146,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>TextureID</find>
-      <find>myTextureSampler</find>
-      <find>texture</find>
-      <find>new</find>
-      <find>string</find>
       <find>particles_color_buffer</find>
       <find>programID</find>
       <find>CameraRight_worldspace_ID</find>
@@ -177,7 +170,12 @@
       <find>metaBuffer</find>
       <find>speed_multiplier</find>
       <find>kernelParticleBufferToOpenGl</find>
+      <find>CL_API_SUFFIX__VERSION_1_2</find>
+      <find>CL_API_SUFFIX__VERSION_2_1</find>
       <find>queue</find>
+      <find>.</find>
+      <find>kernel</find>
+      <find>kernel(</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -215,8 +213,8 @@
         <option value="$PROJECT_DIR$/src/main.cpp" />
         <option value="$PROJECT_DIR$/src/shaders/vertex_shader.glsl" />
         <option value="$PROJECT_DIR$/src/Kernel/simulate_particle.cl" />
-        <option value="$PROJECT_DIR$/src/ParticleSystem.h" />
         <option value="$PROJECT_DIR$/src/ParticleSystem.cpp" />
+        <option value="$PROJECT_DIR$/src/ParticleSystem.h" />
       </list>
     </option>
   </component>
@@ -276,6 +274,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="dynamic.analysis.tools.valgrind" />
   </component>
   <component name="RecentsManager">
@@ -335,12 +334,12 @@
       <workItem from="1538151960298" duration="297000" />
       <workItem from="1538152274005" duration="21497000" />
       <workItem from="1538849697761" duration="573000" />
-      <workItem from="1543707875197" duration="6007000" />
+      <workItem from="1543707875197" duration="9260000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70281000" />
+    <option name="totallyTimeSpent" value="73534000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-5" y="26" width="2570" height="1395" extended-state="6" />
@@ -351,17 +350,17 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32883242" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.47211155" visible="true" weight="0.24146147" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4685259" visible="true" weight="0.24146147" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4884462" weight="0.39952344" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.30738682" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5278884" side_tool="true" visible="true" weight="0.24146147" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5314741" side_tool="true" visible="true" weight="0.24146147" />
       <window_info anchor="bottom" id="Version Control" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="CMake" order="11" sideWeight="0.49721116" weight="0.32831088" />
-      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.4629482" weight="0.2652899" />
+      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.45936254" weight="0.2652899" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -392,17 +391,6 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/ParticleSystem.cpp</url>
-          <line>216</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
@@ -645,10 +633,17 @@ define * 4) + 2]</expression-string>
         </state>
       </provider>
     </entry>
+    <entry file="file:///usr/include/CL/cl.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="1021" column="107" selection-start-line="1021" selection-start-column="81" selection-end-line="1021" selection-end-column="107" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ParticleSystem.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="80" column="38" selection-start-line="80" selection-start-column="28" selection-end-line="80" selection-end-column="38" />
+        <state relative-caret-position="300">
+          <caret line="31" column="33" lean-forward="true" selection-start-line="31" selection-start-column="33" selection-end-line="31" selection-end-column="33" />
           <folding>
             <element signature="e#464#490#0" expanded="true" />
           </folding>
@@ -657,8 +652,8 @@ define * 4) + 2]</expression-string>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ParticleSystem.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="724">
-          <caret line="435" column="14" selection-start-line="435" selection-start-column="14" selection-end-line="435" selection-end-column="14" />
+        <state relative-caret-position="4129">
+          <caret line="305" column="29" selection-start-line="305" selection-start-column="29" selection-end-line="305" selection-end-column="29" />
           <folding>
             <element signature="e#47#74#0" expanded="true" />
           </folding>

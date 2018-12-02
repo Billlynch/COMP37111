@@ -17,6 +17,8 @@ void ParticleSystem::runParticleSystem(std::string &fileName) {
 
     lastTime = glfwGetTime();
 
+    generateNewParticles();
+
     do {
         ParticleSystem::mainLoop();
     } while(!isWindowClosed());
@@ -130,10 +132,11 @@ void ParticleSystem::mainLoop() {
 
 //    if (!spaceHeld)
 //    {
-        generateNewParticles();
+//        generateNewParticles();
 //    }
 
     cl_int err;
+
 
     err = kernel.setArg(0, kernelParticleBuffer);
     checkErr(err, "Kernel::setArg()");
@@ -141,6 +144,18 @@ void ParticleSystem::mainLoop() {
     checkErr(err, "Kernel::setArg()");
     err = kernel.setArg(2, kernelParticleMetaBuffer);
     checkErr(err, "Kernel::setArg()");
+
+    err = queue.enqueueWriteBuffer(
+            kernelParticleBufferToOpenGl,
+            CL_TRUE,
+            0,
+            sizeof(float) * MaxParticles * 4,
+            particle_position_size_data,
+            NULL,
+            &writeEvent);
+    checkErr(err, "ComamndQueue::enqueueReadBuffer()");
+
+    writeEvent.wait();
 
 
     err = queue.enqueueNDRangeKernel(
@@ -288,7 +303,7 @@ void ParticleSystem::setupVertexShaderInputs(GLuint billboard_vertex_buffer, GLu
 }
 
 
-#define NEW_PARTICLES 5
+#define NEW_PARTICLES 8990720
 
 void ParticleSystem::generateNewParticles() {
     int newparticles = (int)(delta*1000.0);
