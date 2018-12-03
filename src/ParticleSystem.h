@@ -32,6 +32,8 @@
 using namespace glm;
 
 #define NUM_PARTICLES 3008000
+#define GRAVITY -9.81
+#define FLOOR_Z -7.0
 
 
 inline void checkErr(cl_int err, const char *name) {
@@ -68,7 +70,8 @@ private:
                          GLuint &particles_position_buffer,
                          GLuint &particles_color_buffer);
 
-    int FindUnusedParticle();
+    void simParticles();
+    void simParticlesOpenCL();
     void generateNewParticles();
     void setupVertexShaderInputs(GLuint billboard_vertex_buffer,
                                  GLuint particles_position_buffer,

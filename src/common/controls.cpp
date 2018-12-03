@@ -30,11 +30,11 @@ void computeMatricesFromInputs(GLFWwindow *window) {
     }
 
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
-        camAngleY--;
+        camAngleY++;
     }
 
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
-        camAngleY++;
+        camAngleY--;
     }
 
     if (glfwGetKey(window, GLFW_KEY_KP_ADD) == GLFW_PRESS) {
