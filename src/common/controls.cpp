@@ -6,8 +6,10 @@
 glm::mat4 ViewMatrix;
 glm::mat4 ProjectionMatrix;
 glm::vec3 position = glm::vec3(0, -20, 0);
-float camAngleX = 0, camAngleY = 0;
-float distanceFromCentre = 100.0f;
+glm::vec3 centerOfParticleSystem = glm::vec3(0.0f, 0.0f, 0.0f);
+
+float camAngleX = 60, camAngleY = 15;
+float distanceFromCentre = -230.0f;
 float initialFoV = 45.0f;
 
 void getMatrices(mat4 &projectionMatrix, mat4 &viewMatrix, vec3 &cameraPosition, mat4 &viewProjectionMatrix) {
@@ -17,7 +19,6 @@ void getMatrices(mat4 &projectionMatrix, mat4 &viewMatrix, vec3 &cameraPosition,
     cameraPosition = inverse(ViewMatrix)[3];
 }
 
-glm::vec3 centerOfParticleSystem = glm::vec3(0.0f, 0.0f, 0.0f);
 
 void computeMatricesFromInputs(GLFWwindow *window) {
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
