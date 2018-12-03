@@ -24,6 +24,14 @@ void computeMatricesFromInputs(GLFWwindow *window) {
         position.x--;
     }
 
+    if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS) {
+        position.z++;
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS) {
+        position.z--;
+    }
+
     glm::vec3 direction = centerOfParticleSystem - position;
 
     glm::vec3 up = glm::vec3(0.0f, 0.0f, 1.0f);
@@ -31,6 +39,6 @@ void computeMatricesFromInputs(GLFWwindow *window) {
     float FoV = initialFoV;
 
     // Projection matrix : 45� Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
-    ProjectionMatrix = glm::perspective(glm::radians(FoV), 4.0f / 3.0f, 0.1f, 100.0f);
+    ProjectionMatrix = glm::perspective(glm::radians(FoV), 4.0f / 3.0f, 0.1f, 10000.0f);
     ViewMatrix = glm::lookAt(position, position + direction, up);
 }

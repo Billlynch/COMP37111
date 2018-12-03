@@ -151,7 +151,7 @@ void ParticleSystem::mainLoop() {
             kernel,
             cl::NullRange,
             cl::NDRange(NUM_PARTICLES),
-            cl::NDRange(32),
+            cl::NDRange(128),
             NULL,
             &event);
     checkErr(err, "ComamndQueue::enqueueNDRangeKernel()");
@@ -302,9 +302,9 @@ void ParticleSystem::generateNewParticles() {
 
             life = (rand() % 10) - 5.0f;
             size = (rand()%100)/2000.0f + 0.1f;
-            x = rand() % 20 - 10.0f;
-            y = rand() % 10;
-            z = 10.0f;
+            x = rand() % 200 - 100.0f;
+            y = rand() % 100 - 50.0f;
+            z = 30.0f;
 
             particle_position_size_data[(i * 4) + 0] = x;
             particle_position_size_data[(i * 4) + 1] = y;

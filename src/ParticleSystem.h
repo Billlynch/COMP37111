@@ -29,7 +29,7 @@
 
 using namespace glm;
 
-#define NUM_PARTICLES 64000
+#define NUM_PARTICLES 3008000
 
 
 inline void checkErr(cl_int err, const char *name) {
