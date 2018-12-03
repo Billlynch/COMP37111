@@ -139,12 +139,25 @@ void ParticleSystem::mainLoop() {
     cl_int err;
 
 
+    err = queue.enqueueWriteBuffer(
+            kernelSpaceBuffer,
+            CL_TRUE,
+            0,
+            sizeof(bool),
+            spaceHeld);
+    checkErr(err, "ComamndQueue::enqueueReadBuffer()");
+
+
     err = kernel.setArg(0, kernelParticleBuffer);
     checkErr(err, "Kernel::setArg()");
     err = kernel.setArg(1, kernelParticleBufferToOpenGl);
     checkErr(err, "Kernel::setArg()");
     err = kernel.setArg(2, kernelParticleMetaBuffer);
     checkErr(err, "Kernel::setArg()");
+    err = kernel.setArg(3, kernelSpaceBuffer );
+    checkErr(err, "Kernel::setArg()");
+
+
 
 
     err = queue.enqueueNDRangeKernel(
@@ -194,7 +207,7 @@ void ParticleSystem::mainLoop() {
     glfwSwapBuffers(window);
     glfwPollEvents();
 
-    spaceHeld = glfwGetKey(window, GLFW_KEY_SPACE ) == GLFW_PRESS;
+    spaceHeld = new bool(glfwGetKey(window, GLFW_KEY_SPACE ) == GLFW_PRESS);
     glFlush();
 }
 
@@ -319,6 +332,12 @@ void ParticleSystem::generateNewParticles() {
             particlesContainer[i].position.y = y;
             particlesContainer[i].position.z = z;
 
+            long pointToGoTo = rand() % objVectors.size();
+
+            particlesContainer[i].target.x = objVectors[pointToGoTo]->x;;
+            particlesContainer[i].target.y = objVectors[pointToGoTo]->y;;
+            particlesContainer[i].target.z = objVectors[pointToGoTo]->z;;
+
             particlesContainer[i].mass = rand() % 10 + 1.0f;
 
             particle_colour_data[(i * 4) + 0] = static_cast<unsigned char>(rand() % 255);
@@ -375,6 +394,15 @@ void ParticleSystem::setupOpenCl() {
             particleMetaDataBuffer,
             &err);
     checkErr(err, "Buffer::Buffer()");
+
+    kernelSpaceBuffer = cl::Buffer(
+            context,
+            CL_MEM_READ_ONLY| CL_MEM_USE_HOST_PTR,
+            sizeof(bool),
+            spaceHeld,
+            &err);
+    checkErr(err, "Buffer::Buffer()");
+
 
 
     std::vector<cl::Device> devices;

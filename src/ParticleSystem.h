@@ -43,13 +43,13 @@ inline void checkErr(cl_int err, const char *name) {
 class ParticleSystem {
 private:
     GLFWwindow* window;
-    int height = 768;
-    int width = 1024;
+    int height = 768 * 2;
+    int width = 1024 * 2;
     float floorZVal = -7.0f;
     vec3 gravity = vec3(0.0f,0.0f, -9.81f);
     std::vector<vec3*> objVectors;
     particle particlesContainer[NUM_PARTICLES];
-    bool spaceHeld = false;
+    bool *spaceHeld = new bool(false);
     float delta, physicsDelta;
     double lastTime;
     int lastUsedParticle = 0;
@@ -80,7 +80,7 @@ public:
     GLint CameraRight_worldspace_ID, CameraUp_worldspace_ID, ViewProjMatrixID;
     cl::Event event, writeEvent;
     cl::CommandQueue queue, writeQueue;
-    cl::Buffer kernelParticleBuffer, kernelParticleBufferToOpenGl, kernelParticleMetaBuffer;
+    cl::Buffer kernelParticleBuffer, kernelParticleBufferToOpenGl, kernelParticleMetaBuffer, kernelSpaceBuffer;
     cl::Kernel kernel;
 
     float* particle_position_size_data = new float[NUM_PARTICLES * 4];

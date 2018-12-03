@@ -23,7 +23,7 @@ typedef struct tag_particle
 #define GRAVITY -9.81
 #define FLOOR_Z -7.0
 
-__kernel void simulate_particle(__global particle * particleArray, __global float * particleArrayToOpenGL, __global float * metaBuffer)
+__kernel void simulate_particle(__global particle * particleArray, __global float * particleArrayToOpenGL, __global float * metaBuffer, __global bool * spaceBuffer)
 {
     size_t tid = get_global_id(0);
 
@@ -37,9 +37,17 @@ __kernel void simulate_particle(__global particle * particleArray, __global floa
 
     		if (particleArrayToOpenGL[(tid * 4) + 2] <= FLOOR_Z) {
     			particleArrayToOpenGL[(tid * 4) + 2] = FLOOR_Z + 0.1;
-    			acc.z = 5.0;
+    			acc.z = 5.0 * 0.0016;
     		} else {
-    			acc.z = GRAVITY;
+    	    	if (spaceBuffer[0] == true) {
+                    acc.x = (particleArray[tid].target.x - particleArrayToOpenGL[(tid * 4) + 0]) * 0.016;
+                    acc.y = (particleArray[tid].target.y - particleArrayToOpenGL[(tid * 4) + 1]) * 0.016;
+                    acc.z = (particleArray[tid].target.z - particleArrayToOpenGL[(tid * 4) + 2]) * 0.016;
+
+                } else {
+    			    acc.z = GRAVITY * 0.0016;
+                }
+
     		}
 
     		float sx = acc.x * particleArray[tid].mass;
@@ -48,12 +56,16 @@ __kernel void simulate_particle(__global particle * particleArray, __global floa
 
     		particleArrayToOpenGL[(tid * 4) + 0] += sx;
     		particleArrayToOpenGL[(tid * 4) + 1] += sy;
-    		particleArrayToOpenGL[(tid * 4) + 2] += sz * 0.0016;
-    		metaBuffer[tid] -= 0.01;
+    		particleArrayToOpenGL[(tid * 4) + 2] += sz;
+
+
+            if (spaceBuffer[0] == false) {
+    		    metaBuffer[tid] -= 0.01;
+    		}
     } else {
 
 
-           if (metaBuffer[tid] < -5.0) {
+           if (metaBuffer[tid] < -5.0 && spaceBuffer[0] == false) {
                   particleArrayToOpenGL[(tid * 4) + 0] = particleArray[tid].position.x;
                   particleArrayToOpenGL[(tid * 4) + 1] = particleArray[tid].position.y;
                   particleArrayToOpenGL[(tid * 4) + 2] = particleArray[tid].position.z;
