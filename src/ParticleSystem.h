@@ -18,6 +18,8 @@
 #include "common/controls.hpp"
 #include "Analysiser.h"
 #include <algorithm>
+#include <cstdlib>
+#include <ctime>
 
 #ifdef __APPLE__
 #include <OpenCL/opencl.h>
@@ -73,7 +75,9 @@ private:
                                  GLuint particles_color_buffer);
     int setupGLEWandGLFW();
 public:
-    ParticleSystem() {};
+    ParticleSystem() {
+        srand(static_cast<unsigned>(time(0)));
+    };
     ~ParticleSystem() {};
 
     GLuint programID;

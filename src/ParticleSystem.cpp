@@ -311,12 +311,23 @@ void ParticleSystem::generateNewParticles() {
 
     for(int i=0; i < NUM_PARTICLES; i++){
 
-            float life, size, x, y, z;
+            float life, size, x, y, z, randLow, randHigh;
 
-            life = (rand() % 10) - 5.0f;
-            size = (rand()%100)/2000.0f + 0.1f;
-            x = rand() % 200 - 100.0f;
-            y = rand() % 100 - 50.0f;
+            randHigh = 5.0f;
+            randLow = -5.0f;
+            life = randLow + rand() / (RAND_MAX / (randHigh - randLow)); //  (rand() % 10) - 5.0f;
+
+            randHigh = 0.15f;
+            randLow = 0.10f;
+            size = randLow + rand() / (RAND_MAX / (randHigh - randLow)); //(rand()%100)/2000.0f + 0.1f;
+
+            randHigh = 100.0f;
+            randLow =  -100.0f;
+            x = randLow + rand() / (RAND_MAX / (randHigh - randLow));
+
+            randHigh = 50.0f;
+            randLow =  -50.0f;
+            y = randLow + rand() / (RAND_MAX / (randHigh - randLow));
             z = 30.0f;
 
             particle_position_size_data[(i * 4) + 0] = x;
@@ -324,10 +335,14 @@ void ParticleSystem::generateNewParticles() {
             particle_position_size_data[(i * 4) + 2] = z;
             particle_position_size_data[(i * 4) + 3] = size;
 
+
             particleMetaDataBuffer[i] = life;
 
             particlesContainer[i].s = size;
-            particlesContainer[i].life = 10.0f;
+
+            randHigh = 25.0f;
+            randLow = 10.0f;
+            particlesContainer[i].life = randLow + rand() / (RAND_MAX / (randHigh - randLow));
             particlesContainer[i].position.x = x;
             particlesContainer[i].position.y = y;
             particlesContainer[i].position.z = z;
@@ -338,7 +353,9 @@ void ParticleSystem::generateNewParticles() {
             particlesContainer[i].target.y = objVectors[pointToGoTo]->y;;
             particlesContainer[i].target.z = objVectors[pointToGoTo]->z;;
 
-            particlesContainer[i].mass = rand() % 10 + 1.0f;
+            randHigh = 15.0f;
+            randLow = 0.2f;
+            particlesContainer[i].mass = randLow + rand() / (RAND_MAX / (randHigh - randLow));
 
             particle_colour_data[(i * 4) + 0] = static_cast<unsigned char>(rand() % 255);
             particle_colour_data[(i * 4) + 1] = static_cast<unsigned char>(0);
