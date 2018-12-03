@@ -8,16 +8,13 @@ typedef struct tag_vect3
 typedef struct tag_particle
 {
   vect3 position;
-  float s;
+  float size;
   vect3 target;
   double mass;
   vect3 speed;
   float life;
-  int n_bounces;
-  unsigned char r;
-  unsigned char g;
-  unsigned char b;
-  unsigned char a;
+  float randX;
+  float randY;
 } particle;
 
 #define GRAVITY -9.81
@@ -37,6 +34,8 @@ __kernel void simulate_particle(__global particle * particleArray, __global floa
 
     		if (particleArrayToOpenGL[(tid * 4) + 2] <= FLOOR_Z) {
     			particleArrayToOpenGL[(tid * 4) + 2] = FLOOR_Z + 0.1;
+    			acc.x = particleArray[tid].randX * 0.0016;
+    			acc.y = particleArray[tid].randY * 0.0016;
     			acc.z = 5.0 * 0.0016;
     		} else {
     	    	if (spaceBuffer[0] == true) {
@@ -69,7 +68,7 @@ __kernel void simulate_particle(__global particle * particleArray, __global floa
                   particleArrayToOpenGL[(tid * 4) + 0] = particleArray[tid].position.x;
                   particleArrayToOpenGL[(tid * 4) + 1] = particleArray[tid].position.y;
                   particleArrayToOpenGL[(tid * 4) + 2] = particleArray[tid].position.z;
-                  particleArrayToOpenGL[(tid * 4) + 3] = particleArray[tid].s;
+                  particleArrayToOpenGL[(tid * 4) + 3] = particleArray[tid].size;
 
                   metaBuffer[tid] = particleArray[tid].life;
             } else {

@@ -338,7 +338,7 @@ void ParticleSystem::generateNewParticles() {
 
             particleMetaDataBuffer[i] = life;
 
-            particlesContainer[i].s = size;
+            particlesContainer[i].size = size;
 
             randHigh = 25.0f;
             randLow = 10.0f;
@@ -356,6 +356,11 @@ void ParticleSystem::generateNewParticles() {
             randHigh = 15.0f;
             randLow = 0.2f;
             particlesContainer[i].mass = randLow + rand() / (RAND_MAX / (randHigh - randLow));
+
+            randHigh = 5.1f;
+            randLow = -5.1f;
+            particlesContainer[i].randX = randLow + rand() / (RAND_MAX / (randHigh - randLow));
+            particlesContainer[i].randY = randLow + rand() / (RAND_MAX / (randHigh - randLow));
 
             particle_colour_data[(i * 4) + 0] = static_cast<unsigned char>(rand() % 255);
             particle_colour_data[(i * 4) + 1] = static_cast<unsigned char>(0);

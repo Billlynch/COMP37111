@@ -15,16 +15,13 @@ typedef struct tag_vect3
 typedef struct tag_particle
 {
     vect3 position;
-    float s;
+    float size;
     vect3 target;
     double mass;
     vect3 speed;
     float life;
-    int n_bounces;
-    unsigned char r;
-    unsigned char g;
-    unsigned char b;
-    unsigned char a;
+    float randX;
+    float randY;
 } particle;
 
 #endif //GRAPHICS_PARTICLE_H
