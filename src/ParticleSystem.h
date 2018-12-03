@@ -29,7 +29,7 @@
 
 using namespace glm;
 
-#define NUM_PARTICLES 512
+#define NUM_PARTICLES 64000
 
 
 inline void checkErr(cl_int err, const char *name) {
@@ -83,7 +83,7 @@ public:
     cl::Buffer kernelParticleBuffer, kernelParticleBufferToOpenGl, kernelParticleMetaBuffer;
     cl::Kernel kernel;
 
-    float* particle_position_size_data = new float[NUM_PARTICLES * 5];
+    float* particle_position_size_data = new float[NUM_PARTICLES * 4];
     GLubyte* particle_colour_data = new GLubyte[NUM_PARTICLES * 4];
     GLuint particles_color_buffer, VertexArrayID, particles_position_buffer, base_mesh_vertex_buffer;
 

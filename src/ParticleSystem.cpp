@@ -151,7 +151,7 @@ void ParticleSystem::mainLoop() {
             kernel,
             cl::NullRange,
             cl::NDRange(NUM_PARTICLES),
-            cl::NDRange(128),
+            cl::NDRange(32),
             NULL,
             &event);
     checkErr(err, "ComamndQueue::enqueueNDRangeKernel()");
@@ -195,6 +195,7 @@ void ParticleSystem::mainLoop() {
     glfwPollEvents();
 
     spaceHeld = glfwGetKey(window, GLFW_KEY_SPACE ) == GLFW_PRESS;
+    glFlush();
 }
 
 void ParticleSystem::loadDataIntoBuffers() const {
@@ -228,7 +229,7 @@ void ParticleSystem::generateBuffers(GLuint &base_mesh_vertex_buffer, GLuint &pa
     // The VBO containing the positions and sizes of the particles
     glGenBuffers(1, &particles_position_buffer);
     glBindBuffer(GL_ARRAY_BUFFER, particles_position_buffer);
-    glBufferData(GL_ARRAY_BUFFER, NUM_PARTICLES * 4 * sizeof(GLfloat), nullptr, GL_STREAM_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, NUM_PARTICLES * 4 * sizeof(float), nullptr, GL_STREAM_DRAW);
 
     // The VBO containing the colors of the particles
     glGenBuffers(1, &particles_color_buffer);
@@ -295,7 +296,7 @@ void ParticleSystem::setupVertexShaderInputs(GLuint billboard_vertex_buffer, GLu
 
 void ParticleSystem::generateNewParticles() {
 
-    for(int i=0; i< NUM_PARTICLES; i++){
+    for(int i=0; i < NUM_PARTICLES; i++){
 
             float life, size, x, y, z;
 

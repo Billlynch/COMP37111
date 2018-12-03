@@ -38,7 +38,6 @@ __kernel void simulate_particle(__global particle * particleArray, __global floa
     		if (particleArrayToOpenGL[(tid * 4) + 2] <= FLOOR_Z) {
     			particleArrayToOpenGL[(tid * 4) + 2] = FLOOR_Z + 0.1;
     			acc.z = 5.0;
-    			particleArray[tid].n_bounces++;
     		} else {
     			acc.z = GRAVITY;
     		}
@@ -50,10 +49,9 @@ __kernel void simulate_particle(__global particle * particleArray, __global floa
     		particleArrayToOpenGL[(tid * 4) + 0] += sx;
     		particleArrayToOpenGL[(tid * 4) + 1] += sy;
     		particleArrayToOpenGL[(tid * 4) + 2] += sz * 0.0016;
-    		metaBuffer[tid] -= 0.1;
+    		metaBuffer[tid] -= 0.01;
     } else {
 
-            particleArrayToOpenGL[(tid * 4) + 3] = -1.0;
 
            if (metaBuffer[tid] < -5.0) {
                   particleArrayToOpenGL[(tid * 4) + 0] = particleArray[tid].position.x;
@@ -63,7 +61,12 @@ __kernel void simulate_particle(__global particle * particleArray, __global floa
 
                   metaBuffer[tid] = particleArray[tid].life;
             } else {
-                metaBuffer[tid] -= 0.1;
+                particleArrayToOpenGL[(tid * 4) + 0] = -50.0;
+                particleArrayToOpenGL[(tid * 4) + 1] = -50.0;
+                particleArrayToOpenGL[(tid * 4) + 2] = -50.0;
+
+                particleArrayToOpenGL[(tid * 4) + 3] = -1.0f;
+                metaBuffer[tid] -= 0.01;
             }
     }
 
