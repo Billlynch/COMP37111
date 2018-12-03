@@ -4,7 +4,7 @@
 
 #include "file_loader.h"
 
-int file_loader::readObjFile(std::string fileName, std::vector<glm::vec3*> &vectorsOfObj) {
+int file_loader::readObjFile(std::string fileName, std::vector<glm::vec3 *> &vectorsOfObj) {
     std::ifstream infile(fileName);
 
     if (!infile.is_open()) {
@@ -19,7 +19,7 @@ int file_loader::readObjFile(std::string fileName, std::vector<glm::vec3*> &vect
 
         if (id == "v")  // only care about the vectors
         {
-            glm::vec3 *newVector = new glm::vec3(xVal, zVal, yVal);
+            auto *newVector = new glm::vec3(xVal, zVal, yVal);
             vectorsOfObj.push_back(newVector);
         }
     }

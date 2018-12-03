@@ -35,8 +35,8 @@ add_executable(Graphics
         src/ParticleSystem.cpp
         src/ParticleSystem.h
         src/common/Particle.h
-        src/Analysiser.h
-        src/Analysiser.cpp)
+        src/Analyser.h
+        src/Analyser.cpp)
 
 
 set(INCLUDE_DIRS ${INCLUDE_DIRS} ${OPENGL_INCLUDE_DIRS} ${GLEW_INCLUDE_DIRS} ${GLFW_INCLUDE_DIRS} ${GLM_INCLUDE_DIR} ${OpenCL_INCLUDE_DIR})

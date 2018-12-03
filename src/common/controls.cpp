@@ -16,7 +16,7 @@ void getMatrices(mat4 &projectionMatrix, mat4 &viewMatrix, vec3 &cameraPosition,
     projectionMatrix = ProjectionMatrix;
     viewMatrix = ViewMatrix;
     viewProjectionMatrix = ProjectionMatrix * ViewMatrix;
-    cameraPosition = inverse(ViewMatrix)[3];
+    cameraPosition = glm::inverse(ViewMatrix)[3];
 }
 
 
@@ -45,9 +45,11 @@ void computeMatricesFromInputs(GLFWwindow *window) {
         distanceFromCentre++;
     }
 
-    position.x = distanceFromCentre * -sinf(camAngleX * (M_PI/180)) * cosf(camAngleY * (M_PI/180) );
-    position.y = -distanceFromCentre * cosf(camAngleX * (M_PI/180)) * cosf(camAngleY * (M_PI/180) );
-    position.z = distanceFromCentre * -sinf(camAngleY * (M_PI/180));
+    position.x = distanceFromCentre * -sinf(static_cast<float>(camAngleX * (M_PI / 180))) * cosf(
+            static_cast<float>(camAngleY * (M_PI / 180)));
+    position.y = -distanceFromCentre * cosf(static_cast<float>(camAngleX * (M_PI / 180))) * cosf(
+            static_cast<float>(camAngleY * (M_PI / 180)));
+    position.z = distanceFromCentre * -sinf(static_cast<float>(camAngleY * (M_PI / 180)));
 
     glm::vec3 direction = centerOfParticleSystem - position;
 

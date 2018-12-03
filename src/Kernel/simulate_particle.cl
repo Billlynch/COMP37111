@@ -11,7 +11,6 @@ typedef struct tag_particle
   float size;
   vect3 target;
   float mass;
-  vect3 speed;
   float life;
   float randX;
   float randY;

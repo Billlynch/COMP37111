@@ -2,8 +2,8 @@
 // Created by Bill Lynch on 15/10/2018.
 //
 
-#ifndef GRAPHICS_ANALYSISER_H
-#define GRAPHICS_ANALYSISER_H
+#ifndef GRAPHICS_ANALYSER_H
+#define GRAPHICS_ANALYSER_H
 
 #include <string>
 #include <utility>
@@ -11,27 +11,25 @@
 #include <iostream>
 
 
-class Analysiser {
+class Analyser {
 private:
     std::string fileName;
     unsigned long nVertexInOBJ;
     std::ofstream outputFile;
 
 public:
-    Analysiser(std::string fileName, unsigned long numberOfVertex):
-        fileName(std::move(fileName)),
-        nVertexInOBJ(numberOfVertex)
-    {
+    Analyser(std::string fileName, unsigned long numberOfVertex) :
+            fileName(std::move(fileName)),
+            nVertexInOBJ(numberOfVertex) {
         outputFile.open("analysisResult.csv", std::ofstream::out);
 
-        if (outputFile.is_open())
-        {
+        if (outputFile.is_open()) {
             std::cout << "correct" << std::endl;
         }
     };
 
-    ~Analysiser() {
-       outputFile.close();
+    ~Analyser() {
+        outputFile.close();
     }
 
     void addData(float frameDelta, unsigned long n_particles, bool spaceHeld, float physicsDelta);
@@ -39,7 +37,7 @@ public:
 };
 
 
-#endif //GRAPHICS_ANALYSISER_H
+#endif //GRAPHICS_ANALYSER_H
 
 
 /*
