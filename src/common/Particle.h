@@ -7,19 +7,19 @@
 
 typedef struct tag_vect3
 {
-    double x;
-    double y;
-    double z;
+    float x;
+    float y;
+    float z;
 } vect3;
 
 typedef struct tag_particle
 {
     vect3 position;
-    double s;
+    float s;
     vect3 target;
     double mass;
     vect3 speed;
-    double life;
+    float life;
     int n_bounces;
     unsigned char r;
     unsigned char g;

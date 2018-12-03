@@ -22,17 +22,21 @@ void main()
 {
     // because we encoded it this way.
 	float particleSize = xyzs.w;
-	vec3 particleCenter_wordspace = xyzs.xyz;
-	
-	vec3 vertexPosition_worldspace = 
-		particleCenter_wordspace
-		+ CameraRight_worldspace * squareVertices.x * particleSize
-		+ CameraUp_worldspace * squareVertices.y * particleSize;
 
-	// Output position of the vertex
-	// set the 4th dimension to 1 which basically means ignore
-	gl_Position = VP * vec4(vertexPosition_worldspace, 1.0f);
+	if (particleSize != -1) {
+	    vec3 particleCenter_wordspace = xyzs.xyz;
 
-	particlecolor = color;
+    	vec3 vertexPosition_worldspace =
+    		particleCenter_wordspace
+    		+ CameraRight_worldspace * squareVertices.x * particleSize
+    		+ CameraUp_worldspace * squareVertices.y * particleSize;
+
+    	// Output position of the vertex
+    	// set the 4th dimension to 1 which basically means ignore
+    	gl_Position = VP * vec4(vertexPosition_worldspace, 1.0f);
+
+    	particlecolor = color;
+	}
+
 }
 

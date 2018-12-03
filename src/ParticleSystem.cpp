@@ -13,11 +13,12 @@ void ParticleSystem::runParticleSystem(std::string &fileName) {
 
     ParticleSystem::setupGLEWandGLFW();
 
+    generateNewParticles();
+
     setupOpenCl();
 
     lastTime = glfwGetTime();
 
-    generateNewParticles();
 
     do {
         ParticleSystem::mainLoop();
@@ -145,23 +146,11 @@ void ParticleSystem::mainLoop() {
     err = kernel.setArg(2, kernelParticleMetaBuffer);
     checkErr(err, "Kernel::setArg()");
 
-    err = queue.enqueueWriteBuffer(
-            kernelParticleBufferToOpenGl,
-            CL_TRUE,
-            0,
-            sizeof(float) * MaxParticles * 4,
-            particle_position_size_data,
-            NULL,
-            &writeEvent);
-    checkErr(err, "ComamndQueue::enqueueReadBuffer()");
-
-    writeEvent.wait();
-
 
     err = queue.enqueueNDRangeKernel(
             kernel,
             cl::NullRange,
-            cl::NDRange(MaxParticles),
+            cl::NDRange(NUM_PARTICLES),
             cl::NDRange(128),
             NULL,
             &event);
@@ -171,7 +160,7 @@ void ParticleSystem::mainLoop() {
             kernelParticleBufferToOpenGl,
             CL_TRUE,
             0,
-            sizeof(float) * MaxParticles * 4,
+            sizeof(float) * NUM_PARTICLES * 4,
             particle_position_size_data);
     checkErr(err, "ComamndQueue::enqueueReadBuffer()");
 
@@ -196,7 +185,7 @@ void ParticleSystem::mainLoop() {
 
     setupVertexShaderInputs(base_mesh_vertex_buffer, particles_position_buffer, particles_color_buffer);
 
-    glDrawArraysInstanced(GL_TRIANGLE_STRIP, 0, 4, MaxParticles);
+    glDrawArraysInstanced(GL_TRIANGLE_STRIP, 0, 4, NUM_PARTICLES);
     glDisableVertexAttribArray(0);
     glDisableVertexAttribArray(1);
     glDisableVertexAttribArray(2);
@@ -210,12 +199,12 @@ void ParticleSystem::mainLoop() {
 
 void ParticleSystem::loadDataIntoBuffers() const {
     glBindBuffer(GL_ARRAY_BUFFER, particles_position_buffer);
-    glBufferData(GL_ARRAY_BUFFER, MaxParticles * 4 * sizeof(float), nullptr, GL_STREAM_DRAW);
-    glBufferSubData(GL_ARRAY_BUFFER, 0, MaxParticles * sizeof(float) * 4, particle_position_size_data);
+    glBufferData(GL_ARRAY_BUFFER, NUM_PARTICLES * 4 * sizeof(float), nullptr, GL_STREAM_DRAW);
+    glBufferSubData(GL_ARRAY_BUFFER, 0, NUM_PARTICLES * sizeof(float) * 4, particle_position_size_data);
 
     glBindBuffer(GL_ARRAY_BUFFER, particles_color_buffer);
-    glBufferData(GL_ARRAY_BUFFER, MaxParticles * 4 * sizeof(GLubyte), nullptr, GL_STREAM_DRAW);
-    glBufferSubData(GL_ARRAY_BUFFER, 0, MaxParticles * sizeof(GLubyte) * 4, particle_colour_data);
+    glBufferData(GL_ARRAY_BUFFER, NUM_PARTICLES * 4 * sizeof(GLubyte), nullptr, GL_STREAM_DRAW);
+    glBufferSubData(GL_ARRAY_BUFFER, 0, NUM_PARTICLES * sizeof(GLubyte) * 4, particle_colour_data);
 }
 
 void ParticleSystem::calculateDelta() {
@@ -239,12 +228,12 @@ void ParticleSystem::generateBuffers(GLuint &base_mesh_vertex_buffer, GLuint &pa
     // The VBO containing the positions and sizes of the particles
     glGenBuffers(1, &particles_position_buffer);
     glBindBuffer(GL_ARRAY_BUFFER, particles_position_buffer);
-    glBufferData(GL_ARRAY_BUFFER, MaxParticles * 4 * sizeof(GLfloat), nullptr, GL_STREAM_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, NUM_PARTICLES * 4 * sizeof(GLfloat), nullptr, GL_STREAM_DRAW);
 
     // The VBO containing the colors of the particles
     glGenBuffers(1, &particles_color_buffer);
     glBindBuffer(GL_ARRAY_BUFFER, particles_color_buffer);
-    glBufferData(GL_ARRAY_BUFFER, MaxParticles * 4 * sizeof(GLubyte), nullptr, GL_STREAM_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, NUM_PARTICLES * 4 * sizeof(GLubyte), nullptr, GL_STREAM_DRAW);
 }
 
 //int ParticleSystem::simulateParticles(GLfloat *g_particule_position_size_data, GLubyte *g_particule_color_data,
@@ -303,58 +292,40 @@ void ParticleSystem::setupVertexShaderInputs(GLuint billboard_vertex_buffer, GLu
 }
 
 
-#define NEW_PARTICLES 8990720
 
 void ParticleSystem::generateNewParticles() {
-    int newparticles = (int)(delta*1000.0);
 
-//    if (newparticles > (int)(0.016f*100.0)) // limit to 100 if running at a low fps
-//    {
-        newparticles = NEW_PARTICLES;
-//    }
+    for(int i=0; i< NUM_PARTICLES; i++){
 
-    for(int i=0; i<newparticles; i++){
+            float life, size, x, y, z;
 
-            particle_position_size_data[(lastUsedParticle * 4) + 0] = rand() % 20 - 10.0f;
-            particle_position_size_data[(lastUsedParticle * 4) + 1] = rand() % 10;
-            particle_position_size_data[(lastUsedParticle * 4) + 2] = 10.0f;
-            particle_position_size_data[(lastUsedParticle * 4) + 3] = (rand()%100)/2000.0f + 0.1f;
+            life = (rand() % 10) - 5.0f;
+            size = (rand()%100)/2000.0f + 0.1f;
+            x = rand() % 20 - 10.0f;
+            y = rand() % 10;
+            z = 10.0f;
 
-            particlesContainer[lastUsedParticle].speed.x = 0;
-            particlesContainer[lastUsedParticle].speed.y = 0;
-            particlesContainer[lastUsedParticle].speed.z = 0;
+            particle_position_size_data[(i * 4) + 0] = x;
+            particle_position_size_data[(i * 4) + 1] = y;
+            particle_position_size_data[(i * 4) + 2] = z;
+            particle_position_size_data[(i * 4) + 3] = size;
 
+            particleMetaDataBuffer[i] = life;
 
-            particlesContainer[lastUsedParticle].life = 10.0f;
-            particlesContainer[lastUsedParticle].mass = rand() % 10 + 1.0f;
+            particlesContainer[i].s = size;
+            particlesContainer[i].life = 10.0f;
+            particlesContainer[i].position.x = x;
+            particlesContainer[i].position.y = y;
+            particlesContainer[i].position.z = z;
 
-            particle_colour_data[(lastUsedParticle * 4) + 0] = static_cast<unsigned char>(rand() % 255);
-            particle_colour_data[(lastUsedParticle * 4) + 1] = static_cast<unsigned char>(0);
-            particle_colour_data[(lastUsedParticle * 4) + 2] = static_cast<unsigned char>(255);
-            particle_colour_data[(lastUsedParticle * 4) + 3] = static_cast<unsigned char>(255);
+            particlesContainer[i].mass = rand() % 10 + 1.0f;
 
-        lastUsedParticle++;
-
+            particle_colour_data[(i * 4) + 0] = static_cast<unsigned char>(rand() % 255);
+            particle_colour_data[(i * 4) + 1] = static_cast<unsigned char>(0);
+            particle_colour_data[(i * 4) + 2] = static_cast<unsigned char>(255);
+            particle_colour_data[(i * 4) + 3] = static_cast<unsigned char>(255);
     }
 
-}
-
-int ParticleSystem::FindUnusedParticle() {
-    for(int i=lastUsedParticle; i<MaxParticles; i++){
-        if (particlesContainer[i].life <= 0){
-            lastUsedParticle = i;
-            return i;
-        }
-    }
-
-    for(int i=0; i<lastUsedParticle; i++){
-        if (particlesContainer[i].life <= 0){
-            lastUsedParticle = i;
-            return i;
-        }
-    }
-
-    return -1;
 }
 
 void ParticleSystem::setupOpenCl() {
@@ -382,7 +353,7 @@ void ParticleSystem::setupOpenCl() {
     kernelParticleBuffer = cl::Buffer (
             context,
             CL_MEM_READ_ONLY| CL_MEM_USE_HOST_PTR,
-            sizeof(particle) * MaxParticles,
+            sizeof(particle) * NUM_PARTICLES,
             particlesContainer,
             &err);
     checkErr(err, "Buffer::Buffer()");
@@ -391,15 +362,15 @@ void ParticleSystem::setupOpenCl() {
     kernelParticleBufferToOpenGl = cl::Buffer (
             context,
             CL_MEM_READ_WRITE| CL_MEM_USE_HOST_PTR,
-            sizeof(float) * MaxParticles * 4,
+            sizeof(float) * NUM_PARTICLES * 4,
             particle_position_size_data,
             &err);
     checkErr(err, "Buffer::Buffer()");
 
     kernelParticleMetaBuffer = cl::Buffer (
             context,
-            CL_MEM_READ_ONLY| CL_MEM_USE_HOST_PTR,
-            sizeof(float) * 2,
+            CL_MEM_READ_WRITE| CL_MEM_USE_HOST_PTR,
+            sizeof(float) * NUM_PARTICLES,
             particleMetaDataBuffer,
             &err);
     checkErr(err, "Buffer::Buffer()");

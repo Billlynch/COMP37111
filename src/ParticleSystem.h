@@ -29,7 +29,8 @@
 
 using namespace glm;
 
-const int MaxParticles = 8990720;
+#define NUM_PARTICLES 512
+
 
 inline void checkErr(cl_int err, const char *name) {
     if (err != CL_SUCCESS) {
@@ -47,7 +48,7 @@ private:
     float floorZVal = -7.0f;
     vec3 gravity = vec3(0.0f,0.0f, -9.81f);
     std::vector<vec3*> objVectors;
-    particle particlesContainer[MaxParticles];
+    particle particlesContainer[NUM_PARTICLES];
     bool spaceHeld = false;
     float delta, physicsDelta;
     double lastTime;
@@ -56,7 +57,7 @@ private:
     vec3 CameraPosition;
     Analysiser *analysiser;
     int nParticlesToRender;
-    float *particleMetaDataBuffer[2];
+    float particleMetaDataBuffer[NUM_PARTICLES];
 
 
     void mainLoop();
@@ -82,8 +83,8 @@ public:
     cl::Buffer kernelParticleBuffer, kernelParticleBufferToOpenGl, kernelParticleMetaBuffer;
     cl::Kernel kernel;
 
-    float* particle_position_size_data = new float[MaxParticles * 4];
-    GLubyte* particle_colour_data = new GLubyte[MaxParticles * 4];
+    float* particle_position_size_data = new float[NUM_PARTICLES * 5];
+    GLubyte* particle_colour_data = new GLubyte[NUM_PARTICLES * 4];
     GLuint particles_color_buffer, VertexArrayID, particles_position_buffer, base_mesh_vertex_buffer;
 
     void runParticleSystem(std::string &fileName);

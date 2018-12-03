@@ -1,18 +1,18 @@
 typedef struct tag_vect3
 {
-  double x;
-  double y;
-  double z;
+  float x;
+  float y;
+  float z;
 } vect3;
 
 typedef struct tag_particle
 {
   vect3 position;
-  double s;
+  float s;
   vect3 target;
   double mass;
   vect3 speed;
-  double life;
+  float life;
   int n_bounces;
   unsigned char r;
   unsigned char g;
@@ -28,7 +28,7 @@ __kernel void simulate_particle(__global particle * particleArray, __global floa
     size_t tid = get_global_id(0);
 
 
-    if (particleArray[tid].life > 0.0) {
+    if (metaBuffer[tid] > 0.0) {
     		vect3 acc;
     		acc.x = 0.0;
     		acc.y = 0.0;
@@ -50,6 +50,21 @@ __kernel void simulate_particle(__global particle * particleArray, __global floa
     		particleArrayToOpenGL[(tid * 4) + 0] += sx;
     		particleArrayToOpenGL[(tid * 4) + 1] += sy;
     		particleArrayToOpenGL[(tid * 4) + 2] += sz * 0.0016;
+    		metaBuffer[tid] -= 0.1;
+    } else {
+
+            particleArrayToOpenGL[(tid * 4) + 3] = -1.0;
+
+           if (metaBuffer[tid] < -5.0) {
+                  particleArrayToOpenGL[(tid * 4) + 0] = particleArray[tid].position.x;
+                  particleArrayToOpenGL[(tid * 4) + 1] = particleArray[tid].position.y;
+                  particleArrayToOpenGL[(tid * 4) + 2] = particleArray[tid].position.z;
+                  particleArrayToOpenGL[(tid * 4) + 3] = particleArray[tid].s;
+
+                  metaBuffer[tid] = particleArray[tid].life;
+            } else {
+                metaBuffer[tid] -= 0.1;
+            }
     }
 
 
