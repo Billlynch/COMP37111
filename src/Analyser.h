@@ -32,7 +32,8 @@ public:
         outputFile.close();
     }
 
-    void addData(float frameDelta, unsigned long n_particles, bool spaceHeld, float physicsDelta);
+    void addData(unsigned long frameCount, double frameDelta, double physicsDelta, double openGLPushDelta,
+                 double drawCallDelta, bool *spaceHeld);
 
 };
 
@@ -42,11 +43,10 @@ public:
 
 /*
  * FILE LAYOUT
- *
- * 'ID <number> <number>'
- *
- * where ID is in:
- *  FR (frame rate)
- *      1st number is the number of particles
+ *      1st number is the frame number
  *      2nd number is the frame delta
+ *      3rd number is the physics delta
+ *      4th number is the push data to openGL delta
+ *      5th number is the draw call delta delta
+ *      5th bool is tis space was held
  */

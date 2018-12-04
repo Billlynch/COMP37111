@@ -4,6 +4,9 @@
 
 #include "Analyser.h"
 
-void Analyser::addData(float frameDelta, unsigned long n_particles, bool spaceHeld, float physicsDelta) {
-    outputFile << n_particles << "," << frameDelta << "," << spaceHeld << "," << physicsDelta << std::endl;
+void Analyser::addData(unsigned long frameCount, double frameDelta, double physicsDelta, double openGLPushDelta,
+                       double drawCallDelta, bool *spaceHeld) {
+    outputFile << frameCount << "," << frameDelta << "," << physicsDelta << "," << openGLPushDelta << ","
+               << drawCallDelta << "," << (*spaceHeld ? "true" : "false")
+               << std::endl;
 }

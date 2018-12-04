@@ -53,8 +53,9 @@ private:
     std::vector<vec3 *> objVectors;
     particle particlesContainer[NUM_PARTICLES]{};
     bool *spaceHeld = new bool(false);
-    float delta{}, physicsDelta{};
+    double frameInitTime{}, prePhysicsTime{}, postPhysicsTime{}, postLoadIntoOpenGLBuffersTime{}, postDrawCallTime{}, delta{};
     double lastTime{};
+    unsigned long frameCount = 0;
     mat4 ProjectionMatrix, ViewMatrix, ViewProjectionMatrix;
     vec3 CameraPosition;
     Analyser *analyser{};
@@ -109,7 +110,7 @@ public:
 
     void setupShaders();
 
-    void calculateDelta();
+    void calculateFrameDelta();
 
     void loadDataIntoBuffers() const;
 

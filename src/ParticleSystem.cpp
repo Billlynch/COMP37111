@@ -123,25 +123,24 @@ void ParticleSystem::setupBuffers() {
 
 void ParticleSystem::mainLoop() {
 
+    calculateFrameDelta();  // frame init time
+    frameCount++;
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-    calculateDelta();
-//    analyser->addData(delta, nParticlesToRender, spaceHeld, physicsDelta);
 
     computeMatricesFromInputs(window);
     getMatrices(ProjectionMatrix, ViewMatrix, CameraPosition, ViewProjectionMatrix);
 
+    prePhysicsTime = glfwGetTime();
 
     simParticlesOpenCL();
-
     //simParticles();
 
-
-
-    //int particlesCount = simulateParticles(particle_position_size_data, particle_colour_data, delta, CameraPosition);
-
+    postPhysicsTime = glfwGetTime();
 
     loadDataIntoBuffers();
+
+    postLoadIntoOpenGLBuffersTime = glfwGetTime();
+
 
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -160,12 +159,17 @@ void ParticleSystem::mainLoop() {
     glDisableVertexAttribArray(1);
     glDisableVertexAttribArray(2);
 
+    postDrawCallTime = glfwGetTime();
+
+
     // Swap buffers
     glfwSwapBuffers(window);
     glfwPollEvents();
 
     spaceHeld = new bool(glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS);
     glFlush();
+
+    analyser->addData(frameCount, delta, postPhysicsTime - prePhysicsTime,postLoadIntoOpenGLBuffersTime - postPhysicsTime, postDrawCallTime - postLoadIntoOpenGLBuffersTime, spaceHeld);
 }
 
 void ParticleSystem::loadDataIntoBuffers() const {
@@ -178,10 +182,10 @@ void ParticleSystem::loadDataIntoBuffers() const {
     glBufferSubData(GL_ARRAY_BUFFER, 0, NUM_PARTICLES * sizeof(GLubyte) * 4, particle_colour_data);
 }
 
-void ParticleSystem::calculateDelta() {
-    double currentTime = glfwGetTime();
-    delta = static_cast<float>(currentTime - lastTime);
-    lastTime = currentTime;
+void ParticleSystem::calculateFrameDelta() {
+    frameInitTime = glfwGetTime();
+    delta = static_cast<float>(frameInitTime - lastTime);
+    lastTime = frameInitTime;
 }
 
 void ParticleSystem::generateBuffers(GLuint &base_mesh_vertex_buffer, GLuint &particles_position_buffer,
