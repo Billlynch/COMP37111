@@ -15,10 +15,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdaff1bf-a899-4137-8637-3e4738bd26e3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Analyser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Analyser.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/graphing/graph.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Graphics.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Graphics.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Analyser.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Analyser.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ParticleSystem.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/ParticleSystem.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ParticleSystem.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/ParticleSystem.h" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,43 +27,40 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/ParticleSystem.cpp">
+            <entry file="file://$PROJECT_DIR$/cmake-build-debug/analysisResult.csv">
+              <provider selected="true" editor-type-id="csv-text-editor">
+                <state relative-caret-position="241">
+                  <caret line="5720" column="52" lean-forward="true" selection-start-line="5720" selection-start-column="52" selection-end-line="5720" selection-end-column="52" />
+                </state>
+              </provider>
+              <provider editor-type-id="csv-table-editor">
+                <state showInfoPanel="true" rowLines="3" />
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/graphing/graph.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="571">
-                  <caret line="171" column="171" selection-start-line="171" selection-start-column="171" selection-end-line="171" selection-end-column="171" />
+                <state relative-caret-position="724">
+                  <caret line="80" selection-start-line="80" selection-end-line="80" />
                   <folding>
-                    <element signature="e#750#1161#0" />
-                    <element signature="e#1333#2999#0" />
-                    <element signature="e#3001#3449#0" />
+                    <element signature="e#0#18#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/Analyser.cpp">
+            <entry file="file://$USER_HOME$/.CLion2018.3/system/python_stubs/1386624592/builtins.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="165">
-                  <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+                <state relative-caret-position="307">
+                  <caret line="4839" column="8" selection-start-line="4839" selection-start-column="8" selection-end-line="4839" selection-end-column="8" />
                 </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/cmake-build-debug/analysisResult.csv">
-              <provider selected="true" editor-type-id="csv-text-editor">
-                <state relative-caret-position="-524">
-                  <caret line="18" column="46" lean-forward="true" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
-                </state>
-              </provider>
-              <provider editor-type-id="csv-table-editor">
-                <state showInfoPanel="true" rowLines="3" />
               </provider>
             </entry>
           </file>
@@ -76,27 +73,15 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/ParticleSystem.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="645">
-                  <caret line="55" column="124" selection-start-line="55" selection-start-column="124" selection-end-line="55" selection-end-column="124" />
-                  <folding>
-                    <element signature="e#148#168#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
         </leaf>
       </split-first>
       <split-second>
         <leaf>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/ParticleSystem.cpp">
+            <entry file="file://$PROJECT_DIR$/src/Analyser.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-1830">
-                  <caret line="25" column="21" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
+                <state relative-caret-position="705">
+                  <caret line="50" column="22" selection-start-line="50" selection-start-column="22" selection-end-line="50" selection-end-column="22" />
                 </state>
               </provider>
             </entry>
@@ -114,7 +99,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>setupVertexShaderInputs</find>
       <find>generateBuffers</find>
       <find>FindUnusedParticle</find>
       <find>sort</find>
@@ -144,7 +128,11 @@
       <find>-1</find>
       <find>speed_multiplier</find>
       <find>programID</find>
+      <find>sum</find>
     </findStrings>
+    <replaceStrings>
+      <replace>mean</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -183,17 +171,18 @@
         <option value="$PROJECT_DIR$/src/main.cpp" />
         <option value="$PROJECT_DIR$/src/ParticleSystem.h" />
         <option value="$PROJECT_DIR$/src/ParticleSystem.cpp" />
-        <option value="$PROJECT_DIR$/src/Analyser.h" />
         <option value="$PROJECT_DIR$/src/Analyser.cpp" />
+        <option value="$PROJECT_DIR$/src/graphing/grapth.py" />
+        <option value="$PROJECT_DIR$/src/graphing/graph.py" />
+        <option value="$PROJECT_DIR$/src/Analyser.h" />
       </list>
     </option>
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="662" />
-    <option name="y" value="129" />
-    <option name="width" value="1865" />
-    <option name="height" value="1175" />
+    <option name="y" value="26" />
+    <option name="width" value="1280" />
+    <option name="height" value="1390" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -221,24 +210,6 @@
               <item name="COMP37111" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Graphics" type="b2602c69:ProjectViewProjectNode" />
-              <item name="COMP37111" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Graphics" type="b2602c69:ProjectViewProjectNode" />
-              <item name="COMP37111" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Kernel" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Graphics" type="b2602c69:ProjectViewProjectNode" />
-              <item name="COMP37111" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="shaders" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -247,11 +218,12 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/graphing/graph.py" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="dynamic.analysis.tools.valgrind" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -275,7 +247,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Graphics">
+  <component name="RunManager" selected="Python.make_graphs">
     <configuration name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" EXPLICIT_BUILD_TARGET_NAME="all">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -291,10 +263,32 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="make_graphs" type="PythonConfigurationType" factoryName="Python">
+      <module name="Graphics" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/graphing" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/graphing/graph.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Application.Build All" />
       <item itemvalue="Application.Graphics" />
       <item itemvalue="Application.Graphics-Monkey" />
+      <item itemvalue="Python.make_graphs" />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -316,25 +310,26 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94490000" />
+    <option name="totallyTimeSpent" value="98634000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-5" y="26" width="2570" height="1395" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.10717131" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10717131" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Inspection Results" sideWeight="0.49840638" weight="0.32962668" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49840638" weight="0.32883242" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.3752988" visible="true" weight="0.24146147" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4864542" weight="0.39952344" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.3749004" visible="true" weight="0.24146147" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4860558" weight="0.39952344" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.30738682" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.6247012" side_tool="true" visible="true" weight="0.24146147" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.6250996" side_tool="true" visible="true" weight="0.24146147" />
       <window_info anchor="bottom" id="Version Control" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="CMake" order="11" sideWeight="0.47768924" weight="0.32831088" />
       <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.36653388" weight="0.2652899" />
@@ -627,11 +622,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="571">
           <caret line="171" column="171" selection-start-line="171" selection-start-column="171" selection-end-line="171" selection-end-column="171" />
-          <folding>
-            <element signature="e#750#1161#0" />
-            <element signature="e#1333#2999#0" />
-            <element signature="e#3001#3449#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -642,10 +632,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Analyser.h">
+    <entry file="file://$PROJECT_DIR$/src/graphing/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/.CLion2018.3/system/python_stubs/1386624592/builtins.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+        <state relative-caret-position="307">
+          <caret line="4839" column="8" selection-start-line="4839" selection-start-column="8" selection-end-line="4839" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -657,8 +650,25 @@
         <state showInfoPanel="true" rowLines="3" />
       </provider>
       <provider selected="true" editor-type-id="csv-text-editor">
-        <state relative-caret-position="-524">
-          <caret line="18" column="46" lean-forward="true" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
+        <state relative-caret-position="241">
+          <caret line="5720" column="52" lean-forward="true" selection-start-line="5720" selection-start-column="52" selection-end-line="5720" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/graphing/graph.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="724">
+          <caret line="80" selection-start-line="80" selection-end-line="80" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Analyser.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="705">
+          <caret line="50" column="22" selection-start-line="50" selection-start-column="22" selection-end-line="50" selection-end-column="22" />
         </state>
       </provider>
     </entry>

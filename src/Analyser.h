@@ -48,5 +48,5 @@ public:
  *      3rd number is the physics delta
  *      4th number is the push data to openGL delta
  *      5th number is the draw call delta delta
- *      5th bool is tis space was held
+ *      5th bool is is space was held
  */
