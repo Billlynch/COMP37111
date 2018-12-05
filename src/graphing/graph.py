@@ -1,5 +1,7 @@
 import numpy as np
-import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use('TkAgg')
+from matplotlib import pyplot as plt
 import csv
 
 frameDeltas = []
@@ -11,7 +13,7 @@ particleCounts = []
 rowCount = 5120
 fifth = 1024
 
-with open('analysisResultGravityAndBounceOpenCL.csv', newline='\n') as csvfile:
+with open('analysisResultGravityAndBouncesCPUMac.csv', newline='\n') as csvfile:
     analysisResultsReader = csv.reader(csvfile, delimiter=',')
     for row in analysisResultsReader:
         frameDeltas.append(row[1])
@@ -83,7 +85,6 @@ pdrawCallDelta = plt.bar(ind + width, drawCallDeltasAverages, width, bottom=y_of
 plt.ylabel('time in ms')
 plt.title('deltas for bottle necks')
 plt.xticks(ind + (width/2), ('0-1024', '1024-2048', '2048-3072', '3072-4096', '4096-5120'))
-plt.yticks(np.arange(0, 0.03, 0.001))
 plt.legend((pFrameDelta[0], pPhysicsDelta[0], pOpenGlDelta[0], pdrawCallDelta[0]), ('overall frame delta', 'physics delta', 'OpenGL buffer loading delta', 'draw call delta'))
 
 plt.show()

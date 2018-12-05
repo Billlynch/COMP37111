@@ -20,28 +20,25 @@
 #include <algorithm>
 #include <cstdlib>
 
-#ifdef __APPLE__
-#include <OpenCL/opencl.h>
-#else
-
+#ifndef __APPLE__
 #include <CL/cl.hpp>
-
 #endif
 
 
 using namespace glm;
 
-#define NUM_PARTICLES 3008000
+#define NUM_PARTICLES 10240// 3008000
 #define GRAVITY -9.81
 #define FLOOR_Z -7.0
 
-
+#ifndef __APPLE__
 inline void checkErr(cl_int err, const char *name) {
     if (err != CL_SUCCESS) {
         std::cerr << "Error: " << name << ": " << err << std::endl;
         exit(EXIT_FAILURE);
     }
 }
+#endif
 
 
 class ParticleSystem {
@@ -60,10 +57,12 @@ private:
     Analyser *analyser{};
     float particleMetaDataBuffer[NUM_PARTICLES]{};
     GLint CameraRight_worldspace_ID{}, CameraUp_worldspace_ID{}, ViewProjMatrixID{};
+#ifndef __APPLE__
     cl::Event event, writeEvent;
     cl::CommandQueue queue, writeQueue;
     cl::Buffer kernelParticleBuffer, kernelParticleBufferToOpenGl, kernelParticleMetaBuffer, kernelSpaceBuffer;
     cl::Kernel kernel;
+#endif
     float *particle_position_size_data = new float[NUM_PARTICLES * 4];
     GLubyte *particle_colour_data = new GLubyte[NUM_PARTICLES * 4];
     GLuint particles_color_buffer{}, VertexArrayID{}, particles_position_buffer{}, base_mesh_vertex_buffer{};
@@ -77,7 +76,9 @@ private:
 
     void simParticles();
 
+#ifndef __APPLE__
     void simParticlesOpenCL();
+#endif
 
     void generateNewParticles();
 
@@ -113,7 +114,9 @@ public:
 
     void loadDataIntoBuffers() const;
 
+#ifndef __APPLE__
     void setupOpenCl();
+#endif
 };
 
 

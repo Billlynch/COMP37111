@@ -14,7 +14,9 @@ void ParticleSystem::runParticleSystem(std::string &fileName) {
 
     generateNewParticles();
 
-    //setupOpenCl();
+#ifndef __APPLE__
+    setupOpenCl();
+#endif
 
     lastTime = glfwGetTime();
 
@@ -105,8 +107,9 @@ int ParticleSystem::setupGLEWandGLFW() {
 }
 
 void ParticleSystem::setupShaders() {
-    programID = LoadShaders("/home/bill/Documents/git/COMP37111/src/shaders/vertex_shader.glsl",
-                            "/home/bill/Documents/git/COMP37111/src/shaders/fragment_shader.glsl");
+    programID = LoadShaders("./src/shaders/vertex_shader.glsl",
+                            "./src/shaders/fragment_shader.glsl");
+
     CameraRight_worldspace_ID = glGetUniformLocation(programID, "CameraRight_worldspace");
     CameraUp_worldspace_ID = glGetUniformLocation(programID, "CameraUp_worldspace");
     ViewProjMatrixID = glGetUniformLocation(programID, "VP");
@@ -295,7 +298,7 @@ void ParticleSystem::generateNewParticles() {
     }
 
 }
-
+#ifndef __APPLE__
 void ParticleSystem::setupOpenCl() {
 
     cl_int err;
@@ -380,6 +383,7 @@ void ParticleSystem::setupOpenCl() {
     checkErr(err, "CommandQueue::CommandQueue()");
 
 }
+#endif
 
 void ParticleSystem::simParticles() {
 
@@ -442,7 +446,7 @@ void ParticleSystem::simParticles() {
     }
 
 }
-
+#ifndef __APPLE__
 void ParticleSystem::simParticlesOpenCL() {
     cl_int err;
 
@@ -485,3 +489,4 @@ void ParticleSystem::simParticlesOpenCL() {
 
     event.wait();
 }
+#endif

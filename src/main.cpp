@@ -3,7 +3,7 @@
 
 
 int main(int argc, char *argv[]) {
-    std::string file = "/home/bill/Documents/git/COMP37111/src/Models/teapot.obj";
+    std::string file = "./src/Models/teapot.obj";
 
     auto *ps = new ParticleSystem();
     ps->runParticleSystem(file);

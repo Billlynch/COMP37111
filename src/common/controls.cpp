@@ -1,3 +1,4 @@
+#define GLM_ENABLE_EXPERIMENTAL
 
 #include "controls.hpp"
 #include <glm/glm.hpp>
@@ -37,11 +38,11 @@ void computeMatricesFromInputs(GLFWwindow *window) {
         camAngleY--;
     }
 
-    if (glfwGetKey(window, GLFW_KEY_KP_ADD) == GLFW_PRESS) {
+    if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) {
         distanceFromCentre--;
     }
 
-    if (glfwGetKey(window, GLFW_KEY_KP_SUBTRACT) == GLFW_PRESS) {
+    if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) {
         distanceFromCentre++;
     }
 
