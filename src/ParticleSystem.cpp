@@ -14,7 +14,7 @@ void ParticleSystem::runParticleSystem(std::string &fileName) {
 
     generateNewParticles();
 
-    setupOpenCl();
+    //setupOpenCl();
 
     lastTime = glfwGetTime();
 
@@ -64,14 +64,12 @@ int ParticleSystem::setupGLEWandGLFW() {
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // To make MacOS happy; should not be needed
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // To make MacOS happy
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     // Open a window and create its OpenGL context
     window = glfwCreateWindow(width, height, "Graphics", nullptr, nullptr);
     if (window == nullptr) {
-        fprintf(stderr,
-                "Failed to open GLFW window. If you have an Intel GPU, they are not 3.3 compatible. Try the 2.1 version of the tutorials.\n");
         getchar();
         glfwTerminate();
         return -1;
@@ -132,8 +130,8 @@ void ParticleSystem::mainLoop() {
 
     prePhysicsTime = glfwGetTime();
 
-    simParticlesOpenCL();
-    //simParticles();
+    //simParticlesOpenCL();
+    simParticles();
 
     postPhysicsTime = glfwGetTime();
 
@@ -425,7 +423,7 @@ void ParticleSystem::simParticles() {
         } else {
 
 
-            if (particlesContainer[i].life < -5.0 && !*spaceHeld) {
+            if (particlesContainer[i].life < -1.0 && !*spaceHeld) {
                 particle_position_size_data[(i * 4) + 0] = particlesContainer[i].position.x;
                 particle_position_size_data[(i * 4) + 1] = particlesContainer[i].position.y;
                 particle_position_size_data[(i * 4) + 2] = particlesContainer[i].position.z;

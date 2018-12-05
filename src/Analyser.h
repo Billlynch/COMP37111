@@ -24,7 +24,7 @@ public:
         outputFile.open("analysisResult.csv", std::ofstream::out);
 
         if (outputFile.is_open()) {
-            std::cout << "correct" << std::endl;
+            std::cout << "analyser on" << std::endl;
         }
     };
 

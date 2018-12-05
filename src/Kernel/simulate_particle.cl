@@ -63,7 +63,7 @@ __kernel void simulate_particle(__global particle * particleArray, __global floa
     } else {
 
 
-           if (metaBuffer[tid] < -5.0 && spaceBuffer[0] == false) {
+           if (metaBuffer[tid] < -1.0 && spaceBuffer[0] == false) {
                   particleArrayToOpenGL[(tid * 4) + 0] = particleArray[tid].position.x;
                   particleArrayToOpenGL[(tid * 4) + 1] = particleArray[tid].position.y;
                   particleArrayToOpenGL[(tid * 4) + 2] = particleArray[tid].position.z;

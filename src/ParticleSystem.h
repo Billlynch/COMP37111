@@ -19,7 +19,6 @@
 #include "Analyser.h"
 #include <algorithm>
 #include <cstdlib>
-#include <ctime>
 
 #ifdef __APPLE__
 #include <OpenCL/opencl.h>
@@ -92,7 +91,7 @@ public:
     GLuint programID{};
 
     ParticleSystem() {
-        srand(static_cast<unsigned>(time(0)));
+        srand(2587837);
     };
 
     ~ParticleSystem() = default;
