@@ -133,8 +133,8 @@ void ParticleSystem::mainLoop() {
 
     prePhysicsTime = glfwGetTime();
 
-    //simParticlesOpenCL();
-    simParticles();
+    simParticlesOpenCL();
+    //simParticles();
 
     postPhysicsTime = glfwGetTime();
 

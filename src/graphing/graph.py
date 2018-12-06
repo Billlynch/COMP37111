@@ -3,6 +3,8 @@ import matplotlib
 matplotlib.use('TkAgg')
 from matplotlib import pyplot as plt
 import csv
+from scipy.optimize import curve_fit
+
 
 frameDeltas = []
 physicsDeltas = []
@@ -13,7 +15,7 @@ particleCounts = []
 rowCount = 5120
 fifth = 1024
 
-with open('analysisResultGravityAndBouncesCPUMac.csv', newline='\n') as csvfile:
+with open('analysisResultSpaceOpenCL.csv', newline='\n') as csvfile:
     analysisResultsReader = csv.reader(csvfile, delimiter=',')
     for row in analysisResultsReader:
         frameDeltas.append(row[1])
@@ -35,6 +37,13 @@ openGLDeltas = openGLDeltas[10:rowCount+10]
 drawCallDeltas = drawCallDeltas[10:rowCount+10]
 particleCounts = particleCounts[10:rowCount+10]
 
+# p = list(map(int, particleCounts))
+#
+# plt.title('Particle Count vs Frame')
+# plt.ylabel('Number of particles')
+# plt.xlabel('Number of Frames Elapsed')
+# plt.plot(range(0, 5120), p)
+# plt.show()
 
 frameDeltas = np.array(frameDeltas[0:rowCount]).astype(np.float)
 frd1 = np.mean(frameDeltas[0:fifth])
@@ -82,8 +91,9 @@ pOpenGlDelta = plt.bar(ind + width, openGLDeltasAverages, width, bottom=y_offset
 y_offset = np.sum([y_offset, openGLDeltasAverages], axis=0)
 pdrawCallDelta = plt.bar(ind + width, drawCallDeltasAverages, width, bottom=y_offset)
 
-plt.ylabel('time in ms')
-plt.title('deltas for bottle necks')
+plt.title('Average Frame Delta Breakdown')
+plt.ylabel('Time (second)')
+plt.xlabel('Frame Average Groupings')
 plt.xticks(ind + (width/2), ('0-1024', '1024-2048', '2048-3072', '3072-4096', '4096-5120'))
 plt.legend((pFrameDelta[0], pPhysicsDelta[0], pOpenGlDelta[0], pdrawCallDelta[0]), ('overall frame delta', 'physics delta', 'OpenGL buffer loading delta', 'draw call delta'))
 
@@ -109,5 +119,10 @@ for pc in sorted(fRforPaticles):
     X.append(pc)
 
 
-plt.plot(X, Y)
+X = np.array(list(map(float, X)))
+
+plt.title('Average Frame Rate vs Particle Count')
+plt.ylabel('Frame Rate (FPS)')
+plt.xlabel('Number of Particles')
+plt.plot(X, Y, '.')
 plt.show()

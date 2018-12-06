@@ -27,7 +27,7 @@
 
 using namespace glm;
 
-#define NUM_PARTICLES 10240// 3008000
+#define NUM_PARTICLES 3008000
 #define GRAVITY -9.81
 #define FLOOR_Z -7.0
 
