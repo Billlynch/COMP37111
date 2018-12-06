@@ -133,8 +133,8 @@ void ParticleSystem::mainLoop() {
 
     prePhysicsTime = glfwGetTime();
 
-    simParticlesOpenCL();
-    //simParticles();
+    //simParticlesOpenCL();
+    simParticles();
 
     postPhysicsTime = glfwGetTime();
 
@@ -168,6 +168,15 @@ void ParticleSystem::mainLoop() {
     glfwPollEvents();
 
     spaceHeld = new bool(glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS);
+
+    if (glfwGetKey(window, GLFW_KEY_0) == GLFW_PRESS) {
+        gravity += 0.1;
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_9) == GLFW_PRESS) {
+        gravity -= 0.1;
+    }
+
     glFlush();
 
     analyser->addData(frameCount, delta, postPhysicsTime - prePhysicsTime,postLoadIntoOpenGLBuffersTime - postPhysicsTime, postDrawCallTime - postLoadIntoOpenGLBuffersTime, spaceHeld);
@@ -278,9 +287,9 @@ void ParticleSystem::generateNewParticles() {
 
         long pointToGoTo = rand() % objVectors.size();
 
-        particlesContainer[i].target.x = objVectors[pointToGoTo]->x;;
-        particlesContainer[i].target.y = objVectors[pointToGoTo]->y;;
-        particlesContainer[i].target.z = objVectors[pointToGoTo]->z;;
+        particlesContainer[i].target.x = objVectors[pointToGoTo]->x;
+        particlesContainer[i].target.y = objVectors[pointToGoTo]->y;
+        particlesContainer[i].target.z = objVectors[pointToGoTo]->z;
 
         randHigh = 15.0f;
         randLow = 0.2f;
@@ -397,17 +406,17 @@ void ParticleSystem::simParticles() {
 
             if (particle_position_size_data[(i * 4) + 2] <= FLOOR_Z) {
                 particlesContainer[i].position.z = static_cast<float>(FLOOR_Z + 0.1f);
-                acc.x = particlesContainer[i].randX * 0.0016f;
-                acc.y = particlesContainer[i].randY * 0.0016f;
+                acc.x = particlesContainer[i].randX * static_cast<float>(delta);
+                acc.y = particlesContainer[i].randY * static_cast<float>(delta);
                 acc.z = 5.0f * 0.0016f;
             } else {
                 if (*spaceHeld) {
-                    acc.x = (particlesContainer[i].target.x - particle_position_size_data[(i * 4) + 0]) * 0.016f;
-                    acc.y = (particlesContainer[i].target.y - particle_position_size_data[(i * 4) + 1]) * 0.016f;
-                    acc.z = (particlesContainer[i].target.z - particle_position_size_data[(i * 4) + 2]) * 0.016f;
+                    acc.x = (particlesContainer[i].target.x - particle_position_size_data[(i * 4) + 0]) * static_cast<float>(delta);
+                    acc.y = (particlesContainer[i].target.y - particle_position_size_data[(i * 4) + 1]) * static_cast<float>(delta);
+                    acc.z = (particlesContainer[i].target.z - particle_position_size_data[(i * 4) + 2]) * static_cast<float>(delta);
 
                 } else {
-                    acc.z = static_cast<float>(GRAVITY * 0.0016f);
+                    acc.z = static_cast<float>(gravity * static_cast<float>(delta));
                 }
 
             }

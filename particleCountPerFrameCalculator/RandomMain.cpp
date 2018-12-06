@@ -47,7 +47,7 @@ int main(int argc, char *argv[]) {
     for (int i = 0; i < NUM_PARTICLES; ++i) {
         float life = randLow + rand() / (RAND_MAX / (randHigh - randLow));
         lifes[i] = life;
-        lifesReplacement[i] = life;
+        lifesReplacement[i] = life + 4;
 
         z = rand();
         z = rand();

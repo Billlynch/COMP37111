@@ -27,8 +27,7 @@
 
 using namespace glm;
 
-#define NUM_PARTICLES 3008000
-#define GRAVITY -9.81
+#define NUM_PARTICLES 10 * 1024//3008000
 #define FLOOR_Z -7.0
 
 #ifndef __APPLE__
@@ -43,9 +42,10 @@ inline void checkErr(cl_int err, const char *name) {
 
 class ParticleSystem {
 private:
+    float gravity = -9.81f;
     GLFWwindow *window{};
-    int height = 768 * 2;
-    int width = 1024 * 2;
+    int height = 768;
+    int width = 1024;
     std::vector<vec3 *> objVectors;
     particle particlesContainer[NUM_PARTICLES]{};
     bool *spaceHeld = new bool(false);

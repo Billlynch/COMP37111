@@ -69,7 +69,7 @@ __kernel void simulate_particle(__global particle * particleArray, __global floa
                   particleArrayToOpenGL[(tid * 4) + 2] = particleArray[tid].position.z;
                   particleArrayToOpenGL[(tid * 4) + 3] = particleArray[tid].size;
 
-                  metaBuffer[tid] = particleArray[tid].life;
+                  metaBuffer[tid] = particleArray[tid].life + 4;
             } else {
                 particleArrayToOpenGL[(tid * 4) + 0] = -50.0;
                 particleArrayToOpenGL[(tid * 4) + 1] = -50.0;

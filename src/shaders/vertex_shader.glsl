@@ -23,11 +23,11 @@ void main()
     // because we encoded it this way.
 	float particleSize = xyzs.w;
 
-	if (particleSize != -1.0) {
-	    vec3 particleCenter_wordspace = xyzs.xyz;
+	if (particleSize > -1.0) {
+	    vec3 particleCenter_worldspace = xyzs.xyz;
 
     	vec3 vertexPosition_worldspace =
-    		particleCenter_wordspace
+    		particleCenter_worldspace
     		+ CameraRight_worldspace * squareVertices.x * particleSize
     		+ CameraUp_worldspace * squareVertices.y * particleSize;
 
