@@ -23,7 +23,7 @@ void main()
     // because we encoded it this way.
 	float particleSize = xyzs.w;
 
-	if (particleSize > -1.0) {
+	if (particleSize > 0.0) {
 	    vec3 particleCenter_worldspace = xyzs.xyz;
 
     	vec3 vertexPosition_worldspace =
@@ -36,6 +36,10 @@ void main()
     	gl_Position = VP * vec4(vertexPosition_worldspace, 1.0f);
 
     	particlecolor = color;
+	} else {
+	    gl_Position = VP * vec4(vec3(-1.0, -1.0, -1.0), 1.0f);
+
+        particlecolor = color;
 	}
 
 }

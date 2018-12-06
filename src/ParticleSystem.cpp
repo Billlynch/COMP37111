@@ -177,6 +177,18 @@ void ParticleSystem::mainLoop() {
         gravity -= 0.1;
     }
 
+    if (glfwGetKey(window, GLFW_KEY_8) == GLFW_PRESS) {
+        for (int i = 0; i < NUM_PARTICLES; ++i) {
+            particlesContainer[i].mass += 0.5f;
+        }
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_7) == GLFW_PRESS) {
+        for (int i = 0; i < NUM_PARTICLES; ++i) {
+            particlesContainer[i].mass -= 0.5f;
+        }
+    }
+
     glFlush();
 
     analyser->addData(frameCount, delta, postPhysicsTime - prePhysicsTime,postLoadIntoOpenGLBuffersTime - postPhysicsTime, postDrawCallTime - postLoadIntoOpenGLBuffersTime, spaceHeld);
@@ -405,10 +417,10 @@ void ParticleSystem::simParticles() {
             double speed_multiplier = 5.5f;
 
             if (particle_position_size_data[(i * 4) + 2] <= FLOOR_Z) {
-                particlesContainer[i].position.z = static_cast<float>(FLOOR_Z + 0.1f);
+                particle_position_size_data[(i * 4) + 2] = static_cast<float>(FLOOR_Z + 0.1f);
                 acc.x = particlesContainer[i].randX * static_cast<float>(delta);
                 acc.y = particlesContainer[i].randY * static_cast<float>(delta);
-                acc.z = 5.0f * 0.0016f;
+                acc.z = 5.0f * static_cast<float>(delta);
             } else {
                 if (*spaceHeld) {
                     acc.x = (particlesContainer[i].target.x - particle_position_size_data[(i * 4) + 0]) * static_cast<float>(delta);
@@ -416,7 +428,7 @@ void ParticleSystem::simParticles() {
                     acc.z = (particlesContainer[i].target.z - particle_position_size_data[(i * 4) + 2]) * static_cast<float>(delta);
 
                 } else {
-                    acc.z = static_cast<float>(gravity * static_cast<float>(delta));
+                    acc.z = gravity * static_cast<float>(delta);
                 }
 
             }
@@ -431,25 +443,25 @@ void ParticleSystem::simParticles() {
 
 
             if (!*spaceHeld) {
-                particlesContainer[i].life -= 0.01;
+                particlesContainer[i].life -= 0.01f;
             }
         } else {
 
 
-            if (particlesContainer[i].life < -1.0 && !*spaceHeld) {
+            if (particlesContainer[i].life < 0.0f && !*spaceHeld) {
                 particle_position_size_data[(i * 4) + 0] = particlesContainer[i].position.x;
                 particle_position_size_data[(i * 4) + 1] = particlesContainer[i].position.y;
                 particle_position_size_data[(i * 4) + 2] = particlesContainer[i].position.z;
                 particle_position_size_data[(i * 4) + 3] = particlesContainer[i].size;
 
-                particlesContainer[i].life = 50.0f;
+                particlesContainer[i].life = 5.0f;
             } else {
                 particle_position_size_data[(i * 4) + 0] = -50.0f;
                 particle_position_size_data[(i * 4) + 1] = -50.0f;
                 particle_position_size_data[(i * 4) + 2] = -50.0f;
 
-                particle_position_size_data[(i * 4) + 3] = -1.0f;
-                particlesContainer[i].life -= 0.01;
+                particle_position_size_data[(i * 4) + 3] = 0.0f;
+                particlesContainer[i].life -= 0.01f;
             }
         }
     }

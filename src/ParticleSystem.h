@@ -27,7 +27,7 @@
 
 using namespace glm;
 
-#define NUM_PARTICLES 10 * 1024//3008000
+#define NUM_PARTICLES 20 * 1024//3008000
 #define FLOOR_Z -7.0
 
 #ifndef __APPLE__

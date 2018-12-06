@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/ParticleSystem.cpp" line="411" mnemonic="0" />
+    <bookmark url="file://$PROJECT_DIR$/src/ParticleSystem.cpp" line="423" mnemonic="0" />
   </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true" buildAllGenerated="false">
     <generated>
@@ -15,12 +15,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdaff1bf-a899-4137-8637-3e4738bd26e3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/graphing/graph_2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Graphics.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Graphics.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/particleCountPerFrameCalculator/RandomMain.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/particleCountPerFrameCalculator/RandomMain.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/particleCountPerFrameCalculator/particleAtFrameCount.csv" beforeDir="false" afterPath="$PROJECT_DIR$/particleCountPerFrameCalculator/particleAtFrameCount.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Kernel/simulate_particle.cl" beforeDir="false" afterPath="$PROJECT_DIR$/src/Kernel/simulate_particle.cl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analysisResult.csv" beforeDir="false" afterPath="$PROJECT_DIR$/analysisResult.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ParticleSystem.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/ParticleSystem.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ParticleSystem.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/ParticleSystem.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/shaders/vertex_shader.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/shaders/vertex_shader.glsl" afterDir="false" />
@@ -62,16 +58,17 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="cl" value="9" />
-          <entry key="cpp" value="94" />
-          <entry key="glsl" value="9" />
-          <entry key="h" value="56" />
+          <entry key="cpp" value="175" />
+          <entry key="glsl" value="53" />
+          <entry key="h" value="57" />
+          <entry key="mm" value="10" />
           <entry key="py" value="59" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="GLSL shader file" value="9" />
-          <entry key="ObjectiveC" value="159" />
+          <entry key="GLSL shader file" value="53" />
+          <entry key="ObjectiveC" value="251" />
           <entry key="Python" value="59" />
         </counts>
       </usages-collector>
@@ -79,11 +76,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ParticleSystem.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="69">
-              <caret line="29" column="31" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
+            <state relative-caret-position="-119">
+              <caret line="29" column="23" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
               <folding>
                 <element signature="e#482#502#0" expanded="true" />
               </folding>
@@ -91,11 +88,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ParticleSystem.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="717">
-              <caret line="179" column="14" lean-forward="true" selection-start-line="179" selection-start-column="14" selection-end-line="179" selection-end-column="14" />
+            <state relative-caret-position="351">
+              <caret line="439" column="59" lean-forward="true" selection-start-line="439" selection-start-column="59" selection-end-line="439" selection-end-column="59" />
               <folding>
                 <element signature="e#369#383#0" expanded="true" />
               </folding>
@@ -106,8 +103,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/shaders/vertex_shader.glsl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="522">
-              <caret line="29" column="37" lean-forward="true" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
+            <state relative-caret-position="720">
+              <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
             </state>
           </provider>
         </entry>
@@ -157,7 +154,7 @@
             <state showInfoPanel="true" rowLines="3" />
           </provider>
           <provider selected="true" editor-type-id="csv-text-editor">
-            <state relative-caret-position="-81891" />
+            <state relative-caret-position="-81558" />
           </provider>
         </entry>
       </file>
@@ -265,10 +262,10 @@
         <option value="$PROJECT_DIR$/src/graphing/graph.py" />
         <option value="$PROJECT_DIR$/src/graphing/graph_2.py" />
         <option value="$PROJECT_DIR$/src/Kernel/simulate_particle.cl" />
-        <option value="$PROJECT_DIR$/src/shaders/vertex_shader.glsl" />
         <option value="$PROJECT_DIR$/particleCountPerFrameCalculator/RandomMain.cpp" />
-        <option value="$PROJECT_DIR$/src/ParticleSystem.cpp" />
         <option value="$PROJECT_DIR$/src/ParticleSystem.h" />
+        <option value="$PROJECT_DIR$/src/shaders/vertex_shader.glsl" />
+        <option value="$PROJECT_DIR$/src/ParticleSystem.cpp" />
       </list>
     </option>
   </component>
@@ -487,24 +484,24 @@
       <workItem from="1543707875197" duration="11684000" />
       <workItem from="1543781891665" duration="13078000" />
       <workItem from="1544060754547" duration="1002000" />
-      <workItem from="1544113879280" duration="3953000" />
+      <workItem from="1544113879280" duration="5877000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114842000" />
+    <option name="totallyTimeSpent" value="116766000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-92" y="-1178" width="1920" height="1178" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23855165" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23855165" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49840638" weight="0.32883242" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.37250996" visible="true" weight="0.19889502" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4860558" weight="0.39952344" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.37250996" visible="true" weight="0.19889502" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4860558" weight="0.39871088" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -550,8 +547,24 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/ParticleSystem.cpp</url>
+          <line>451</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>particlesContainer[i]</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>spaceHeld</expression-string>
         <language-id>ObjectiveC</language-id>
@@ -589,11 +602,6 @@
       </expression>
       <expression>
         <expression-string>particleMetaDataBuffer[i]</expression-string>
-        <language-id>ObjectiveC</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>particle_position_size_data[(5 * 4) + 2]</expression-string>
         <language-id>ObjectiveC</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -774,13 +782,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/shaders/vertex_shader.glsl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="29" column="37" lean-forward="true" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/particleCountPerFrameCalculator/RandomMain.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="576">
@@ -789,14 +790,6 @@
             <element signature="e#51#68#0" expanded="true" />
           </folding>
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/particleCountPerFrameCalculator/particleAtFrameCount.csv">
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" rowLines="3" />
-      </provider>
-      <provider selected="true" editor-type-id="csv-text-editor">
-        <state relative-caret-position="-81891" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main.cpp">
@@ -813,22 +806,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ParticleSystem.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="717">
-          <caret line="179" column="14" lean-forward="true" selection-start-line="179" selection-start-column="14" selection-end-line="179" selection-end-column="14" />
-          <folding>
-            <element signature="e#369#383#0" expanded="true" />
-          </folding>
-        </state>
+    <entry file="file://$PROJECT_DIR$/particleCountPerFrameCalculator/particleAtFrameCount.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" rowLines="3" />
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="-81558" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ParticleSystem.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="29" column="31" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
+        <state relative-caret-position="-119">
+          <caret line="29" column="23" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
           <folding>
             <element signature="e#482#502#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shaders/vertex_shader.glsl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ParticleSystem.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="439" column="59" lean-forward="true" selection-start-line="439" selection-start-column="59" selection-end-line="439" selection-end-column="59" />
+          <folding>
+            <element signature="e#369#383#0" expanded="true" />
           </folding>
         </state>
       </provider>
