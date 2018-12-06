@@ -19,7 +19,10 @@ typedef struct tag_particle
 #define GRAVITY -9.81
 #define FLOOR_Z -7.0
 
-__kernel void simulate_particle(__global particle * particleArray, __global float * particleArrayToOpenGL, __global float * metaBuffer, __global bool * spaceBuffer)
+__kernel void simulate_particle(__global particle * particleArray,
+        __global float * particleArrayToOpenGL,
+        __global float * metaBuffer,
+        __global bool * spaceBuffer)
 {
     size_t tid = get_global_id(0);
 
@@ -29,7 +32,6 @@ __kernel void simulate_particle(__global particle * particleArray, __global floa
     		acc.x = 0.0;
     		acc.y = 0.0;
     		acc.z = 0.0;
-    		double speed_multiplier = 5.5f;
 
     		if (particleArrayToOpenGL[(tid * 4) + 2] <= FLOOR_Z) {
     			particleArrayToOpenGL[(tid * 4) + 2] = FLOOR_Z + 0.1;
@@ -38,9 +40,12 @@ __kernel void simulate_particle(__global particle * particleArray, __global floa
     			acc.z = 5.0 * 0.0016;
     		} else {
     	    	if (spaceBuffer[0] == true) {
-                    acc.x = (particleArray[tid].target.x - particleArrayToOpenGL[(tid * 4) + 0]) * 0.016;
-                    acc.y = (particleArray[tid].target.y - particleArrayToOpenGL[(tid * 4) + 1]) * 0.016;
-                    acc.z = (particleArray[tid].target.z - particleArrayToOpenGL[(tid * 4) + 2]) * 0.016;
+                    acc.x = (particleArray[tid].target.x - particleArrayToOpenGL[(tid * 4) + 0])
+                            * 0.016;
+                    acc.y = (particleArray[tid].target.y - particleArrayToOpenGL[(tid * 4) + 1])
+                            * 0.016;
+                    acc.z = (particleArray[tid].target.z - particleArrayToOpenGL[(tid * 4) + 2])
+                            * 0.016;
 
                 } else {
     			    acc.z = GRAVITY * 0.0016;

@@ -43,6 +43,7 @@ inline void checkErr(cl_int err, const char *name) {
 class ParticleSystem {
 private:
     float gravity = -9.81f;
+    float massAdjust = 0.0f;
     GLFWwindow *window{};
     int height = 768;
     int width = 1024;

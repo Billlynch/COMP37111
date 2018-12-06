@@ -125,6 +125,25 @@ void ParticleSystem::setupBuffers() {
 void ParticleSystem::mainLoop() {
 
     calculateFrameDelta();  // frame init time
+
+    if (glfwGetKey(window, GLFW_KEY_0) == GLFW_PRESS) {
+        gravity += 0.1;
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_9) == GLFW_PRESS) {
+        gravity -= 0.1;
+    }
+
+    massAdjust = 0.0f;
+    if (glfwGetKey(window, GLFW_KEY_7) == GLFW_PRESS) {
+        massAdjust = -1.0f;
+
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_8) == GLFW_PRESS) {
+        massAdjust = 1.0;
+    }
+
     frameCount++;
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -168,26 +187,6 @@ void ParticleSystem::mainLoop() {
     glfwPollEvents();
 
     spaceHeld = new bool(glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS);
-
-    if (glfwGetKey(window, GLFW_KEY_0) == GLFW_PRESS) {
-        gravity += 0.1;
-    }
-
-    if (glfwGetKey(window, GLFW_KEY_9) == GLFW_PRESS) {
-        gravity -= 0.1;
-    }
-
-    if (glfwGetKey(window, GLFW_KEY_8) == GLFW_PRESS) {
-        for (int i = 0; i < NUM_PARTICLES; ++i) {
-            particlesContainer[i].mass += 0.5f;
-        }
-    }
-
-    if (glfwGetKey(window, GLFW_KEY_7) == GLFW_PRESS) {
-        for (int i = 0; i < NUM_PARTICLES; ++i) {
-            particlesContainer[i].mass -= 0.5f;
-        }
-    }
 
     glFlush();
 
@@ -410,6 +409,13 @@ void ParticleSystem::simParticles() {
 
     for (int i = 0; i < NUM_PARTICLES; ++i) {
         if (particlesContainer[i].life > 0.0) {
+
+            if (massAdjust == -1.0f) {
+                particlesContainer[i].mass -= 0.5f;
+            } else if (massAdjust == 1.0f)  {
+                particlesContainer[i].mass += 0.5f;
+            }
+
             vect3 acc;
             acc.x = 0.0;
             acc.y = 0.0;
