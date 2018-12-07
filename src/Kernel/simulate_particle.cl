@@ -46,11 +46,9 @@ __kernel void simulate_particle(__global particle * particleArray,
                             * 0.016;
                     acc.z = (particleArray[tid].target.z - particleArrayToOpenGL[(tid * 4) + 2])
                             * 0.016;
-
                 } else {
     			    acc.z = GRAVITY * 0.0016;
                 }
-
     		}
 
     		float sx = acc.x * particleArray[tid].mass;
@@ -66,8 +64,6 @@ __kernel void simulate_particle(__global particle * particleArray,
     		    metaBuffer[tid] -= 0.01;
     		}
     } else {
-
-
            if (metaBuffer[tid] < -1.0 && spaceBuffer[0] == false) {
                   particleArrayToOpenGL[(tid * 4) + 0] = particleArray[tid].position.x;
                   particleArrayToOpenGL[(tid * 4) + 1] = particleArray[tid].position.y;

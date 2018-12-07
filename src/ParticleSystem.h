@@ -27,8 +27,8 @@
 
 using namespace glm;
 
-#define NUM_PARTICLES 700 * 1024 // 3008000
-#define FLOOR_Z -7.0
+#define NUM_PARTICLES (700 * 1024) // 3008000
+#define FLOOR_Z (-7.0)
 
 #ifndef __APPLE__
 inline void checkErr(cl_int err, const char *name) {
@@ -42,32 +42,38 @@ inline void checkErr(cl_int err, const char *name) {
 
 class ParticleSystem {
 private:
-    float gravity = -9.81f;
-    float massAdjust = 0.0f;
-    GLFWwindow *window{};
-    int height = 768;
-    int width = 1024;
-    std::vector<vec3 *> objVectors;
-    particle particlesContainer[NUM_PARTICLES]{};
-    bool *spaceHeld = new bool(false);
-    double frameInitTime{}, prePhysicsTime{}, postPhysicsTime{}, postLoadIntoOpenGLBuffersTime{}, postDrawCallTime{}, delta{};
-    double lastTime{};
-    unsigned long frameCount = 0;
-    mat4 ProjectionMatrix, ViewMatrix, ViewProjectionMatrix;
-    vec3 CameraPosition;
-    Analyser *analyser{};
-    float particleMetaDataBuffer[NUM_PARTICLES]{};
-    GLint CameraRight_worldspace_ID{}, CameraUp_worldspace_ID{}, ViewProjMatrixID{};
 #ifndef __APPLE__
     cl::Event event, writeEvent;
     cl::CommandQueue queue, writeQueue;
     cl::Buffer kernelParticleBuffer, kernelParticleBufferToOpenGl, kernelParticleMetaBuffer, kernelSpaceBuffer;
     cl::Kernel kernel;
 #endif
+    float gravity = -9.81f;
+    float massAdjust = 0.0f;
+    GLFWwindow *window{};
+    int height = 768;
+    int width = 1024;
+    std::vector<vec3 *> objVectors{};
+    particle particlesContainer[NUM_PARTICLES]{};
+    bool *spaceHeld = new bool(false);
+    double frameInitTime{}, prePhysicsTime{}, postPhysicsTime{};
+    double postLoadIntoOpenGLBuffersTime{}, postDrawCallTime{}, delta{};
+    double lastTime{};
+    unsigned long frameCount = 0;
+    mat4 ProjectionMatrix{};
+    mat4 ViewMatrix{};
+    mat4 ViewProjectionMatrix{};
+    vec3 CameraPosition{};
+    Analyser *analyser{};
+    float particleMetaDataBuffer[NUM_PARTICLES]{};
+    GLint CameraRight_worldspace_ID{}, CameraUp_worldspace_ID{}, ViewProjMatrixID{};
     float *particle_position_size_data = new float[NUM_PARTICLES * 4];
     GLubyte *particle_colour_data = new GLubyte[NUM_PARTICLES * 4];
     GLuint particles_color_buffer{}, VertexArrayID{}, particles_position_buffer{}, base_mesh_vertex_buffer{};
 
+#ifndef __APPLE__
+    void simParticlesOpenCL();
+#endif
 
     void mainLoop();
 
@@ -77,9 +83,6 @@ private:
 
     void simParticles();
 
-#ifndef __APPLE__
-    void simParticlesOpenCL();
-#endif
 
     void generateNewParticles();
 
