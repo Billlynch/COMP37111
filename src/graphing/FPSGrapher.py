@@ -51,6 +51,28 @@ dskDeltaAVG = [0.01666032583786785,
                0.022964473337413926,
                0.02393489324082935]
 
+clDeltaAVG = [0.016660368549694615,
+              0.01666193456579678,
+              0.01665977139422543,
+              0.016665720051637977,
+              0.016664339638534146,
+              0.016663931932259856,
+              0.016662518528595224,
+              0.016661815821765687,
+              0.016663563740144365,
+              0.016669727140555556,
+              0.016668110898888887,
+              0.016665673478622987,
+              0.01666557541476957,
+              0.01669103201446051,
+              0.016671310388333332,
+              0.01666679612777778,
+              0.0167159226005571,
+              0.016673475000555556,
+              0.016671003384444445,
+              0.016674599009444444,
+              0.016671623603333335]
+
 macFPSAVG = []
 for val in macDeltaAVG:
     macFPSAVG.append(1.0 / val)
@@ -63,8 +85,15 @@ for val in dskDeltaAVG:
 
 dskFPSAVG = np.array(dskFPSAVG).astype(np.float)
 
+clFPSAVG = []
+for val in clDeltaAVG:
+    clFPSAVG.append(1.0 / val)
+
+clFPSAVG = np.array(clFPSAVG).astype(np.float)
+
 plt.plot(nParticles, macFPSAVG)
 plt.plot(nParticles, dskFPSAVG)
+plt.plot(nParticles, clFPSAVG)
 
 plt.show()
 

@@ -5,7 +5,7 @@ import numpy as np
 deltas = []
 useDeltas = []
 
-with open('analysisResult-950-Mac.csv', newline='\n') as csvfile:
+with open('analysisResult-1000-CL.csv', newline='\n') as csvfile:
     analysisResultsReader = csv.reader(csvfile, delimiter=',')
     for row in analysisResultsReader:
         deltas.append(row[1])
