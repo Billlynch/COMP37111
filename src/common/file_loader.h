@@ -6,7 +6,7 @@
 #define GRAPHICS_FILE_LOADER_H
 
 #include <sstream>
-#include <stdio.h>
+#include <cstdio>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -16,16 +16,16 @@
 
 class file_loader {
 private:
-    float xVal, yVal, zVal;
-    std::string line, id;
+    float xVal{}, yVal{}, zVal{};
+    std::string line{},id{};
 
 
 public:
-    file_loader(){}
-    ~file_loader(){}
+    file_loader() = default;
 
-    int readObjFile(std::string fileName, std::vector<glm::vec3> &vectorsOfObj);
-    int loadBILL(std::vector<glm::vec3> vectorsOfObj);
+    ~file_loader() = default;
+
+    int readObjFile(std::string fileName, std::vector<glm::vec3 *> &vectorsOfObj);
 
 };
 

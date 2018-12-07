@@ -1,14 +1,13 @@
 
 #include "ParticleSystem.h"
 
-int main()
-{
-    ParticleSystem *ps = new ParticleSystem();
 
-    std::string file = "/Users/Bill/ClionProjects/Graphics/src/Models/teapot.obj";
+int main(int argc, char *argv[]) {
+    std::string file = "./src/Models/teapot.obj";
+
+    auto *ps = new ParticleSystem();
     ps->runParticleSystem(file);
 
     delete ps;
-
-	return 0;
+    return 0;
 }

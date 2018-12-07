@@ -8,20 +8,31 @@ void ParticleSystem::runParticleSystem(std::string &fileName) {
 
     loadObj(fileName);
 
+    analyser = new Analyser("/Users/Bill/ClionProjects/Graphics/src/testOfAnalysiser.txt", objVectors.size());
+
     ParticleSystem::setupGLEWandGLFW();
+
+    generateNewParticles();
+
+#ifndef __APPLE__
+    setupOpenCl();
+#endif
 
     lastTime = glfwGetTime();
 
+
     do {
         ParticleSystem::mainLoop();
-    } while(!isWindowClosed());
+    } while (!isWindowClosed());
 
     cleanUpBuffers();
+
+    delete analyser;
 }
 
 bool ParticleSystem::isWindowClosed() {
-    return (glfwGetKey(window, GLFW_KEY_ESCAPE ) == GLFW_PRESS && glfwWindowShouldClose(window) == 0) ||
-            glfwWindowShouldClose(window) == 1;
+    return (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS && glfwWindowShouldClose(window) == 0) ||
+           glfwWindowShouldClose(window) == 1;
 }
 
 void ParticleSystem::cleanUpBuffers() const {// Cleanup VBO and shader
@@ -45,24 +56,22 @@ void ParticleSystem::loadObj(std::string &fileName) {
 
 int ParticleSystem::setupGLEWandGLFW() {
     // Initialise GLFW
-    if( !glfwInit() )
-    {
-        fprintf( stderr, "Failed to initialize GLFW\n" );
+    if (!glfwInit()) {
+        fprintf(stderr, "Failed to initialize GLFW\n");
         getchar();
         return -1;
     }
 
     glfwWindowHint(GLFW_SAMPLES, 4);
-    glfwWindowHint(GLFW_RESIZABLE,GL_FALSE);
+    glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // To make MacOS happy; should not be needed
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // To make MacOS happy
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     // Open a window and create its OpenGL context
-    window = glfwCreateWindow( width, height, "Graphics", nullptr, nullptr);
-    if( window == nullptr ){
-        fprintf( stderr, "Failed to open GLFW window. If you have an Intel GPU, they are not 3.3 compatible. Try the 2.1 version of the tutorials.\n" );
+    window = glfwCreateWindow(width, height, "Graphics", nullptr, nullptr);
+    if (window == nullptr) {
         getchar();
         glfwTerminate();
         return -1;
@@ -83,7 +92,7 @@ int ParticleSystem::setupGLEWandGLFW() {
     glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
     glfwSetInputMode(window, GLFW_CURSOR, 0);
     glfwPollEvents();
-    glfwSetCursorPos(window, height/2.0f, width/2.0f);
+    glfwSetCursorPos(window, height / 2.0f, width / 2.0f);
 
     glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
 
@@ -98,7 +107,9 @@ int ParticleSystem::setupGLEWandGLFW() {
 }
 
 void ParticleSystem::setupShaders() {
-    programID = LoadShaders("/Users/Bill/ClionProjects/Graphics/src/shaders/vertex_shader.glsl", "/Users/Bill/ClionProjects/Graphics/src/shaders/fragment_shader.glsl" );
+    programID = LoadShaders("./src/shaders/vertex_shader.glsl",
+                            "./src/shaders/fragment_shader.glsl");
+
     CameraRight_worldspace_ID = glGetUniformLocation(programID, "CameraRight_worldspace");
     CameraUp_worldspace_ID = glGetUniformLocation(programID, "CameraUp_worldspace");
     ViewProjMatrixID = glGetUniformLocation(programID, "VP");
@@ -113,24 +124,46 @@ void ParticleSystem::setupBuffers() {
 
 void ParticleSystem::mainLoop() {
 
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    calculateFrameDelta();  // frame init time
 
-    calculateDelta();
+    if (glfwGetKey(window, GLFW_KEY_0) == GLFW_PRESS) {
+        gravity += 0.1f;
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_9) == GLFW_PRESS) {
+        gravity -= 0.1f;
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS) {
+        gravity = -9.81f;
+    }
+
+    massAdjust = 0.0f;
+    if (glfwGetKey(window, GLFW_KEY_7) == GLFW_PRESS) {
+        massAdjust = -1.0f;
+
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_8) == GLFW_PRESS) {
+        massAdjust = 1.0;
+    }
+
+    frameCount++;
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     computeMatricesFromInputs(window);
     getMatrices(ProjectionMatrix, ViewMatrix, CameraPosition, ViewProjectionMatrix);
 
-    if (!spaceHeld)
-    {
-        generateNewParticles();
-    }
+    prePhysicsTime = glfwGetTime();
 
-    int particlesCount = simulateParticles(particle_position_size_data, particle_colour_data, delta, CameraPosition);
+    //simParticlesOpenCL();
+    simParticles();
 
-    SortParticles();
+    postPhysicsTime = glfwGetTime();
 
+    loadDataIntoBuffers();
 
-    loadDataIntoBuffers(particlesCount);
+    postLoadIntoOpenGLBuffersTime = glfwGetTime();
 
 
     glEnable(GL_BLEND);
@@ -140,37 +173,44 @@ void ParticleSystem::mainLoop() {
     glUseProgram(programID);
 
     glUniform3f(CameraRight_worldspace_ID, ViewMatrix[0][0], ViewMatrix[1][0], ViewMatrix[2][0]);
-    glUniform3f(CameraUp_worldspace_ID   , ViewMatrix[0][1], ViewMatrix[1][1], ViewMatrix[2][1]);
+    glUniform3f(CameraUp_worldspace_ID, ViewMatrix[0][1], ViewMatrix[1][1], ViewMatrix[2][1]);
     glUniformMatrix4fv(ViewProjMatrixID, 1, GL_FALSE, &ViewProjectionMatrix[0][0]);
 
     setupVertexShaderInputs(base_mesh_vertex_buffer, particles_position_buffer, particles_color_buffer);
 
-    glDrawArraysInstanced(GL_TRIANGLE_STRIP, 0, 4, particlesCount);
+    glDrawArraysInstanced(GL_TRIANGLE_STRIP, 0, 4, NUM_PARTICLES);
     glDisableVertexAttribArray(0);
     glDisableVertexAttribArray(1);
     glDisableVertexAttribArray(2);
+
+    postDrawCallTime = glfwGetTime();
+
 
     // Swap buffers
     glfwSwapBuffers(window);
     glfwPollEvents();
 
-    spaceHeld = glfwGetKey(window, GLFW_KEY_SPACE ) == GLFW_PRESS;
+    spaceHeld = new bool(glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS);
+
+    glFlush();
+
+    analyser->addData(frameCount, delta, postPhysicsTime - prePhysicsTime,postLoadIntoOpenGLBuffersTime - postPhysicsTime, postDrawCallTime - postLoadIntoOpenGLBuffersTime, spaceHeld);
 }
 
-void ParticleSystem::loadDataIntoBuffers(int particlesCount) const {
+void ParticleSystem::loadDataIntoBuffers() const {
     glBindBuffer(GL_ARRAY_BUFFER, particles_position_buffer);
-    glBufferData(GL_ARRAY_BUFFER, MaxParticles * 4 * sizeof(GLfloat), nullptr, GL_STREAM_DRAW); // Buffer orphaning, a common way to improve streaming perf. See above link for details.
-    glBufferSubData(GL_ARRAY_BUFFER, 0, particlesCount * sizeof(GLfloat) * 4, particle_position_size_data);
+    glBufferData(GL_ARRAY_BUFFER, NUM_PARTICLES * 4 * sizeof(float), nullptr, GL_STREAM_DRAW);
+    glBufferSubData(GL_ARRAY_BUFFER, 0, NUM_PARTICLES * sizeof(float) * 4, particle_position_size_data);
 
     glBindBuffer(GL_ARRAY_BUFFER, particles_color_buffer);
-    glBufferData(GL_ARRAY_BUFFER, MaxParticles * 4 * sizeof(GLubyte), nullptr, GL_STREAM_DRAW); // Buffer orphaning, a common way to improve streaming perf. See above link for details.
-    glBufferSubData(GL_ARRAY_BUFFER, 0, particlesCount * sizeof(GLubyte) * 4, particle_colour_data);
+    glBufferData(GL_ARRAY_BUFFER, NUM_PARTICLES * 4 * sizeof(GLubyte), nullptr, GL_STREAM_DRAW);
+    glBufferSubData(GL_ARRAY_BUFFER, 0, NUM_PARTICLES * sizeof(GLubyte) * 4, particle_colour_data);
 }
 
-void ParticleSystem::calculateDelta() {
-    double currentTime = glfwGetTime();
-    delta = static_cast<float>(currentTime - lastTime);
-    lastTime = currentTime;
+void ParticleSystem::calculateFrameDelta() {
+    frameInitTime = glfwGetTime();
+    delta = static_cast<float>(frameInitTime - lastTime);
+    lastTime = frameInitTime;
 }
 
 void ParticleSystem::generateBuffers(GLuint &base_mesh_vertex_buffer, GLuint &particles_position_buffer,
@@ -178,8 +218,8 @@ void ParticleSystem::generateBuffers(GLuint &base_mesh_vertex_buffer, GLuint &pa
     static const GLfloat g_vertex_buffer_data[] = {
             -0.5f, -0.5f, 0.0f,
             0.5f, -0.5f, 0.0f,
-            -0.5f,  0.5f, 0.0f,
-            0.5f,  0.5f, 0.0f,
+            -0.5f, 0.5f, 0.0f,
+            0.5f, 0.5f, 0.0f,
     };
     glGenBuffers(1, &base_mesh_vertex_buffer);
     glBindBuffer(GL_ARRAY_BUFFER, base_mesh_vertex_buffer);
@@ -188,43 +228,14 @@ void ParticleSystem::generateBuffers(GLuint &base_mesh_vertex_buffer, GLuint &pa
     // The VBO containing the positions and sizes of the particles
     glGenBuffers(1, &particles_position_buffer);
     glBindBuffer(GL_ARRAY_BUFFER, particles_position_buffer);
-    glBufferData(GL_ARRAY_BUFFER, MaxParticles * 4 * sizeof(GLfloat), nullptr, GL_STREAM_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, NUM_PARTICLES * 4 * sizeof(float), nullptr, GL_STREAM_DRAW);
 
     // The VBO containing the colors of the particles
     glGenBuffers(1, &particles_color_buffer);
     glBindBuffer(GL_ARRAY_BUFFER, particles_color_buffer);
-    glBufferData(GL_ARRAY_BUFFER, MaxParticles * 4 * sizeof(GLubyte), nullptr, GL_STREAM_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, NUM_PARTICLES * 4 * sizeof(GLubyte), nullptr, GL_STREAM_DRAW);
 }
 
-int ParticleSystem::simulateParticles(GLfloat *g_particule_position_size_data, GLubyte *g_particule_color_data,
-                                      double delta, const vec3 &CameraPosition) {
-    int ParticlesCount = 0;
-
-    for(int i=0; i<MaxParticles; i++){
-
-        Particle& p = particlesContainer[i];
-
-        p.simulate(delta, CameraPosition, spaceHeld, floorZVal, gravity);
-
-        if(p.isAlive()) // if we need to render the particle then push to the GPU buffer
-        {
-            g_particule_position_size_data[4*ParticlesCount+0] = p.getPos().x;
-            g_particule_position_size_data[4*ParticlesCount+1] = p.getPos().y;
-            g_particule_position_size_data[4*ParticlesCount+2] = p.getPos().z;
-
-            g_particule_position_size_data[4*ParticlesCount+3] = p.getSize();
-
-            g_particule_color_data[4*ParticlesCount+0] = p.getR();
-            g_particule_color_data[4*ParticlesCount+1] = p.getG();
-            g_particule_color_data[4*ParticlesCount+2] = p.getB();
-            g_particule_color_data[4*ParticlesCount+3] = p.getA();
-            ParticlesCount++;
-        }
-
-
-    }
-    return ParticlesCount;
-}
 
 void ParticleSystem::setupVertexShaderInputs(GLuint billboard_vertex_buffer, GLuint particles_position_buffer,
                                              GLuint particles_color_buffer) {
@@ -248,54 +259,264 @@ void ParticleSystem::setupVertexShaderInputs(GLuint billboard_vertex_buffer, GLu
     glVertexAttribDivisor(2, 1); // color : one per quad                                  -> 1
 }
 
+
 void ParticleSystem::generateNewParticles() {
-    int newparticles = (int)(delta*100.0);
 
-    if (newparticles > (int)(0.016f*100.0)) // limit to 100 if running at a low fps
-    {
-        newparticles = (int)(100.0); // number of new particles to create
-    }// every ms
+    for (int i = 0; i < NUM_PARTICLES; i++) {
+
+        float life, size, x, y, z, randLow, randHigh;
+
+        randHigh = 5.0f;
+        randLow =  1.0f; //-5.0f;
+        life = randLow + rand() / (RAND_MAX / (randHigh - randLow));
+
+        randHigh = 0.15f;
+        randLow = 0.10f;
+        size = randLow + rand() / (RAND_MAX / (randHigh - randLow));
+
+        randHigh = 100.0f;
+        randLow = -100.0f;
+        x = randLow + rand() / (RAND_MAX / (randHigh - randLow));
+
+        randHigh = 50.0f;
+        randLow = -50.0f;
+        y = randLow + rand() / (RAND_MAX / (randHigh - randLow));
+        z = 30.0f;
+
+        particle_position_size_data[(i * 4) + 0] = x;
+        particle_position_size_data[(i * 4) + 1] = y;
+        particle_position_size_data[(i * 4) + 2] = z;
+        particle_position_size_data[(i * 4) + 3] = size;
 
 
-    for(int i=0; i<newparticles; i++){
-        int particleIndex = FindUnusedParticle();
+        particleMetaDataBuffer[i] = life;
 
-        vec3 pos = vec3(rand() % 20 - 10.0f,rand() % 4,10);
-        vec3 speed = vec3(0.0f, 0.0f, 0.0f);
+        particlesContainer[i].size = size;
 
-        Particle *p = new Particle(
-                                pos,                                        // position
-                                speed,                                      // speed
-                                objVectors[rand() % objVectors.size()],     // target position
-                                static_cast<unsigned char>(rand() % 255),   // R
-                                static_cast<unsigned char>(0),              // G
-                                static_cast<unsigned char>(255),            // B
-                                static_cast<unsigned char>(255),            // A
-                                (rand()%100)/2000.0f + 0.1f,                // size
-                                10.0f);                                     // life
+        randHigh = 25.0f;
+        randLow = 10.0f;
+        particlesContainer[i].life = randLow + rand() / (RAND_MAX / (randHigh - randLow));
+        particlesContainer[i].position.x = x;
+        particlesContainer[i].position.y = y;
+        particlesContainer[i].position.z = z;
 
-        particlesContainer[particleIndex] = *p;
+        long pointToGoTo = rand() % objVectors.size();
+
+        particlesContainer[i].target.x = objVectors[pointToGoTo]->x;
+        particlesContainer[i].target.y = objVectors[pointToGoTo]->y;
+        particlesContainer[i].target.z = objVectors[pointToGoTo]->z;
+
+        randHigh = 15.0f;
+        randLow = 0.2f;
+        particlesContainer[i].mass = randLow + rand() / (RAND_MAX / (randHigh - randLow));
+
+        randHigh = 5.1f;
+        randLow = -5.1f;
+        particlesContainer[i].randX = randLow + rand() / (RAND_MAX / (randHigh - randLow));
+        particlesContainer[i].randY = randLow + rand() / (RAND_MAX / (randHigh - randLow));
+
+        particle_colour_data[(i * 4) + 0] = static_cast<unsigned char>(rand() % 255);
+        particle_colour_data[(i * 4) + 1] = static_cast<unsigned char>(0);
+        particle_colour_data[(i * 4) + 2] = static_cast<unsigned char>(255);
+        particle_colour_data[(i * 4) + 3] = static_cast<unsigned char>(255);
     }
-}
 
-int ParticleSystem::FindUnusedParticle() {
-    for(int i=lastUsedParticle; i<MaxParticles; i++){
-        if (particlesContainer[i].getLife() < 0){
-            lastUsedParticle = i;
-            return i;
+}
+#ifndef __APPLE__
+void ParticleSystem::setupOpenCl() {
+
+    cl_int err;
+    std::vector<cl::Platform> platformList;
+    cl::Platform::get(&platformList);
+
+    checkErr(!platformList.empty() ? CL_SUCCESS : -1, "cl::Platform::get");
+    std::cerr << "Platform count is: " << platformList.size() << std::endl;
+
+
+    cl_context_properties cprops[3] =
+            {CL_CONTEXT_PLATFORM, (cl_context_properties) (platformList[0])(), 0};
+
+    cl::Context context(
+            CL_DEVICE_TYPE_GPU,
+            cprops,
+            nullptr,
+            nullptr,
+            &err);
+    checkErr(err, "Conext::Context()");
+
+
+    kernelParticleBuffer = cl::Buffer(
+            context,
+            CL_MEM_READ_ONLY | CL_MEM_USE_HOST_PTR,
+            sizeof(particle) * NUM_PARTICLES,
+            particlesContainer,
+            &err);
+    checkErr(err, "Buffer::Buffer()");
+
+
+    kernelParticleBufferToOpenGl = cl::Buffer(
+            context,
+            CL_MEM_READ_WRITE | CL_MEM_USE_HOST_PTR,
+            sizeof(float) * NUM_PARTICLES * 4,
+            particle_position_size_data,
+            &err);
+    checkErr(err, "Buffer::Buffer()");
+
+    kernelParticleMetaBuffer = cl::Buffer(
+            context,
+            CL_MEM_READ_WRITE | CL_MEM_USE_HOST_PTR,
+            sizeof(float) * NUM_PARTICLES,
+            particleMetaDataBuffer,
+            &err);
+    checkErr(err, "Buffer::Buffer()");
+
+    kernelSpaceBuffer = cl::Buffer(
+            context,
+            CL_MEM_READ_ONLY | CL_MEM_USE_HOST_PTR,
+            sizeof(bool),
+            spaceHeld,
+            &err);
+    checkErr(err, "Buffer::Buffer()");
+
+
+    std::vector<cl::Device> devices;
+    devices = context.getInfo<CL_CONTEXT_DEVICES>();
+    checkErr(!devices.empty() ? CL_SUCCESS : -1, "devices.size() > 0");
+
+
+    // ----------------------------------------------------------------------------------- physics kernel
+    std::ifstream file("/home/bill/Documents/git/COMP37111/src/Kernel/simulate_particle.cl");
+    checkErr(file.is_open() ? CL_SUCCESS : -1, "simulate_particle.cl");
+    std::string prog(
+            std::istreambuf_iterator<char>(file),
+            (std::istreambuf_iterator<char>()));
+
+    cl::Program::Sources source(1, std::make_pair(prog.c_str(), prog.length() + 1));
+
+    cl::Program program(context, source);
+    err = program.build(devices, "");
+    checkErr(file.is_open() ? CL_SUCCESS : -1, "Program::build()");
+
+    kernel = cl::Kernel(program, "simulate_particle", &err);
+    checkErr(err, "Kernel::Kernel()");
+
+
+    // ----------------------------------------------------------------------------------- physics kernel
+
+    queue = cl::CommandQueue(context, devices[0], 0, &err);
+    checkErr(err, "CommandQueue::CommandQueue()");
+
+}
+#endif
+
+void ParticleSystem::simParticles() {
+
+    for (int i = 0; i < NUM_PARTICLES; ++i) {
+        if (particlesContainer[i].life > 0.0) {
+
+            if (massAdjust == -1.0f) {
+                particlesContainer[i].mass -= 0.5f;
+            } else if (massAdjust == 1.0f)  {
+                particlesContainer[i].mass += 0.5f;
+            }
+
+            vect3 acc;
+            acc.x = 0.0;
+            acc.y = 0.0;
+            acc.z = 0.0;
+
+            if (particle_position_size_data[(i * 4) + 2] <= FLOOR_Z) {
+                particle_position_size_data[(i * 4) + 2] = static_cast<float>(FLOOR_Z + 0.1f);
+                acc.x = particlesContainer[i].randX * static_cast<float>(delta);
+                acc.y = particlesContainer[i].randY * static_cast<float>(delta);
+                acc.z = 5.0f * static_cast<float>(delta);
+            } else {
+                if (*spaceHeld) {
+                    acc.x = (particlesContainer[i].target.x - particle_position_size_data[(i * 4) + 0]) * static_cast<float>(delta);
+                    acc.y = (particlesContainer[i].target.y - particle_position_size_data[(i * 4) + 1]) * static_cast<float>(delta);
+                    acc.z = (particlesContainer[i].target.z - particle_position_size_data[(i * 4) + 2]) * static_cast<float>(delta);
+
+                } else {
+                    acc.z = gravity * static_cast<float>(delta);
+                }
+
+            }
+
+            float sx = acc.x * particlesContainer[i].mass;
+            float sy = acc.y * particlesContainer[i].mass;
+            float sz = acc.z * particlesContainer[i].mass;
+
+            particle_position_size_data[(i * 4) + 0] += sx;
+            particle_position_size_data[(i * 4) + 1] += sy;
+            particle_position_size_data[(i * 4) + 2] += sz;
+
+
+            if (!*spaceHeld) {
+                particlesContainer[i].life -= 0.01f;
+            }
+        } else {
+
+
+            if (particlesContainer[i].life < 0.0f && !*spaceHeld) {
+                particle_position_size_data[(i * 4) + 0] = particlesContainer[i].position.x;
+                particle_position_size_data[(i * 4) + 1] = particlesContainer[i].position.y;
+                particle_position_size_data[(i * 4) + 2] = particlesContainer[i].position.z;
+                particle_position_size_data[(i * 4) + 3] = particlesContainer[i].size;
+
+                particlesContainer[i].life = 5.0f;
+            } else {
+                particle_position_size_data[(i * 4) + 0] = -50.0f;
+                particle_position_size_data[(i * 4) + 1] = -50.0f;
+                particle_position_size_data[(i * 4) + 2] = -50.0f;
+
+                particle_position_size_data[(i * 4) + 3] = 0.0f;
+                particlesContainer[i].life -= 0.01f;
+            }
         }
     }
 
-    for(int i=0; i<lastUsedParticle; i++){
-        if (particlesContainer[i].getLife() < 0){
-            lastUsedParticle = i;
-            return i;
-        }
-    }
-
-    return 0; // All particles are taken, override the first one
 }
+#ifndef __APPLE__
+void ParticleSystem::simParticlesOpenCL() {
+    cl_int err;
 
-void ParticleSystem::SortParticles() {
-    std::sort(&particlesContainer[0], &particlesContainer[MaxParticles]);
+
+    err = queue.enqueueWriteBuffer(
+            kernelSpaceBuffer,
+            CL_TRUE,
+            0,
+            sizeof(bool),
+            spaceHeld);
+    checkErr(err, "ComamndQueue::enqueueReadBuffer()");
+
+
+    err = kernel.setArg(0, kernelParticleBuffer);
+    checkErr(err, "Kernel::setArg()");
+    err = kernel.setArg(1, kernelParticleBufferToOpenGl);
+    checkErr(err, "Kernel::setArg()");
+    err = kernel.setArg(2, kernelParticleMetaBuffer);
+    checkErr(err, "Kernel::setArg()");
+    err = kernel.setArg(3, kernelSpaceBuffer);
+    checkErr(err, "Kernel::setArg()");
+
+
+    err = queue.enqueueNDRangeKernel(
+            kernel,
+            cl::NullRange,
+            cl::NDRange(NUM_PARTICLES),
+            cl::NDRange(128),
+            nullptr,
+            &event);
+    checkErr(err, "ComamndQueue::enqueueNDRangeKernel()");
+
+    err = queue.enqueueReadBuffer(
+            kernelParticleBufferToOpenGl,
+            CL_TRUE,
+            0,
+            sizeof(float) * NUM_PARTICLES * 4,
+            particle_position_size_data);
+    checkErr(err, "ComamndQueue::enqueueReadBuffer()");
+
+    event.wait();
 }
+#endif

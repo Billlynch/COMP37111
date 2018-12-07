@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true" buildAllGenerated="true">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/src/ParticleSystem.cpp" line="423" mnemonic="0" />
+  </component>
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true" buildAllGenerated="false">
     <generated>
       <config projectName="Graphics" targetName="Graphics" />
     </generated>
@@ -12,10 +15,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdaff1bf-a899-4137-8637-3e4738bd26e3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Graphics.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Graphics.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Graphics" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analysisResult.csv" beforeDir="false" afterPath="$PROJECT_DIR$/analysisResult.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ParticleSystem.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/ParticleSystem.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ParticleSystem.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/ParticleSystem.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shaders/vertex_shader.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/shaders/vertex_shader.glsl" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,246 +33,238 @@
     <session id="-1608028577">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
-          <entry key="project.open.time.10" value="1" />
-          <entry key="project.open.time.3" value="1" />
-          <entry key="project.open.time.4" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.closed" value="2" />
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.open.time.7" value="1" />
+          <entry key="project.opened" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="DDS" value="1" />
-          <entry key="bk" value="1" />
-          <entry key="bmp" value="1" />
-          <entry key="cpp" value="26" />
-          <entry key="fragmentshader" value="1" />
-          <entry key="gitignore" value="1" />
-          <entry key="glsl" value="3" />
-          <entry key="h" value="12" />
-          <entry key="hpp" value="5" />
-          <entry key="string" value="1" />
-          <entry key="vertexshader" value="1" />
+          <entry key="cpp" value="2" />
+          <entry key="csv" value="1" />
+          <entry key="glsl" value="1" />
+          <entry key="py" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
+          <entry key="CSV" value="1" />
           <entry key="GLSL shader file" value="1" />
-          <entry key="Image" value="1" />
-          <entry key="ObjectiveC" value="45" />
-          <entry key="PLAIN_TEXT" value="6" />
+          <entry key="ObjectiveC" value="2" />
+          <entry key="Python" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cpp" value="7592" />
-          <entry key="glsl" value="2" />
-          <entry key="h" value="1237" />
-          <entry key="hpp" value="28" />
-          <entry key="txt" value="170" />
-          <entry key="vertexshader" value="109" />
+          <entry key="cl" value="9" />
+          <entry key="cpp" value="175" />
+          <entry key="glsl" value="53" />
+          <entry key="h" value="57" />
+          <entry key="mm" value="10" />
+          <entry key="py" value="59" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CMakeLists.txt" value="170" />
-          <entry key="GLSL shader file" value="2" />
-          <entry key="ObjectiveC" value="8857" />
-          <entry key="PLAIN_TEXT" value="109" />
+          <entry key="GLSL shader file" value="53" />
+          <entry key="ObjectiveC" value="251" />
+          <entry key="Python" value="59" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/common/Particle.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="480">
-                  <caret line="32" column="14" lean-forward="true" selection-start-line="32" selection-start-column="14" selection-end-line="32" selection-end-column="14" />
-                  <folding>
-                    <element signature="e#136#163#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/ParticleSystem.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="237">
-                  <caret line="33" column="9" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
-                  <folding>
-                    <element signature="e#148#168#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/common/controls.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="405">
-                  <caret line="28" column="19" lean-forward="true" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="120">
-                  <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/ParticleSystem.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="315">
-                  <caret line="206" column="16" selection-start-line="206" selection-start-column="16" selection-end-line="206" selection-end-column="16" />
-                  <folding>
-                    <element signature="e#454#822#0" />
-                    <element signature="e#757#937#0" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/common/file_loader.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="450">
-                  <caret line="30" selection-start-line="30" selection-end-line="30" />
-                  <folding>
-                    <element signature="e#110#128#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/common/file_loader.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="270">
-                  <caret line="18" selection-start-line="18" selection-end-line="18" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/common/shader.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="45">
-                  <caret line="9" selection-start-line="9" selection-end-line="9" />
-                  <folding>
-                    <element signature="e#156#176#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/common/shader.hpp">
-              <provider selected="true" editor-type-id="text-editor" />
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="375">
-                  <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/common/controls.hpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="120">
-                  <caret line="8" column="6" lean-forward="true" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/common/Particle.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="432">
-                  <caret line="42" column="26" lean-forward="true" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ParticleSystem.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-119">
+              <caret line="29" column="23" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
+              <folding>
+                <element signature="e#482#502#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ParticleSystem.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="351">
+              <caret line="439" column="59" lean-forward="true" selection-start-line="439" selection-start-column="59" selection-end-line="439" selection-end-column="59" />
+              <folding>
+                <element signature="e#369#383#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/shaders/vertex_shader.glsl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="720">
+              <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/common/controls.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/graphing/graph_2.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="525">
+              <caret line="36" column="49" selection-start-line="36" selection-start-column="49" selection-end-line="36" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/particleCountPerFrameCalculator/RandomMain.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="576">
+              <caret line="49" column="38" selection-start-line="49" selection-start-column="38" selection-end-line="49" selection-end-column="38" />
+              <folding>
+                <element signature="e#51#68#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/particleCountPerFrameCalculator/particleAtFrameCount.csv">
+          <provider editor-type-id="csv-table-editor">
+            <state showInfoPanel="true" rowLines="3" />
+          </provider>
+          <provider selected="true" editor-type-id="csv-text-editor">
+            <state relative-caret-position="-81558" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/graphing/particleAtFrameCount.csv">
+          <provider editor-type-id="csv-table-editor">
+            <state showInfoPanel="true" rowLines="3" />
+          </provider>
+          <provider selected="true" editor-type-id="csv-text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Kernel/simulate_particle.cl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="456">
+              <caret line="69" column="80" lean-forward="true" selection-start-line="69" selection-start-column="80" selection-end-line="69" selection-end-column="80" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>glVertexAttribPointer</find>
-      <find>contextc</find>
-      <find>MaxP</find>
-      <find>Particle.fr</find>
-      <find>DDS</find>
-      <find>clear</find>
-      <find>LOAd</find>
-      <find>LOADT</find>
-      <find>Texture</find>
-      <find>TextureID</find>
-      <find>myTextureSampler</find>
-      <find>texture</find>
-      <find>new</find>
-      <find>string</find>
-      <find>particles_color_buffer</find>
-      <find>programID</find>
-      <find>CameraRight_worldspace_ID</find>
-      <find>particle_position_size_data</find>
-      <find>simulate</find>
-      <find>particles_position_buffer</find>
-      <find>VertexArrayID</find>
-      <find>setupVertexShaderInputs</find>
-      <find>generateBuffers</find>
-      <find>FindUnusedParticle</find>
-      <find>sort</find>
       <find>particle_colour_data</find>
       <find>particlesContainer</find>
       <find>window</find>
       <find>computeMatricesFromInputs</find>
       <find>MaxParticles</find>
+      <find>particlesCount</find>
+      <find>lesson1_kernel</find>
+      <find>particleArray</find>
+      <find>color</find>
+      <find>simulateParticles</find>
+      <find>metaBuffer</find>
+      <find>kernelParticleBufferToOpenGl</find>
+      <find>CL_API_SUFFIX__VERSION_1_2</find>
+      <find>CL_API_SUFFIX__VERSION_2_1</find>
+      <find>queue</find>
+      <find>.</find>
+      <find>kernel</find>
+      <find>kernel(</find>
+      <find>particleMetaDataBuffer</find>
+      <find>particle_position_size_data</find>
+      <find>particles_color_buffer</find>
+      <find>double</find>
+      <find>* 5</find>
+      <find>-1</find>
+      <find>speed_multiplier</find>
+      <find>programID</find>
+      <find>sum</find>
+      <find>rand()</find>
+      <find>srand</find>
+      <find>15</find>
     </findStrings>
+    <replaceStrings>
+      <replace>mean</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/shaders/fragment_shader.glsl" />
         <option value="$PROJECT_DIR$/src/Particle.h" />
         <option value="$PROJECT_DIR$/src/common/controls.h" />
         <option value="$PROJECT_DIR$/src/common/texture.cpp" />
-        <option value="$PROJECT_DIR$/src/common/shader.cpp" />
         <option value="$PROJECT_DIR$/src/shaders/Particle.fragmentshader" />
         <option value="$PROJECT_DIR$/src/shaders/Particle.vertexshader" />
-        <option value="$PROJECT_DIR$/src/shaders/vertex_shader.glsl" />
         <option value="$PROJECT_DIR$/src/openGLAbstractions.h" />
-        <option value="$PROJECT_DIR$/src/common/file_loader.h" />
-        <option value="$PROJECT_DIR$/src/common/file_loader.cpp" />
-        <option value="$PROJECT_DIR$/src/common/Particle.h" />
+        <option value="$PROJECT_DIR$/cmake/FindGLM.cmake" />
+        <option value="$PROJECT_DIR$/cmake/FindGLFW.cmake" />
+        <option value="$PROJECT_DIR$/cmake/FindGLEW.cmake" />
         <option value="$PROJECT_DIR$/src/common/Particle.cpp" />
-        <option value="$PROJECT_DIR$/src/main.cpp" />
-        <option value="$PROJECT_DIR$/src/ParticleSystem.h" />
-        <option value="$PROJECT_DIR$/src/common/controls.cpp" />
-        <option value="$PROJECT_DIR$/src/common/controls.hpp" />
+        <option value="$PROJECT_DIR$/src/Analysiser.cpp" />
+        <option value="$PROJECT_DIR$/cmake/FindOpenCl.cmake" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/src/shaders/fragment_shader.glsl" />
+        <option value="$PROJECT_DIR$/src/common/controls.hpp" />
+        <option value="$PROJECT_DIR$/src/common/shader.cpp" />
+        <option value="$PROJECT_DIR$/src/Analysiser.h" />
+        <option value="$PROJECT_DIR$/src/common/controls.cpp" />
+        <option value="$PROJECT_DIR$/src/common/file_loader.cpp" />
+        <option value="$PROJECT_DIR$/src/common/file_loader.h" />
+        <option value="$PROJECT_DIR$/src/common/Particle.h" />
+        <option value="$PROJECT_DIR$/src/main.cpp" />
+        <option value="$PROJECT_DIR$/src/Analyser.cpp" />
+        <option value="$PROJECT_DIR$/src/graphing/grapth.py" />
+        <option value="$PROJECT_DIR$/src/RandomMain.cpp" />
+        <option value="$PROJECT_DIR$/src/Analyser.h" />
+        <option value="$PROJECT_DIR$/cmake-build-debug/analysisResult.csv" />
+        <option value="$PROJECT_DIR$/src/graphing/graph.py" />
+        <option value="$PROJECT_DIR$/src/graphing/graph_2.py" />
+        <option value="$PROJECT_DIR$/src/Kernel/simulate_particle.cl" />
+        <option value="$PROJECT_DIR$/particleCountPerFrameCalculator/RandomMain.cpp" />
+        <option value="$PROJECT_DIR$/src/ParticleSystem.h" />
+        <option value="$PROJECT_DIR$/src/shaders/vertex_shader.glsl" />
         <option value="$PROJECT_DIR$/src/ParticleSystem.cpp" />
       </list>
     </option>
@@ -281,10 +277,27 @@
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-61" />
-    <option name="y" value="-1169" />
-    <option name="width" value="1863" />
-    <option name="height" value="1169" />
+    <option name="x" value="-92" />
+    <option name="y" value="-1178" />
+    <option name="width" value="1920" />
+    <option name="height" value="1178" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State />
+          <State>
+            <id>Python</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>PyInterpreterInspection</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -292,13 +305,22 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="Graphics" type="b2602c69:ProjectViewProjectNode" />
               <item name="Graphics" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Graphics" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Graphics" type="462c0819:PsiDirectoryNode" />
+              <item name="cmake-build-debug" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Graphics" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Graphics" type="462c0819:PsiDirectoryNode" />
+              <item name="particleCountPerFrameCalculator" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Graphics" type="b2602c69:ProjectViewProjectNode" />
@@ -310,6 +332,18 @@
               <item name="Graphics" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Graphics" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Graphics" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="graphing" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Graphics" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Graphics" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Kernel" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Graphics" type="b2602c69:ProjectViewProjectNode" />
@@ -327,22 +361,28 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/graphing/graph.py" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="dynamic.analysis.tools.valgrind" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/particleCountPerFrameCalculator" />
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/graphing" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/common" />
       <recent name="$PROJECT_DIR$/src/shaders" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -363,15 +403,70 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Graphics" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Graphics" TARGET_NAME="Graphics" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Graphics" RUN_TARGET_NAME="Graphics">
+    <configuration name="Graphics-Monkey" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="$PROJECT_DIR$/src/Models/monkey.obj" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Graphics" TARGET_NAME="Graphics" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Graphics" RUN_TARGET_NAME="Graphics">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Graphics" type="CMakeRunConfiguration" factoryName="Application" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Graphics" TARGET_NAME="Graphics" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Graphics" RUN_TARGET_NAME="Graphics">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="graph_2" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Graphics" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/graphing" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/graphing/graph_2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="make_graphs" type="PythonConfigurationType" factoryName="Python">
+      <module name="Graphics" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/graphing" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/graphing/graph.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Application.Build All" />
       <item itemvalue="Application.Graphics" />
+      <item itemvalue="Application.Graphics-Monkey" />
+      <item itemvalue="Python.make_graphs" />
+      <item itemvalue="Python.graph_2" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.graph_2" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -386,54 +481,60 @@
       <workItem from="1538151960298" duration="297000" />
       <workItem from="1538152274005" duration="21497000" />
       <workItem from="1538849697761" duration="573000" />
+      <workItem from="1543707875197" duration="11684000" />
+      <workItem from="1543781891665" duration="13078000" />
+      <workItem from="1544060754547" duration="1002000" />
+      <workItem from="1544113879280" duration="5877000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50419000" />
+    <option name="totallyTimeSpent" value="116766000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1680" height="988" extended-state="0" />
+    <frame x="-92" y="-1178" width="1920" height="1178" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.25518927" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23855165" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32924107" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4993895" visible="true" weight="0.2421875" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39955357" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49840638" weight="0.32883242" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.37250996" visible="true" weight="0.19889502" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4860558" weight="0.39871088" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.30755064" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50061053" side_tool="true" weight="0.328125" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49880478" weight="0.30662984" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.62749004" side_tool="true" weight="0.24146147" />
       <window_info anchor="bottom" id="Version Control" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="CMake" order="11" weight="0.32924107" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.265625" />
+      <window_info anchor="bottom" id="CMake" order="11" sideWeight="0.47768924" weight="0.32831088" />
+      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.36414343" weight="0.26427257" />
+      <window_info anchor="bottom" id="Inspection Results" order="13" sideWeight="0.49840638" weight="0.32962668" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.25579977" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10717131" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32924107" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4993895" weight="0.29464287" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39955357" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3080357" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50061053" side_tool="true" weight="0.328125" />
-      <window_info anchor="bottom" id="Version Control" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="CMake" order="11" weight="0.32924107" />
-      <window_info active="true" anchor="bottom" id="Messages" order="12" visible="true" weight="0.26674107" />
+      <window_info anchor="bottom" id="Inspection Results" order="0" sideWeight="0.49840638" weight="0.32962668" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="Find" order="2" sideWeight="0.49840638" weight="0.32883242" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" sideWeight="0.37250996" visible="true" weight="0.24146147" />
+      <window_info anchor="bottom" id="Debug" order="4" sideWeight="0.4860558" weight="0.39952344" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="7" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49880478" weight="0.30738682" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.62749004" side_tool="true" visible="true" weight="0.24146147" />
+      <window_info anchor="bottom" id="Version Control" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="CMake" order="12" sideWeight="0.47768924" weight="0.32831088" />
+      <window_info anchor="bottom" id="Messages" order="13" sideWeight="0.36414343" weight="0.2652899" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -446,158 +547,297 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/ParticleSystem.cpp</url>
+          <line>451</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>particlesContainer[i]</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>spaceHeld</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>particle_position_size_data[(32 * 4) + 3 ]</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>particle_position_size_data[(32 * 4) + 0 ]</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>particle_position_size_data[(32 * 4) + 1 ]</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>particlesContainer</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>particle_position_size_data[(32 * 4) + 2 ]</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>particle_position_size_data[(31 * 4) + 3 ]</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>particleMetaDataBuffer[i]</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main.h" />
-    <entry file="file://$PROJECT_DIR$/src/main.cpp.bk" />
-    <entry file="file:///usr/local/include/GL/glew.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="531">
-          <caret line="1670" column="8" selection-start-line="1670" selection-start-column="8" selection-end-line="1670" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Particle.cpp" />
-    <entry file="file://$PROJECT_DIR$/src/Particle.h" />
-    <entry file="file://$PROJECT_DIR$/src/common/texture.hpp" />
-    <entry file="file://$PROJECT_DIR$/src/particle.DDS" />
     <entry file="file://$PROJECT_DIR$/src/common/texture.cpp" />
-    <entry file="file://$PROJECT_DIR$/src/texture.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file:///usr/local/include/glm/detail/type_vec3.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="71" column="36" selection-start-line="71" selection-start-column="36" selection-end-line="71" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file:///usr/local/include/glm/detail/type_vec3.hpp" />
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/shaders/fragment_shader.glsl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/shaders/vertex_shader.glsl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/openGLAbstractions.cpp" />
     <entry file="file://$PROJECT_DIR$/src/openGLAbstractions.h" />
-    <entry file="file:///usr/local/include/glm/gtx/quaternion.hpp">
+    <entry file="file:///usr/local/include/glm/gtx/quaternion.hpp" />
+    <entry file="file:///Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/string" />
+    <entry file="file://$PROJECT_DIR$/src/main.bk.cpp" />
+    <entry file="file://$PROJECT_DIR$/cmake/FindGLM.cmake">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
-          <folding>
-            <element signature="e#550#729#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="793">
+          <caret line="61" column="55" selection-start-line="61" selection-start-column="40" selection-end-line="61" selection-end-column="55" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/file_loader.h">
+    <entry file="file://$PROJECT_DIR$/cmake/FindGLFW.cmake">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
-          <folding>
-            <element signature="e#110#128#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="808">
+          <caret line="68" column="34" selection-start-line="68" selection-start-column="17" selection-end-line="68" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmake/FindGLEW.cmake">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/include/c++/6/vector" />
+    <entry file="file:///usr/include/c++/6/bits/stl_algobase.h" />
+    <entry file="file:///usr/include/c++/6/bits/predefined_ops.h" />
+    <entry file="file:///usr/include/glm/detail/type_mat4x4.inl" />
+    <entry file="file://$PROJECT_DIR$/src/common/Particle.cpp" />
+    <entry file="file:///usr/include/CL/cl.hpp" />
+    <entry file="file://$PROJECT_DIR$/cmake/FindOpenCl.cmake">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2190">
+          <caret line="146" column="45" selection-start-line="146" selection-start-column="24" selection-end-line="146" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/include/GL/glew.h" />
+    <entry file="file:///usr/include/CL/cl.h" />
+    <entry file="file://$PROJECT_DIR$/src/texture.bmp" />
+    <entry file="file://$PROJECT_DIR$/src/testOfAnalysiser.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/controls.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="11" column="51" selection-start-line="11" selection-start-column="51" selection-end-line="11" selection-end-column="51" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/common/file_loader.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="16" lean-forward="true" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/shader.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/shader.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/Particle.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="18" selection-start-line="18" selection-end-line="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file:///Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/string">
+    <entry file="file://$PROJECT_DIR$/src/shaders/fragment_shader.glsl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="3612" selection-start-line="3612" selection-end-line="3612" />
+        <state relative-caret-position="150">
+          <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/shader.cpp">
+    <entry file="file://$PROJECT_DIR$/src/common/file_loader.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="255">
+          <caret line="17" column="8" lean-forward="true" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/graphing/__init__.py" />
+    <entry file="file://$USER_HOME$/.CLion2018.3/system/python_stubs/1386624592/builtins.py" />
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="41" column="138" selection-start-line="41" selection-start-column="138" selection-end-line="41" selection-end-column="138" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Analyser.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Analyser.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="26" selection-start-line="17" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/graphing/analysisResultGravityAndBounceOpenCL.csv" />
+    <entry file="file://$PROJECT_DIR$/src/graphing/analysisResultSpaceOpenCL.csv" />
+    <entry file="file://$PROJECT_DIR$/src/graphing/analysisResultSpaceCPU.csv" />
+    <entry file="file://$PROJECT_DIR$/src/graphing/analysisResultGravityAndBouncesCPU.csv" />
+    <entry file="file://$PROJECT_DIR$/cmake-build-debug/analysisResult.csv">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="565">
+          <caret line="378" selection-start-line="378" selection-end-line="378" />
+        </state>
+      </provider>
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" rowLines="3" />
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/graphing/analysisResultSpaceCPUMac.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" rowLines="3" />
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/graphing/graph.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="32" selection-start-line="32" selection-end-line="55" />
           <folding>
-            <element signature="e#156#176#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/Particle.h">
+    <entry file="file://$PROJECT_DIR$/src/graphing/graph_2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="14" lean-forward="true" selection-start-line="32" selection-start-column="14" selection-end-line="32" selection-end-column="14" />
-          <folding>
-            <element signature="e#136#163#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="525">
+          <caret line="36" column="49" selection-start-line="36" selection-start-column="49" selection-end-line="36" selection-end-column="49" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.bk.cpp" />
-    <entry file="file://$PROJECT_DIR$/src/ParticleSystem.h">
+    <entry file="file://$PROJECT_DIR$/src/graphing/particleAtFrameCount.csv">
+      <provider editor-type-id="text-editor" />
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" rowLines="3" />
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Kernel/simulate_particle.cl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="33" column="9" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
+        <state relative-caret-position="456">
+          <caret line="69" column="80" lean-forward="true" selection-start-line="69" selection-start-column="80" selection-end-line="69" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/particleCountPerFrameCalculator/RandomMain.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="49" column="38" selection-start-line="49" selection-start-column="38" selection-end-line="49" selection-end-column="38" />
           <folding>
-            <element signature="e#148#168#0" expanded="true" />
+            <element signature="e#51#68#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
+        <state relative-caret-position="75">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/common/controls.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="28" column="19" lean-forward="true" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
+        <state relative-caret-position="225">
+          <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/controls.hpp">
+    <entry file="file://$PROJECT_DIR$/particleCountPerFrameCalculator/particleAtFrameCount.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" rowLines="3" />
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="-81558" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ParticleSystem.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="6" lean-forward="true" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+        <state relative-caret-position="-119">
+          <caret line="29" column="23" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
+          <folding>
+            <element signature="e#482#502#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+    <entry file="file://$PROJECT_DIR$/src/shaders/vertex_shader.glsl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
+        <state relative-caret-position="720">
+          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ParticleSystem.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="206" column="16" selection-start-line="206" selection-start-column="16" selection-end-line="206" selection-end-column="16" />
+        <state relative-caret-position="351">
+          <caret line="439" column="59" lean-forward="true" selection-start-line="439" selection-start-column="59" selection-end-line="439" selection-end-column="59" />
           <folding>
-            <element signature="e#454#822#0" />
-            <element signature="e#757#937#0" />
+            <element signature="e#369#383#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/Particle.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="42" column="26" lean-forward="true" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
         </state>
       </provider>
     </entry>
