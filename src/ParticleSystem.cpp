@@ -452,7 +452,7 @@ void ParticleSystem::simParticles() {
 
 
             if (!*spaceHeld) {
-                //particlesContainer[i].life -= 0.01f;
+                particlesContainer[i].life -= 0.01f;
             }
         } else {
 
@@ -463,14 +463,14 @@ void ParticleSystem::simParticles() {
                 particle_position_size_data[(i * 4) + 2] = particlesContainer[i].position.z;
                 particle_position_size_data[(i * 4) + 3] = particlesContainer[i].size;
 
-                //particlesContainer[i].life = 5.0f;
+                particlesContainer[i].life = 5.0f;
             } else {
                 particle_position_size_data[(i * 4) + 0] = -50.0f;
                 particle_position_size_data[(i * 4) + 1] = -50.0f;
                 particle_position_size_data[(i * 4) + 2] = -50.0f;
 
                 particle_position_size_data[(i * 4) + 3] = 0.0f;
-                //particlesContainer[i].life -= 0.01f;
+                particlesContainer[i].life -= 0.01f;
             }
         }
     }

@@ -6,7 +6,8 @@ from matplotlib import pyplot as plt
 
 
 nParticles = range(1024, 1050*1024, 50*1024)
-print(list(nParticles))
+nParticles = list(nParticles)
+nParticles.append(2000 * 1024)
 macDeltaAVG = [0.01666313322320933,
              0.016669596322222223,
              0.016710319878619154,
@@ -27,7 +28,8 @@ macDeltaAVG = [0.01666313322320933,
              0.021352422585765123,
              0.024282678817152105,
              0.024285034014563105,
-             0.026674477915555554] # 1000
+             0.026674477915555554,
+             0.05345559514946619] # 1000
 
 dskDeltaAVG = [0.01666032583786785,
                0.01665657976692564,
@@ -49,7 +51,8 @@ dskDeltaAVG = [0.01666032583786785,
                0.02043790190667575,
                0.021782747466618287,
                0.022964473337413926,
-               0.02393489324082935]
+               0.02393489324082935,
+               0.04832476530434783]
 
 clDeltaAVG = [0.016660368549694615,
               0.01666193456579678,
@@ -71,7 +74,8 @@ clDeltaAVG = [0.016660368549694615,
               0.016673475000555556,
               0.016671003384444445,
               0.016674599009444444,
-              0.016671623603333335]
+              0.016671623603333335,
+              0.016954884544632766]
 
 macFPSAVG = []
 for val in macDeltaAVG:
@@ -91,9 +95,14 @@ for val in clDeltaAVG:
 
 clFPSAVG = np.array(clFPSAVG).astype(np.float)
 
-plt.plot(nParticles, macFPSAVG)
-plt.plot(nParticles, dskFPSAVG)
-plt.plot(nParticles, clFPSAVG)
+mac = plt.plot(nParticles, macFPSAVG)
+dsk = plt.plot(nParticles, dskFPSAVG)
+cl = plt.plot(nParticles, clFPSAVG)
+
+plt.title('Average Frame Rate vs Particle Count')
+plt.ylabel('Frame Rate (FPS)')
+plt.xlabel('Number of Particles')
+plt.legend((mac[0], dsk[0], cl[0]), ('Macbook Pro mid 2014', 'Gaming Desktop CPU', 'Gaming Desktop GPU (OpenCL enabled)'))
 
 plt.show()
 
