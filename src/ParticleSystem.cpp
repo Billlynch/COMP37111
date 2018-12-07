@@ -127,11 +127,15 @@ void ParticleSystem::mainLoop() {
     calculateFrameDelta();  // frame init time
 
     if (glfwGetKey(window, GLFW_KEY_0) == GLFW_PRESS) {
-        gravity += 0.1;
+        gravity += 0.1f;
     }
 
     if (glfwGetKey(window, GLFW_KEY_9) == GLFW_PRESS) {
-        gravity -= 0.1;
+        gravity -= 0.1f;
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS) {
+        gravity = -9.81f;
     }
 
     massAdjust = 0.0f;
@@ -263,12 +267,12 @@ void ParticleSystem::generateNewParticles() {
         float life, size, x, y, z, randLow, randHigh;
 
         randHigh = 5.0f;
-        randLow = -5.0f;
-        life = randLow + rand() / (RAND_MAX / (randHigh - randLow)); //  (rand() % 10) - 5.0f;
+        randLow =  1.0f; //-5.0f;
+        life = randLow + rand() / (RAND_MAX / (randHigh - randLow));
 
         randHigh = 0.15f;
         randLow = 0.10f;
-        size = randLow + rand() / (RAND_MAX / (randHigh - randLow)); //(rand()%100)/2000.0f + 0.1f;
+        size = randLow + rand() / (RAND_MAX / (randHigh - randLow));
 
         randHigh = 100.0f;
         randLow = -100.0f;
@@ -420,7 +424,6 @@ void ParticleSystem::simParticles() {
             acc.x = 0.0;
             acc.y = 0.0;
             acc.z = 0.0;
-            double speed_multiplier = 5.5f;
 
             if (particle_position_size_data[(i * 4) + 2] <= FLOOR_Z) {
                 particle_position_size_data[(i * 4) + 2] = static_cast<float>(FLOOR_Z + 0.1f);
@@ -449,7 +452,7 @@ void ParticleSystem::simParticles() {
 
 
             if (!*spaceHeld) {
-                particlesContainer[i].life -= 0.01f;
+                //particlesContainer[i].life -= 0.01f;
             }
         } else {
 
@@ -460,14 +463,14 @@ void ParticleSystem::simParticles() {
                 particle_position_size_data[(i * 4) + 2] = particlesContainer[i].position.z;
                 particle_position_size_data[(i * 4) + 3] = particlesContainer[i].size;
 
-                particlesContainer[i].life = 5.0f;
+                //particlesContainer[i].life = 5.0f;
             } else {
                 particle_position_size_data[(i * 4) + 0] = -50.0f;
                 particle_position_size_data[(i * 4) + 1] = -50.0f;
                 particle_position_size_data[(i * 4) + 2] = -50.0f;
 
                 particle_position_size_data[(i * 4) + 3] = 0.0f;
-                particlesContainer[i].life -= 0.01f;
+                //particlesContainer[i].life -= 0.01f;
             }
         }
     }
